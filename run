@@ -1,0 +1,3 @@
+﻿#!/bin/sh
+gcc interpreter.c -o interpreter
+./interpreter ./test.ti
