@@ -13,20 +13,19 @@ char token;
 char *tokens;
 size_t column = 0;
 
-
 void init(char *file_name);
 void readFile(char *file_name);
 void assignment();
 void nextChar();
 void match(char c);
 void expected(char *message, ...);
-int getNum();
-int expression();
-int term();
 char getName();
 bool isAddOp(char c);
 bool isMulOp(char c);
 int factor();
+int getNum();
+int expression();
+int term();
 
 int main(int argc, char **argv){
   init(argv[1]);
@@ -59,13 +58,13 @@ void readFile(char *file_name){
   fclose(file);
   column = 0;
 }
+
 void nextChar(){
   token = (char) tokens[column++];
 }
 
 int factor(){
   int val;
-
   if(token == '('){
     match('(');
     val = expression();
@@ -95,7 +94,6 @@ int term(){
 
 int expression(){
   int val;
-
   if(isAddOp(token)){
     val = 0;
   } else {
