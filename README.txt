@@ -2,11 +2,12 @@
 
 This is an example to study how interperters work and build another one.
 
-To use, execute the `run` executable. The default file to send is test.tl but you can
-and another one running manualy.
+To use, execute the `run` executable.
 
-`gcc interperter.c -o interperter`
+The default file to send is test.tl. You can use another one running manualy.
 
-`./interperter ./path/to/file.tl`
+  $ gcc interperter.c -o interperter
+
+  $ ./interperter ./path/to/file.tl
 
 Feel free to contribute!!
