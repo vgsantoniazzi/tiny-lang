@@ -1,6 +1,6 @@
 ﻿Welcome to tiny programming language.
 
-This is an example to study how interperters work and build another one.
+This is an example to study how interperters work and build new one.
 
 To use, execute the `run` executable.
 
