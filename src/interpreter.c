@@ -26,11 +26,16 @@ char *tokens;
 */
 size_t column = 0;
 
+/*
+  Size of array of tokens.
+*/
+int tokens_length;
+
 void init(char *file_name);
 void readFile(char *file_name);
 void assignment();
 void nextToken();
-void newLine();
+void nextStatement();
 void output();
 void match(char c);
 void expected(char *message, ...);
@@ -50,7 +55,7 @@ int term();
 */
 int main(int argc, char **argv){
   init(argv[1]);
-  do {
+  while(tokens_length != column - 1) {
     switch(token){
       case '?':
         output();
@@ -59,8 +64,8 @@ int main(int argc, char **argv){
         assignment();
         break;
     }
-    newLine();
-  } while(token != '.');
+    nextStatement();
+  }
   return 0;
 }
 
@@ -105,6 +110,7 @@ void readFile(char *file_name){
       tokens[column++] = (char) c;
   }
   fclose(file);
+  tokens_length = column;
   column = 0;
 }
 
@@ -113,7 +119,7 @@ void readFile(char *file_name){
 */
 void nextToken(){
   token = (char) tokens[column++];
-  if(token == ' ')
+  if(token == ' ' || token == '\n')
     nextToken();
 }
 
@@ -121,9 +127,10 @@ void nextToken(){
  Go to the next line.
  Do not support multiple lines expression.
 */
-void newLine(){
-  if(token == '\n')
-    nextToken();
+void nextStatement(){
+  if(token == ';'){
+    match(';');
+  }
 }
 
 /*
