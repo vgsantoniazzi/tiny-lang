@@ -63,6 +63,7 @@ int main(int argc, char **argv){
   } while(token != '.');
   return 0;
 }
+
 /*
   First step to start to interpreting. Read an file and get the first char
 */
@@ -186,6 +187,7 @@ int expression(){
   }
   return val;
 }
+
 /*
   Validate if received char is for multiplication or division.
 */
@@ -236,6 +238,7 @@ char getName(){
   nextToken();
   return name;
 }
+
 /*
  Raises an message and exit program.
 
