@@ -30,6 +30,8 @@ void init(char *file_name);
 void readFile(char *file_name);
 void assignment();
 void nextToken();
+void newLine();
+void output();
 void match(char c);
 void expected(char *message, ...);
 char getName();
@@ -48,7 +50,17 @@ int term();
 */
 int main(int argc, char **argv){
   init(argv[1]);
-  printf("%d", expression());
+  do {
+    switch(token){
+      case '?':
+        output();
+        break;
+      default:
+        assignment();
+        break;
+    }
+    newLine();
+  } while(token != '.');
   return 0;
 }
 /*
@@ -67,6 +79,15 @@ void assignment(){
   name = getName();
   match('=');
   var[name] = expression();
+}
+
+/*
+ Validate if the char is for output variable value.
+*/
+void output(){
+  match('?');
+  char name = getName();
+  printf("%d \n", var[name]);
 }
 
 /*
@@ -91,6 +112,17 @@ void readFile(char *file_name){
 */
 void nextToken(){
   token = (char) tokens[column++];
+  if(token == ' ')
+    nextToken();
+}
+
+/*
+ Go to the next line.
+ Do not support multiple lines expression.
+*/
+void newLine(){
+  if(token == '\n')
+    nextToken();
 }
 
 /*
