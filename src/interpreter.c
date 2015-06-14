@@ -9,27 +9,39 @@
 #include <stdarg.h>
 #include <stdbool.h>
 
+#include <sys/stat.h>
+
 /*
   Define array and size of variables.
 */
 #define MAXVAR 26
 int var[MAXVAR];
 
+#define END_OF_FILE '\0'
+
+/* struct defining how we must walk on the text */
+struct {
+  /* contains the current line */
+  int current_line;
+
+  /* contains the current position in the line */
+  int current_pos;
+
+  /* global position in the string */
+  int position;
+
+  /* buffer size */
+  int size;
+
+  /* chars */
+  char *buffer;
+} string_buffer;
+
+
 /*
   Define current token and array with all tokens.
 */
 char token;
-char *tokens;
-
-/*
-  Define counter for all tokens in a file.
-*/
-size_t column = 0;
-
-/*
-  Size of array of tokens.
-*/
-int tokens_length;
 
 void init(char *file_name);
 void readFile(char *file_name);
@@ -47,6 +59,11 @@ int getNum();
 int expression();
 int term();
 
+
+int end_of_file() {
+  return string_buffer.size < string_buffer.position;
+}
+
 /*
   Initialize interpreter.
 
@@ -55,7 +72,8 @@ int term();
 */
 int main(int argc, char **argv){
   init(argv[1]);
-  while(tokens_length != column - 1) {
+
+  while(!end_of_file()) {
     switch(token){
       case '?':
         output();
@@ -68,6 +86,7 @@ int main(int argc, char **argv){
   }
   return 0;
 }
+
 
 /*
   First step to start to interpreting. Read an file and get the first char
@@ -96,31 +115,79 @@ void output(){
   printf("%d \n", var[name]);
 }
 
+
+/*
+  get the size of the source code
+ */
+long filesize(char *filename) {
+  FILE *fp = fopen(filename, "rb");
+
+  if (fp == NULL)
+    expected("file not found: %s", filename);
+
+  fseek(fp, 0, SEEK_END);
+  long fsize = ftell(fp);
+  fclose(fp);
+
+  return fsize;
+}
+
 /*
   Read received file_name and put all chars to array of tokens.
 */
-void readFile(char *file_name){
-  char c;
-  FILE *file = fopen(file_name, "r");
-  if(file == NULL)
+void readFile(char *file_name) {
+  long fsize = filesize(file_name);
+
+  FILE *fp = fopen(file_name, "rb");
+  
+  if(fp == NULL)
     expected("file not found: %s", file_name);
-  tokens = malloc(1000);
-  while ((c = fgetc(file)) != EOF){
-    if(c > 0)
-      tokens[column++] = (char) c;
-  }
-  fclose(file);
-  tokens_length = column;
-  column = 0;
+
+  char *buffer = malloc(fsize + 1);
+  fread((void *)buffer, 1, fsize, fp);
+  buffer[fsize] = '\0';
+
+  fclose(fp);
+
+  string_buffer.buffer = buffer;
+  string_buffer.size   = fsize;
+  string_buffer.position = 0;
+
+  string_buffer.current_pos  = 1;
+  string_buffer.current_line = 1;
 }
 
 /*
  Read next token from array of them.
 */
 void nextToken(){
-  token = (char) tokens[column++];
-  if(token == ' ' || token == '\n')
-    nextToken();
+  char chr;
+
+  while (!end_of_file()) {
+    chr = string_buffer.buffer[string_buffer.position];
+    
+    switch (chr) {
+
+      /* ignore spaces and break lines */
+      case '\n':
+        string_buffer.current_line++;
+        string_buffer.current_pos = 0;
+      case ' ':
+      case '\t':
+      case '\r':
+        string_buffer.position++;
+        string_buffer.current_pos++;
+        break;
+
+      default:
+        token = chr;
+        string_buffer.position++;
+        string_buffer.current_pos++;
+        return;
+    }
+  }
+
+  token = END_OF_FILE;
 }
 
 /*
@@ -257,6 +324,6 @@ void expected(char *message, ...){
   va_start(args, message);
   vfprintf(stderr, message, args);
   va_end(args);
-  fputs(" Expected!\n", stderr);
+  fprintf(stderr, " Expected! Found: %c (line: %d, column: %d) \n", token, string_buffer.current_line, string_buffer.current_pos);
   exit(1);
 }
