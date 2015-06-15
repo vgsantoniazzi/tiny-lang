@@ -420,11 +420,15 @@ void output(){
 int factor(){
 
   int val;
+  char *name;
 
-  if(token.type == TOKEN_OPEN_PARENS) {
+  if (token.type == TOKEN_OPEN_PARENS) {
     match("(");
     val = expression();
     match(")");
+  } else if (token.type == TOKEN_VARIABLE) {
+    name = getName();
+    val = get_value(name);
   } else {
     val = getNum();
   }
