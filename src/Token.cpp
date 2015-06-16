@@ -27,3 +27,4 @@ void Token::SetType(TOKEN_TYPE t)
 {
   type = t;
 }
+
