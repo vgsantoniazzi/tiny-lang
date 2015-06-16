@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
   Token token;
   while(program.Remaining()){
     token = program.GetToken();
-    cout << "token: " << token.GetValue() << " type: " << token.GetType() << endl;
+    cout << "token: '" << token.GetValue() << "' type: " << token.GetType() << endl;
   }
   return 0;
 }
