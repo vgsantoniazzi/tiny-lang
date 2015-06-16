@@ -13,6 +13,9 @@ Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
     cout << "Input file not found." << endl;
     exit(1);
   }
+  this->filename = filename;
+  line = 1;
+  column = -2;
   NextChar();
 }
 
@@ -49,6 +52,9 @@ Token Tokenizer::ReadToken(Token & token)
     NextChar();
   }
   token.SetValue(lexeme);
+  token.SetLine(line);
+  token.SetColumn(column);
+  token.SetFilename(filename);
   return token;
 }
 
@@ -99,12 +105,17 @@ string Tokenizer::GetWord()
 void Tokenizer::NextChar()
 {
   remaining = true;
+  column++;
   if (file.get(currentChar))
   {
-    if(currentChar == '\n' || (int)currentChar - 48 == -16)
+    if(currentChar == '\n')
     {
       NextChar();
+      column = 1;
+      line++;
     }
+    if((int)currentChar - 48 == -16)
+      NextChar();
   } else {
     remaining = false;
   }

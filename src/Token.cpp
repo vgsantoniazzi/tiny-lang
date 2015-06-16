@@ -18,6 +18,36 @@ void Token::SetValue(string v)
   value = v;
 }
 
+string Token::GetFilename()
+{
+  return filename;
+}
+
+void Token::SetFilename(string f)
+{
+  filename = f;
+}
+
+int Token::GetLine()
+{
+  return line;
+}
+
+void Token::SetLine(int l)
+{
+  line = l;
+}
+
+int Token::GetColumn()
+{
+  return column;
+}
+
+void Token::SetColumn(int c)
+{
+  column = c;
+}
+
 TOKEN_TYPE Token::GetType() const
 {
   return type;

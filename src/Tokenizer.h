@@ -17,6 +17,9 @@ class Tokenizer
     char currentChar;
     bool remaining;
     Token token;
+    string filename;
+    int line;
+    int column;
     string GetInteger();
     string GetWord();
     void NextChar();

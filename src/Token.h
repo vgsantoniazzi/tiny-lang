@@ -11,13 +11,22 @@ class Token
 {
   public:
     Token(string v = "", TOKEN_TYPE t = UNKNOWN);
-    TOKEN_TYPE GetType() const;
     string GetValue() const;
-    void SetType(TOKEN_TYPE t);
     void SetValue(string v);
+    string GetFilename();
+    void SetFilename(string f);
+    int GetLine();
+    void SetLine(int l);
+    int GetColumn();
+    void SetColumn(int c);
+    void SetType(TOKEN_TYPE t);
+    TOKEN_TYPE GetType() const;
 
   private:
     string value;
+    string filename;
+    int line;
+    int column;
     TOKEN_TYPE type;
 };
 

@@ -13,7 +13,9 @@ int main(int argc, char *argv[])
 
   while(program.Remaining()){
     token = program.GetToken();
-    cout << "token: '" << token.GetValue() << "' type: " << token.GetType() << endl;
+    cout << "token: '" << token.GetValue() << "' type: " << token.GetType() <<
+      " column: " << token.GetColumn() << " line: " << token.GetLine() <<
+      " file: " << token.GetFilename() << endl;
   }
   return 0;
 }
