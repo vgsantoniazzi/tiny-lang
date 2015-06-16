@@ -12,10 +12,10 @@ int main(int argc, char *argv[])
   Tokenizer program(filename);
   VarTable variables;
 
-  Token token = program.GetToken();
+  Token token;
   while(program.Remaining()){
-    cout << "token: " << token.GetValue() << " type: " << token.GetType() << endl;
     token = program.GetToken();
+    cout << "token: " << token.GetValue() << " type: " << token.GetType() << endl;
   }
   return 0;
 }
