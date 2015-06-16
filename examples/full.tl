@@ -1,1 +1,4 @@
-EA = (23+50)-3000;
+expression = (5+10)-
+             (5);
+expression = expression + (5);
+
