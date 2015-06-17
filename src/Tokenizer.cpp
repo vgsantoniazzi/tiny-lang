@@ -13,10 +13,10 @@ Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
     cout << "Input file not found." << endl;
     exit(1);
   }
+  NextChar();
   this->filename = filename;
   line = 1;
   column = -2;
-  NextChar();
 }
 
 Token Tokenizer::GetToken()
@@ -45,11 +45,10 @@ Token Tokenizer::ReadToken(Token & token)
     lexeme += GetWord();
     token.SetType(WORD);
   }
-    else
+  else
   {
-    lexeme += currentChar;
-    token.SetType(GetTokenType());
-    NextChar();
+    lexeme += GetSpecial();
+    token.SetType(GetTokenType(lexeme));
   }
   token.SetValue(lexeme);
   token.SetLine(line);
@@ -58,26 +57,33 @@ Token Tokenizer::ReadToken(Token & token)
   return token;
 }
 
-TOKEN_TYPE Tokenizer::GetTokenType()
+TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
 {
-  switch(currentChar){
-    case '+':
-      return ADD;
-    case '-':
-      return SUB;
-    case '*':
-      return MULT;
-    case '/':
-      return DIVIDE;
-    case '=':
-      return ASSIGN;
-    case ';':
-      return SEMICOLON;
-    case '(':
-      return OPEN_PARENTHESYS;
-    case ')':
-      return CLOSE_PARENTHESYS;
-  }
+  if(lexeme == "+")
+    return ADD;
+  if(lexeme == "-")
+    return SUB;
+  if(lexeme == "*")
+    return MULT;
+  if(lexeme == "/")
+    return DIVIDE;
+  if(lexeme == "=")
+    return ASSIGN;
+  if(lexeme == ";")
+    return SEMICOLON;
+  if(lexeme == "(")
+    return OPEN_PARENTHESYS;
+  if(lexeme == ")")
+    return CLOSE_PARENTHESYS;
+  return UNKNOWN;
+}
+
+string Tokenizer::GetSpecial()
+{
+  string special;
+  special += currentChar;
+  NextChar();
+  return special;
 }
 
 string Tokenizer::GetInteger()
@@ -104,14 +110,14 @@ string Tokenizer::GetWord()
 
 void Tokenizer::NextChar()
 {
-  remaining = true;
   column++;
+  remaining = true;
   if (file.get(currentChar))
   {
     if(currentChar == '\n')
     {
       NextChar();
-      column = 1;
+      column = 0;
       line++;
     }
     if((int)currentChar - 48 == -16)

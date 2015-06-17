@@ -22,9 +22,10 @@ class Tokenizer
     int column;
     string GetInteger();
     string GetWord();
+    string GetSpecial();
     void NextChar();
     Token ReadToken(Token & token);
-    TOKEN_TYPE GetTokenType();
+    TOKEN_TYPE GetTokenType(string lexeme);
 };
 
 #endif
