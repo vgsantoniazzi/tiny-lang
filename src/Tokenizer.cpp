@@ -9,27 +9,35 @@ using namespace std;
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
 {
   if (!file)
-  {
-    cout << "Input file not found." << endl;
     exit(1);
-  }
-  NextChar();
   this->filename = filename;
   line = 1;
   column = -2;
+  remaining = 3;
+  NextChar();
+  NextToken(token);
+  NextToken(nextToken);
 }
 
 Token Tokenizer::GetToken()
 {
-  return ReadToken(token);
+  Token retToken = token;
+  token = nextToken;
+  NextToken(nextToken);
+  return retToken;
+}
+
+Token Tokenizer::LookAhead()
+{
+  return nextToken;
 }
 
 bool Tokenizer::Remaining()
 {
-  return remaining;
+  return remaining != 0;
 }
 
-Token Tokenizer::ReadToken(Token & token)
+void Tokenizer::NextToken(Token & token)
 {
   string lexeme;
   token.SetValue(lexeme);
@@ -54,35 +62,19 @@ Token Tokenizer::ReadToken(Token & token)
   token.SetLine(line);
   token.SetColumn(column);
   token.SetFilename(filename);
-  return token;
-}
-
-TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
-{
-  if(lexeme == "+")
-    return ADD;
-  if(lexeme == "-")
-    return SUB;
-  if(lexeme == "*")
-    return MULT;
-  if(lexeme == "/")
-    return DIVIDE;
-  if(lexeme == "=")
-    return ASSIGN;
-  if(lexeme == ";")
-    return SEMICOLON;
-  if(lexeme == "(")
-    return OPEN_PARENTHESYS;
-  if(lexeme == ")")
-    return CLOSE_PARENTHESYS;
-  return UNKNOWN;
 }
 
 string Tokenizer::GetSpecial()
 {
   string special;
-  special += currentChar;
-  NextChar();
+  char nextChar;
+  while(!isdigit(currentChar) && !isalpha(currentChar) && Remaining())
+  {
+    special += currentChar;
+    nextChar = NextChar();
+    if(!MatchTokenWithNext(special, nextChar))
+      return special;
+  }
   return special;
 }
 
@@ -108,10 +100,17 @@ string Tokenizer::GetWord()
   return word;
 }
 
-void Tokenizer::NextChar()
+bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar)
+{
+  string match = lexeme + nextChar;
+  if(GetTokenType(match) == UNKNOWN)
+    return false;
+  return true;
+}
+
+char Tokenizer::NextChar()
 {
   column++;
-  remaining = true;
   if (file.get(currentChar))
   {
     if(currentChar == '\n')
@@ -123,7 +122,31 @@ void Tokenizer::NextChar()
     if((int)currentChar - 48 == -16)
       NextChar();
   } else {
-    remaining = false;
+    remaining--;
   }
+  return currentChar;
+}
+
+TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
+{
+  if(lexeme == "+")
+    return ADD;
+  if(lexeme == "-")
+    return SUB;
+  if(lexeme == "*")
+    return MULT;
+  if(lexeme == "/")
+    return DIVIDE;
+  if(lexeme == "=")
+    return ASSIGN;
+  if(lexeme == ";")
+    return SEMICOLON;
+  if(lexeme == "(")
+    return OPEN_PARENTHESYS;
+  if(lexeme == ")")
+    return CLOSE_PARENTHESYS;
+  if(lexeme == "==")
+    return EQUAL_TO;
+  return UNKNOWN;
 }
 
