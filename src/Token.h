@@ -14,11 +14,11 @@ class Token
     Token(string v = "", TOKEN_TYPE t = UNKNOWN);
     string GetValue() const;
     void SetValue(string v);
-    string GetFilename();
+    string GetFilename() const;
     void SetFilename(string f);
-    int GetLine();
+    int GetLine() const;
     void SetLine(int l);
-    int GetColumn();
+    int GetColumn() const;
     void SetColumn(int c);
     void SetType(TOKEN_TYPE t);
     TOKEN_TYPE GetType() const;

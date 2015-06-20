@@ -18,7 +18,7 @@ void Token::SetValue(string v)
   value = v;
 }
 
-string Token::GetFilename()
+string Token::GetFilename() const
 {
   return filename;
 }
@@ -28,7 +28,7 @@ void Token::SetFilename(string f)
   filename = f;
 }
 
-int Token::GetLine()
+int Token::GetLine() const
 {
   return line;
 }
@@ -38,7 +38,7 @@ void Token::SetLine(int l)
   line = l;
 }
 
-int Token::GetColumn()
+int Token::GetColumn() const
 {
   return column;
 }

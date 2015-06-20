@@ -53,7 +53,7 @@ void Tokenizer::NextToken(Token & token)
     lexeme += GetWord();
     token.SetType(WORD);
   }
-  else
+    else
   {
     lexeme += GetSpecial();
     token.SetType(GetTokenType(lexeme));
