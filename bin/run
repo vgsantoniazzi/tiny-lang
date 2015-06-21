@@ -1,3 +1,4 @@
 ﻿#!/bin/sh
-g++ ../src/Interpreter.cpp ../src/Token.cpp ../src/Tokenizer.cpp ../src/VarTable.cpp  -o interpreter
+g++ ../src/*.cpp  -o interpreter
 ./interpreter ../examples/full.tl
+rm interpreter

@@ -22,7 +22,6 @@ class Token
     void SetColumn(int c);
     void SetType(TOKEN_TYPE t);
     TOKEN_TYPE GetType() const;
-
   private:
     string value;
     string filename;
@@ -30,6 +29,5 @@ class Token
     int column;
     TOKEN_TYPE type;
 };
-
 #endif
 

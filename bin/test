@@ -1,0 +1,6 @@
+﻿#!/bin/sh
+mv ../src/Interpreter.cpp ../src/main
+g++ -I $GTEST_HOME/include -lgtest -lgtest_main -lpthread ../src/*.cpp ../test/**/*.cpp -o run_tests
+mv ../src/main ../src/Interpreter.cpp
+./run_tests
+rm run_tests
