@@ -9,7 +9,10 @@ using namespace std;
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
 {
   if (!file)
+  {
+    cout << "File not found: " << filename << endl;
     exit(1);
+  }
   this->filename = filename;
   line = 1;
   column = -2;
