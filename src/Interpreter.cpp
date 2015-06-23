@@ -3,19 +3,18 @@
 #include "Token.h"
 #include "Tokenizer.h"
 #include "VarTable.h"
+#include "Statement.h"
 using namespace std;
 
 int main(int argc, char *argv[])
 {
   Tokenizer program(argv[1]);
   VarTable variables;
-  Token token;
-
-  while(program.Remaining()){
-    token = program.GetToken();
-    cout << "token: '" << token.GetValue() << "' type: " << token.GetType() <<
-      " column: " << token.GetColumn() << " line: " << token.GetLine() <<
-      " file: " << token.GetFilename() << endl;
+  Statement *statement = Statement::GetNext(program);
+  while(statement != NULL)
+  {
+    statement->Execute(variables);
+    statement = Statement::GetNext(program);
   }
   return 0;
 }
