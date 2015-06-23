@@ -45,6 +45,11 @@ bool Tokenizer::Remaining()
   return remaining != 0;
 }
 
+bool Tokenizer::Match(TOKEN_TYPE t)
+{
+  return GetToken().Match(t);
+}
+
 void Tokenizer::NextToken(Token & token)
 {
   string lexeme;

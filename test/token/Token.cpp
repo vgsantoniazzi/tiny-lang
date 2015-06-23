@@ -32,3 +32,10 @@ TEST (Token, GetAndSetType)
     t.SetType(EQUAL_TO);
     ASSERT_EQ (t.GetType(), EQUAL_TO);
 }
+TEST (Token, Match)
+{
+    Token t = Token();
+    t.SetType(EQUAL_TO);
+    ASSERT_TRUE (t.Match(EQUAL_TO));
+    ASSERT_FALSE (t.Match(ASSIGN));
+}

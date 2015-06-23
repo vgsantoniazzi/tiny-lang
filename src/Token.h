@@ -33,6 +33,7 @@ class Token
     int GetColumn() const;
     void SetColumn(int c);
     void SetType(TOKEN_TYPE t);
+    bool Match(TOKEN_TYPE t) const;
     TOKEN_TYPE GetType() const;
   private:
     string value;

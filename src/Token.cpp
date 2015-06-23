@@ -58,3 +58,8 @@ void Token::SetType(TOKEN_TYPE t)
   type = t;
 }
 
+bool Token::Match(TOKEN_TYPE t) const
+{
+  return GetType() == t;
+}
+

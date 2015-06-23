@@ -12,18 +12,21 @@ class Statement
   public:
     static Statement * GetNext(Tokenizer & program);
     virtual void Execute(VarTable & variables) const = 0;
-};
-
-class OutputStatement : public Statement
-{
-  public:
-    void Execute(VarTable & variables) const;
+    virtual void Read(Tokenizer & program) = 0;
 };
 
 class AssignStatement : public Statement
 {
   public:
     void Execute(VarTable & variables) const;
+    void Read(Tokenizer & program);
+};
+
+class OutputStatement : public Statement
+{
+  public:
+    void Execute(VarTable & variables) const;
+    void Read(Tokenizer & program);
 };
 
 #endif
