@@ -7,7 +7,7 @@ TEST (Tokenizer, ValidateAssignmentTokenByToken)
   Token token = program.GetToken();
   ASSERT_TRUE (program.Remaining());
   ASSERT_EQ (token.GetValue(), "expression");
-  ASSERT_EQ (token.GetType(), WORD);
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
   ASSERT_EQ (token.GetColumn(), 10);
   ASSERT_EQ (token.GetLine(), 1);
   token = program.GetToken();
@@ -63,33 +63,48 @@ TEST (Tokenizer, ValidateEqualToTokenByToken)
   Tokenizer program("../test/programs/equal_to.tl");
   Token token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "if");
-  ASSERT_EQ (token.GetType(), WORD);
-  ASSERT_EQ (token.GetLine(), 1);
-  ASSERT_EQ (token.GetColumn(), 1);
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "(");
   ASSERT_EQ (token.GetType(), OPEN_PARENTHESYS);
-  ASSERT_EQ (token.GetLine(), 1);
-  ASSERT_EQ (token.GetColumn(), 2);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "x");
-  ASSERT_EQ (token.GetType(), WORD);
-  ASSERT_EQ (token.GetLine(), 1);
-  ASSERT_EQ (token.GetColumn(), 3);
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "==");
   ASSERT_EQ (token.GetType(), EQUAL_TO);
-  ASSERT_EQ (token.GetLine(), 1);
-  ASSERT_EQ (token.GetColumn(), 5);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "x");
-  ASSERT_EQ (token.GetType(), WORD);
-  ASSERT_EQ (token.GetLine(), 1);
-  ASSERT_EQ (token.GetColumn(), 6);
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), ")");
   ASSERT_EQ (token.GetType(), CLOSE_PARENTHESYS);
-  ASSERT_EQ (token.GetLine(), 2);
-  ASSERT_EQ (token.GetColumn(), 0);
+  ASSERT_FALSE (program.Remaining());
+}
+
+TEST (Tokenizer, OutputToTokenByToken)
+{
+  Tokenizer program("../test/programs/output.tl");
+  Token token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), "i");
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), "=");
+  ASSERT_EQ (token.GetType(), ASSIGN);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), "2");
+  ASSERT_EQ (token.GetType(), INTEGER);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), ";");
+  ASSERT_EQ (token.GetType(), SEMICOLON);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), "$");
+  ASSERT_EQ (token.GetType(), OUTPUT);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), "i");
+  ASSERT_EQ (token.GetType(), IDENTIFIER);
+  token = program.GetToken();
+  ASSERT_EQ (token.GetValue(), ";");
+  ASSERT_EQ (token.GetType(), SEMICOLON);
   ASSERT_FALSE (program.Remaining());
 }

@@ -54,7 +54,7 @@ void Tokenizer::NextToken(Token & token)
     else if(isalpha(currentChar))
   {
     lexeme += GetWord();
-    token.SetType(WORD);
+    token.SetType(IDENTIFIER);
   }
     else
   {
@@ -150,6 +150,8 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return CLOSE_PARENTHESYS;
   if(lexeme == "==")
     return EQUAL_TO;
+  if(lexeme == "$")
+    return OUTPUT;
   return UNKNOWN;
 }
 
