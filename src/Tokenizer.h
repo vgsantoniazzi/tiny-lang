@@ -14,7 +14,7 @@ class Tokenizer
     Token LookAhead();
     Token Look();
     bool Remaining();
-    bool Match(TOKEN_TYPE t);
+    void Match(TOKEN_TYPE t);
   private:
     ifstream file;
     char currentChar;

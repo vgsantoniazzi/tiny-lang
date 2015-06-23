@@ -45,9 +45,12 @@ bool Tokenizer::Remaining()
   return remaining != 0;
 }
 
-bool Tokenizer::Match(TOKEN_TYPE t)
+void Tokenizer::Match(TOKEN_TYPE t)
 {
-  return GetToken().Match(t);
+  if(!GetToken().Match(t))
+  {
+    cout << "Expected: " << t << endl;
+  }
 }
 
 void Tokenizer::NextToken(Token & token)

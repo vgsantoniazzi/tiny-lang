@@ -1,3 +1,2 @@
-expression = (5+10)-
-             (5);
-expression = expression + 5;
+expression = 53;
+$expression;

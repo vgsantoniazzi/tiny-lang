@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cstdlib>
 #include <string>
 #include <vector>
 #include "VarTable.h"
@@ -34,16 +35,18 @@ Statement * Statement::GetNext(Tokenizer & program)
 
 void AssignStatement::Execute(VarTable & variables) const
 {
-  cout << "Execute AssignStatement" << endl;
+  variables.Update(variable.GetValue(), returnValue);
 }
 
 void AssignStatement::Read(Tokenizer & program)
 {
-  Token value = program.GetToken();
+  variable = program.GetToken();
   Token operation = program.GetToken();
 
-  if(value.GetType() == IDENTIFIER && operation.GetType() == ASSIGN)
+  if(variable.Match(IDENTIFIER) && operation.Match(ASSIGN))
   {
+    returnValue = atoi(program.GetToken().GetValue().c_str());
+    program.Match(SEMICOLON);
   }
     else
   {
@@ -54,19 +57,17 @@ void AssignStatement::Read(Tokenizer & program)
 
 void OutputStatement::Execute(VarTable & variables) const
 {
-  cout << "OutputStatement" << endl;
+  cout << variables.Find(variable.GetValue()) << endl;
 }
 
 void OutputStatement::Read(Tokenizer & program)
 {
   Token output = program.GetToken();
-  Token variable = program.GetToken();
-  Token statementEnd = program.GetToken();
+  variable = program.GetToken();
 
-  if(output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER &&
-    statementEnd.GetType() == SEMICOLON)
+  if(output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
   {
-    cout << "Execute OutputStatement" << endl;
+    program.Match(SEMICOLON);
   }
   else
   {
