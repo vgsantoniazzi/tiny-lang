@@ -12,6 +12,7 @@ class Tokenizer
     Tokenizer(const string & filename);
     Token GetToken();
     Token LookAhead();
+    Token Look();
     bool Remaining();
   private:
     ifstream file;

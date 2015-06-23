@@ -10,10 +10,20 @@ using namespace std;
 
 Statement * Statement::GetNext(Tokenizer & program)
 {
-  Token next = program.LookAhead();
-  if(next.GetType() == UNKNOWN)
-  {
+  Token token = program.Look();
+  if(token.GetType() == UNKNOWN)
     return NULL;
+
+  Statement * statement;
+  if (token.GetType() == IDENTIFIER)
+  {
+    statement = new AssignStatement();
   }
-  cout << next.GetValue() << endl;
+  else if(token.GetType() == OUTPUT)
+  {
+   statement = new OutputStatement();
+  }
+  exit(0);
 }
+
+

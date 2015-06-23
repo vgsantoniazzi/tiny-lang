@@ -30,6 +30,11 @@ Token Tokenizer::GetToken()
   return retToken;
 }
 
+Token Tokenizer::Look()
+{
+  return token;
+}
+
 Token Tokenizer::LookAhead()
 {
   return nextToken;

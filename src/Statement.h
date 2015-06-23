@@ -20,4 +20,10 @@ class OutputStatement : public Statement
     void Execute(VarTable & variables) const;
 };
 
+class AssignStatement : public Statement
+{
+  public:
+    void Execute(VarTable & variables) const;
+};
+
 #endif
