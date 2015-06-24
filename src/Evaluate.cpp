@@ -3,6 +3,7 @@
 #include <string>
 #include "Token.h"
 #include "Tokenizer.h"
+#include "Variables.h"
 #include "Evaluate.h"
 
 using namespace std;
@@ -64,6 +65,10 @@ int Evaluate::Factor(Tokenizer & program)
     program.Match(OPEN_PARENTHESYS);
     val = Expression(program);
     program.Match(CLOSE_PARENTHESYS);
+  }
+  else if(program.Look().GetType() == IDENTIFIER)
+  {
+    val = Variables::All()->Find(program.GetToken().GetValue());
   }
   else
   {

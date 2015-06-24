@@ -5,14 +5,16 @@
 #include <map>
 using namespace std;
 
-class VarTable
+class Variables
 {
   public:
-    VarTable();
+    Variables();
     void Update(string varName, int varValue);
     int Find(string varName);
+    static Variables* All();
   private:
     map<string, int> vars;
+    static Variables *single;
 };
 
 #endif

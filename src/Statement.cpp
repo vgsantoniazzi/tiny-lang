@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
-#include "VarTable.h"
+#include "Variables.h"
 #include "Token.h"
 #include "Tokenizer.h"
 #include "Evaluate.h"
@@ -34,9 +34,9 @@ Statement * Statement::GetNext(Tokenizer & program)
   return statement;
 }
 
-void AssignStatement::Execute(VarTable & variables) const
+void AssignStatement::Execute() const
 {
-  variables.Update(variable.GetValue(), returnValue);
+  Variables::All()->Update(variable.GetValue(), returnValue);
 }
 
 void AssignStatement::Read(Tokenizer & program)
@@ -56,9 +56,9 @@ void AssignStatement::Read(Tokenizer & program)
   }
 }
 
-void OutputStatement::Execute(VarTable & variables) const
+void OutputStatement::Execute() const
 {
-  cout << variables.Find(variable.GetValue()) << endl;
+  cout << Variables::All()->Find(variable.GetValue()) << endl;
 }
 
 void OutputStatement::Read(Tokenizer & program)
