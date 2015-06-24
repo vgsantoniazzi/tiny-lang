@@ -1,2 +1,3 @@
-expression = 53;
+expression = (5+2)
+              *2;
 $expression;
