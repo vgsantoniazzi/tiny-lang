@@ -5,6 +5,7 @@
 #include "VarTable.h"
 #include "Token.h"
 #include "Tokenizer.h"
+#include "Evaluate.h"
 #include "Statement.h"
 
 using namespace std;
@@ -45,7 +46,7 @@ void AssignStatement::Read(Tokenizer & program)
 
   if(variable.Match(IDENTIFIER) && operation.Match(ASSIGN))
   {
-    returnValue = atoi(program.GetToken().GetValue().c_str());
+    returnValue = Evaluate::Calculate(program);
     program.Match(SEMICOLON);
   }
     else
