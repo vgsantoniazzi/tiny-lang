@@ -2,7 +2,7 @@
 CURRENT_PATH=$PWD
 FILE_PATH=$(dirname $0)
 cd $FILE_PATH
-g++ ../src/*.cpp  -o interpreter
+g++  ../src/**/*.cpp ../src/*.cpp  -o interpreter
 ./interpreter ../examples/full.tl
 rm interpreter
 cd $CURRENT_PATH
