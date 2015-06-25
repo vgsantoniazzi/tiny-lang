@@ -1,5 +1,5 @@
-E = (2+5)+4*
-    (6+2);
-X = 2*5;
-?E;
-?X;
+expression = (5+2)
+              *5;
+expression = expression + 3;
+$expression;
+
