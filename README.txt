@@ -2,12 +2,14 @@
 
 This is an example to study how interperters work and build new one.
 
-To use, execute the `run` executable.
+To use, execute the run executable.
 
-The default file to send is test.tl. You can use another one running manualy.
+The default file to send is examples/full.tl. You can use another one running manualy.
 
-  $ gcc interperter.c -o interperter
+  g++  ../src/**/*.cpp ../src/*.cpp  -o interpreter
 
-  $ ./interperter ./path/to/file.tl
+  ./interpreter ../path/file.tl
+
+test/programs/ has some examples that what this programming language can do.
 
 Feel free to contribute!!
