@@ -15,7 +15,7 @@ Statement * Statement::GetNext(Tokenizer & program)
 {
   Token token = program.Look();
   if(token.GetType() == UNKNOWN)
-    return NULL;
+    MalformedExpressionError::Raise(token);
 
   Statement * statement;
   if (token.GetType() == IDENTIFIER)

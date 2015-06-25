@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include "Token.h"
 #include "Tokenizer.h"
+#include "errors/MalformedExpressionError.h"
 using namespace std;
 
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
@@ -48,9 +49,7 @@ bool Tokenizer::Remaining()
 void Tokenizer::Match(TOKEN_TYPE t)
 {
   if(!GetToken().Match(t))
-  {
-    cout << "Expected: " << t << endl;
-  }
+    MalformedExpressionError::Raise(token);
 }
 
 void Tokenizer::NextToken(Token & token)

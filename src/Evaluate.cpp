@@ -1,10 +1,12 @@
 ﻿#include <iostream>
 #include <cstdlib>
+#include <fstream>
 #include <string>
 #include "Token.h"
 #include "Tokenizer.h"
 #include "Variables.h"
 #include "Evaluate.h"
+#include "errors/MalformedExpressionError.h"
 
 using namespace std;
 
@@ -72,7 +74,12 @@ int Evaluate::Factor(Tokenizer & program)
   }
   else
   {
-   val = atoi(program.GetToken().GetValue().c_str());
+    Token token = program.GetToken();
+    string value = token.GetValue();
+    if (atoi(value.c_str())>0 || isdigit(value.c_str()[0]))
+      val = atoi(value.c_str());
+    else
+      MalformedExpressionError::Raise(token);
   }
   return val;
 }
