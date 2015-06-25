@@ -17,6 +17,7 @@ class Tokenizer
     void Match(TOKEN_TYPE t);
   private:
     ifstream file;
+    char previousChar;
     char currentChar;
     int remaining;
     Token token;
@@ -24,10 +25,13 @@ class Tokenizer
     string filename;
     int line;
     int column;
+    int previousColumn;
     bool MatchTokenWithNext(string lexeme, char nextChar);
     string GetInteger();
     string GetWord();
     string GetSpecial();
+    int GetLine();
+    int GetColumn();
     char NextChar();
     void NextToken(Token & token);
     TOKEN_TYPE GetTokenType(string lexeme);

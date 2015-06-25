@@ -16,7 +16,7 @@ Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
   }
   this->filename = filename;
   line = 1;
-  column = -2;
+  column = -1;
   remaining = 3;
   NextChar();
   NextToken(token);
@@ -28,6 +28,8 @@ Token Tokenizer::GetToken()
   Token retToken = token;
   token = nextToken;
   NextToken(nextToken);
+  if(token.Match(SPACE))
+    GetToken();
   return retToken;
 }
 
@@ -66,6 +68,8 @@ void Tokenizer::NextToken(Token & token)
     else if(isalpha(currentChar))
   {
     lexeme += GetWord();
+    token.SetType(GetTokenType(lexeme));
+      if(token.Match(UNKNOWN))
     token.SetType(IDENTIFIER);
   }
     else
@@ -74,8 +78,8 @@ void Tokenizer::NextToken(Token & token)
     token.SetType(GetTokenType(lexeme));
   }
   token.SetValue(lexeme);
-  token.SetLine(line);
-  token.SetColumn(column);
+  token.SetLine(GetLine());
+  token.SetColumn(GetColumn());
   token.SetFilename(filename);
 }
 
@@ -115,9 +119,23 @@ string Tokenizer::GetWord()
   return word;
 }
 
+int Tokenizer::GetLine()
+{
+  if(column == 0 && line > 1)
+    return line - 1;
+  return line;
+}
+
+int Tokenizer::GetColumn()
+{
+  if(column == 0 && line > 1)
+    return previousColumn - 1;
+  return column;
+}
+
 bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar)
 {
-  string match = lexeme + nextChar;
+ string match = lexeme + nextChar;
   if(GetTokenType(match) == UNKNOWN)
     return false;
   return true;
@@ -126,15 +144,17 @@ bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar)
 char Tokenizer::NextChar()
 {
   column++;
+  previousChar = currentChar;
   if (file.get(currentChar))
   {
     if(currentChar == '\n')
     {
       NextChar();
+      previousColumn = column;
       column = 0;
       line++;
     }
-    if((int)currentChar - 48 == -16)
+    if((int)currentChar - 48 == -16 && currentChar == previousChar)
       NextChar();
   } else {
     remaining--;
@@ -162,8 +182,10 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return CLOSE_PARENTHESYS;
   if(lexeme == "==")
     return EQUAL_TO;
-  if(lexeme == "$")
+  if(lexeme == "print")
     return OUTPUT;
+  if(lexeme == " ")
+    return SPACE;
   return UNKNOWN;
 }
 

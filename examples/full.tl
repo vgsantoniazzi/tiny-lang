@@ -1,5 +1,4 @@
 expression = (5+2)
               *5;
 expression = expression + 3;
-$expression;
-
+print expression;
