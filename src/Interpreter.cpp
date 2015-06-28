@@ -3,7 +3,7 @@
 #include "Token.h"
 #include "Tokenizer.h"
 #include "Variables.h"
-#include "Statement.h"
+#include "statements/Statement.h"
 using namespace std;
 
 int main(int argc, char *argv[])

@@ -2,11 +2,11 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
-#include "Variables.h"
-#include "Token.h"
-#include "Tokenizer.h"
-#include "Evaluate.h"
-#include "errors/MalformedExpressionError.h"
+#include "../Variables.h"
+#include "../Token.h"
+#include "../Tokenizer.h"
+#include "../Evaluate.h"
+#include "../errors/MalformedExpressionError.h"
 #include "Statement.h"
 
 using namespace std;
