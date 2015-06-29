@@ -1,4 +1,4 @@
-﻿#include "../../src/Tokenizer.h"
+﻿#include "../../src/tokenizer/Tokenizer.h"
 #include "gtest/gtest.h"
 
 TEST (Tokenizer, ValidateAssignmentTokenByToken)

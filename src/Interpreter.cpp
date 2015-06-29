@@ -1,10 +1,5 @@
-﻿#include <iostream>
-#include <string>
-#include "Token.h"
-#include "Tokenizer.h"
-#include "Variables.h"
-#include "Statement.h"
-using namespace std;
+﻿#include "tokenizer/Tokenizer.h"
+#include "statements/Statement.h"
 
 int main(int argc, char *argv[])
 {

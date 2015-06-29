@@ -1,6 +1,4 @@
 ﻿#include "Token.h"
-#include <string>
-using namespace std;
 
 Token::Token(string v, TOKEN_TYPE t)
 {

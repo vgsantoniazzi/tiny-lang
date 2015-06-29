@@ -2,6 +2,7 @@
 #define _TOKEN_
 
 #include <string>
+
 using namespace std;
 
 enum TOKEN_TYPE {

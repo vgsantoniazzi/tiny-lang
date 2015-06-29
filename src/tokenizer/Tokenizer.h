@@ -3,8 +3,7 @@
 
 #include <fstream>
 #include <string>
-#include "Token.h"
-using namespace std;
+#include "../token/Token.h"
 
 class Tokenizer
 {
