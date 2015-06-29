@@ -15,23 +15,4 @@ class Statement
     virtual void Read(Tokenizer & program) = 0;
 };
 
-class AssignStatement : public Statement
-{
-  public:
-    void Execute() const;
-    void Read(Tokenizer & program);
-  private:
-    Token variable;
-    int returnValue;
-};
-
-class OutputStatement : public Statement
-{
-  public:
-    void Execute() const;
-    void Read(Tokenizer & program);
-  private:
-    Token variable;
-};
-
 #endif

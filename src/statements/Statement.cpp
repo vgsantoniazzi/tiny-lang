@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include "Statement.h"
+#include "AssignStatement.h"
+#include "OutputStatement.h"
 #include "../variables/Variables.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
@@ -26,40 +28,5 @@ Statement * Statement::GetNext(Tokenizer & program)
     MalformedExpressionError::Raise(token);
   statement->Read(program);
   return statement;
-}
-
-void AssignStatement::Execute() const
-{
-  Variables::All()->Update(variable.GetValue(), returnValue);
-}
-
-void AssignStatement::Read(Tokenizer & program)
-{
-  variable = program.GetToken();
-  Token operation = program.GetToken();
-
-  if(variable.Match(IDENTIFIER) && operation.Match(ASSIGN))
-  {
-    returnValue = Evaluate::Calculate(program);
-    program.Match(SEMICOLON);
-  }
-  else
-    MalformedExpressionError::Raise(operation);
-}
-
-void OutputStatement::Execute() const
-{
-  cout << Variables::All()->Find(variable.GetValue()) << endl;
-}
-
-void OutputStatement::Read(Tokenizer & program)
-{
-  Token output = program.GetToken();
-  variable = program.GetToken();
-
-  if(output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
-    program.Match(SEMICOLON);
-  else
-    MalformedExpressionError::Raise(variable);
 }
 
