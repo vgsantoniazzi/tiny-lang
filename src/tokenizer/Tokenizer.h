@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 #include "../token/Token.h"
-using namespace std;
 
 class Tokenizer
 {

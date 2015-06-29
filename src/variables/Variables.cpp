@@ -2,8 +2,6 @@
 #include <map>
 #include "Variables.h"
 
-using namespace std;
-
 Variables *Variables::single = NULL;
 
 Variables *Variables::All()

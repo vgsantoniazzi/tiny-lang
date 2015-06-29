@@ -1,14 +1,9 @@
-﻿#include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <string>
+﻿#include <cstdlib>
 #include "Evaluate.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 #include "../variables/Variables.h"
 #include "../errors/MalformedExpressionError.h"
-
-using namespace std;
 
 int Evaluate::Calculate(Tokenizer & program)
 {

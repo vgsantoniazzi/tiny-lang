@@ -1,10 +1,7 @@
 ﻿#ifndef _ASSIGN_STATEMENT_
 #define _ASSIGN_STATEMENT_
 
-#include <string>
-#include <vector>
 #include "Statement.h"
-#include "../variables/Variables.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 

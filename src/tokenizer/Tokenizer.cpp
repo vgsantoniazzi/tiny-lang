@@ -1,12 +1,8 @@
 ﻿#include <iostream>
-#include <fstream>
-#include <cctype>
 #include <cstdlib>
 #include "Tokenizer.h"
 #include "../token/Token.h"
 #include "../errors/MalformedExpressionError.h"
-
-using namespace std;
 
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
 {

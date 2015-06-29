@@ -1,10 +1,6 @@
 ﻿#ifndef _STATEMENT_
 #define _STATEMENT_
 
-#include <string>
-#include <vector>
-#include "../variables/Variables.h"
-#include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 
 class Statement
