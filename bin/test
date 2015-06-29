@@ -3,7 +3,7 @@ CURRENT_PATH=$PWD
 FILE_PATH=$(dirname $0)
 cd $FILE_PATH
 mv ../src/Interpreter.cpp ../src/main
-g++ ../src/**/*.cpp ../src/*.cpp ../test/**/*.cpp -o run_tests -I $GTEST_HOME/include -lgtest -lgtest_main -lpthread
+g++ ../src/**/*.cpp ../test/**/*.cpp -o run_tests -I $GTEST_HOME/include -lgtest -lgtest_main -lpthread
 mv ../src/main ../src/Interpreter.cpp
 ./run_tests
 rm run_tests

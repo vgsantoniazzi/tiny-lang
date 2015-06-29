@@ -2,9 +2,10 @@
 #include <fstream>
 #include <cctype>
 #include <cstdlib>
-#include "Token.h"
 #include "Tokenizer.h"
-#include "errors/MalformedExpressionError.h"
+#include "../token/Token.h"
+#include "../errors/MalformedExpressionError.h"
+
 using namespace std;
 
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())

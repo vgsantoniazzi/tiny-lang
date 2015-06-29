@@ -3,9 +3,9 @@
 
 #include <string>
 #include <vector>
-#include "../Variables.h"
-#include "../Token.h"
-#include "../Tokenizer.h"
+#include "../variables/Variables.h"
+#include "../token/Token.h"
+#include "../tokenizer/Tokenizer.h"
 
 class Statement
 {

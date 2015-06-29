@@ -1,5 +1,5 @@
-﻿#include "../../src/Variables.h"
-#include "../../src/Tokenizer.h"
+﻿#include "../../src/variables/Variables.h"
+#include "../../src/tokenizer/Tokenizer.h"
 #include "../../src/statements/Statement.h"
 #include "gtest/gtest.h"
 

@@ -1,7 +1,7 @@
 ﻿#include <string>
 #include <cstdlib>
 #include <iostream>
-#include "../Token.h"
+#include "../token/Token.h"
 #include "MalformedExpressionError.h"
 
 using namespace std;

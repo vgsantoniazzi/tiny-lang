@@ -1,8 +1,8 @@
 ﻿#ifndef _EVALUATE_
 #define _EVALUATE_
 
-#include "Token.h"
-#include "Tokenizer.h"
+#include "../token/Token.h"
+#include "../tokenizer/Tokenizer.h"
 
 class Evaluate
 {

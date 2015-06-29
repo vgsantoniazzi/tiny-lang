@@ -1,4 +1,4 @@
-#include "../../src/Token.h"
+#include "../../src/token/Token.h"
 #include "gtest/gtest.h"
 
 TEST (Token, GetAndSetLine)
