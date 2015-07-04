@@ -20,7 +20,17 @@ TEST (Statement, IntegrationFullTest)
   statement->Execute();
   EXPECT_EQ (Variables::All()->Find("simple"), 16);
   EXPECT_EQ (Variables::All()->Find("complex"), 37);
+  EXPECT_EQ (Variables::All()->Find("recursive"), 0);
   statement = Statement::GetNext(program);
   statement->Execute();
   EXPECT_EQ (Variables::All()->Find("recursive"), 272);
+  statement = Statement::GetNext(program);
+  statement->Execute();
+  EXPECT_EQ (Variables::All()->Find("x"), 0);
+  statement = Statement::GetNext(program);
+  statement->Execute();
+  EXPECT_EQ (Variables::All()->Find("x"), 0);
+  statement = Statement::GetNext(program);
+  statement->Execute();
+  EXPECT_EQ (Variables::All()->Find("x"), 10);
 }

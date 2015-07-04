@@ -25,7 +25,7 @@ Token Tokenizer::GetToken()
   Token retToken = token;
   token = nextToken;
   NextToken(nextToken);
-  if(token.Match(SPACE))
+  if(token.Match(SPACE) || token.Match(NEW_LINE))
     GetToken();
   return retToken;
 }
@@ -146,7 +146,8 @@ char Tokenizer::NextChar()
   {
     if(currentChar == '\n')
     {
-      NextChar();
+      if(previousChar == currentChar)
+        NextChar();
       previousColumn = column;
       column = 0;
       line++;
@@ -183,6 +184,12 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return OUTPUT;
   if(lexeme == " ")
     return SPACE;
+  if(lexeme == "\n")
+    return NEW_LINE;
+  if(lexeme == "if")
+    return IF;
+  if(lexeme == "end")
+    return END;
   return UNKNOWN;
 }
 
