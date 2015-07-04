@@ -53,7 +53,7 @@ TEST (Tokenizer, ValidateAssignmentTokenByToken)
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), ";");
   ASSERT_EQ (token.GetType(), SEMICOLON);
-  ASSERT_EQ (token.GetColumn(), 21);
+  ASSERT_EQ (token.GetColumn(), 20);
   ASSERT_EQ (token.GetLine(), 1);
   ASSERT_FALSE (program.Remaining());
 }
@@ -63,7 +63,7 @@ TEST (Tokenizer, ValidateEqualToTokenByToken)
   Tokenizer program("../test/programs/equal_to.tl");
   Token token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "if");
-  ASSERT_EQ (token.GetType(), IDENTIFIER);
+  ASSERT_EQ (token.GetType(), IF);
   token = program.GetToken();
   ASSERT_EQ (token.GetValue(), "(");
   ASSERT_EQ (token.GetType(), OPEN_PARENTHESYS);
