@@ -8,9 +8,7 @@ void IfStatement::Execute() const
   if(testValue != 0)
   {
     for (int i = 0; i < statements.size(); i++)
-    {
       statements[i]->Execute();
-    }
   }
 }
 
