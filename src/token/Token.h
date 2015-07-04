@@ -19,7 +19,10 @@ enum TOKEN_TYPE {
   OPEN_PARENTHESYS,
   CLOSE_PARENTHESYS,
   EQUAL_TO,
-  SPACE
+  SPACE,
+  NEW_LINE,
+  IF,
+  END
 };
 
 class Token
