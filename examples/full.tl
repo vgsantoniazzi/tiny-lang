@@ -8,7 +8,7 @@ if expression == 0
   print expression;
 end
 
-if expression == 38
+if expression == 37 + 1
   print expression;
 end
 
