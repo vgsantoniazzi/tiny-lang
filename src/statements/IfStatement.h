@@ -14,7 +14,9 @@ class IfStatement : public Statement
     void Read(Tokenizer & program);
   private:
     vector<Statement*> statements;
+    bool condition;
     int testValue;
+    int equalToValue;
 };
 
 #endif
