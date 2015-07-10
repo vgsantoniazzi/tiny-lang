@@ -35,11 +35,6 @@ Token Tokenizer::Look()
   return token;
 }
 
-Token Tokenizer::LookAhead()
-{
-  return nextToken;
-}
-
 bool Tokenizer::Remaining()
 {
   return remaining != 0;
@@ -49,6 +44,12 @@ void Tokenizer::Match(TOKEN_TYPE t)
 {
   if(!GetToken().Match(t))
     MalformedExpressionError::Raise(token);
+}
+
+void Tokenizer::MatchIf(TOKEN_TYPE t)
+{
+  if(token.Match(t))
+    Match(t);
 }
 
 void Tokenizer::NextToken(Token & token)
