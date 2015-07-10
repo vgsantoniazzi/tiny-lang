@@ -10,10 +10,10 @@ class Tokenizer
   public:
     Tokenizer(const string & filename);
     Token GetToken();
-    Token LookAhead();
     Token Look();
     bool Remaining();
     void Match(TOKEN_TYPE t);
+    void MatchIf(TOKEN_TYPE t);
   private:
     ifstream file;
     char previousChar;

@@ -8,10 +8,10 @@ recursive = simple + (simple * 16);
 
 x = 0;
 
-if x
+if(x == 0 + 1)
   x = 10;
 end
 
-if simple
+if simple == 15+1
   x = 10;
 end
