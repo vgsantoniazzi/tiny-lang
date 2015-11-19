@@ -48,4 +48,4 @@ I :heart: Open source!
 
 ## License
 
-Gem is released under the [MIT license](http://opensource.org/licenses/MIT).
+Tiny lang is released under the [MIT license](http://opensource.org/licenses/MIT).
