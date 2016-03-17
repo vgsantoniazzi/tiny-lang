@@ -22,7 +22,8 @@ enum TOKEN_TYPE {
   SPACE,
   NEW_LINE,
   IF,
-  END
+  END,
+  SPAWN
 };
 
 class Token

@@ -23,4 +23,4 @@ if(expression == expression)
 end
 
 x = 10;
-print x;
+spawn print x;
