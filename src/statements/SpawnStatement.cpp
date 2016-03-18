@@ -7,9 +7,15 @@
 #include "../tokenizer/Tokenizer.h"
 #include "../errors/MalformedExpressionError.h"
 
+void ExecuteStatement(Statement *statement)
+{
+  statement->Execute();
+}
+
 void SpawnStatement::Execute() const
 {
-  std::thread(statement, Execute());
+  std::thread t(ExecuteStatement, statement);
+  t.join();
 }
 
 void SpawnStatement::Read(Tokenizer & program)
