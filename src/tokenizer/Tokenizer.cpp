@@ -191,6 +191,8 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return IF;
   if(lexeme == "end")
     return END;
+  if(lexeme == "spawn")
+    return SPAWN;
   return UNKNOWN;
 }
 

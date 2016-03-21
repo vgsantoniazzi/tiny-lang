@@ -22,5 +22,5 @@ if(expression == expression)
   print expression;
 end
 
-x = 10;
-print x;
+spawn x = 10;
+spawn print x;

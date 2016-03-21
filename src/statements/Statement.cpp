@@ -2,6 +2,7 @@
 #include "AssignStatement.h"
 #include "OutputStatement.h"
 #include "IfStatement.h"
+#include "SpawnStatement.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 #include "../errors/MalformedExpressionError.h"
@@ -19,6 +20,8 @@ Statement * Statement::GetNext(Tokenizer & program)
    statement = new OutputStatement();
   else if(token.Match(IF))
     statement = new IfStatement();
+  else if(token.Match(SPAWN))
+    statement = new SpawnStatement();
   else
     MalformedExpressionError::Raise(token);
   statement->Read(program);
