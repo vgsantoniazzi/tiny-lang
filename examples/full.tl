@@ -24,3 +24,10 @@ end
 
 spawn x = 10;
 spawn print x;
+
+readline to x;
+print x;
+print x;
+print x;
+print x;
+

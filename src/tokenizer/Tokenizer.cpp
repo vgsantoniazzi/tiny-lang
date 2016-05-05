@@ -193,6 +193,10 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return END;
   if(lexeme == "spawn")
     return SPAWN;
+  if(lexeme == "readline")
+    return READ_LINE;
+  if(lexeme == "to")
+    return ASSIGN;
   return UNKNOWN;
 }
 

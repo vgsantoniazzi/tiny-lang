@@ -23,7 +23,8 @@ enum TOKEN_TYPE {
   NEW_LINE,
   IF,
   END,
-  SPAWN
+  SPAWN,
+  READ_LINE
 };
 
 class Token
