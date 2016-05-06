@@ -15,7 +15,7 @@ Statement * Statement::GetNext(Tokenizer & program)
     MalformedExpressionError::Raise(token);
 
   Statement * statement;
-  if (token.Match(IDENTIFIER))
+  if (token.MatchStrongType())
     statement = new AssignStatement();
   else if(token.Match(OUTPUT))
    statement = new OutputStatement();

@@ -61,3 +61,13 @@ bool Token::Match(TOKEN_TYPE t) const
   return GetType() == t;
 }
 
+bool Token::MatchStrongType() const
+{
+  return GetType() == STRING_TYPE ||
+    GetType() == INTEGER_TYPE;
+}
+
+bool Token::MatchCast() const
+{
+  return GetType() == INTEGER_PARSER;
+}

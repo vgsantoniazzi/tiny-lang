@@ -1,33 +1,27 @@
-expression = (5+2)
+int expression = (5+2)
               *5;
-expression = expression + 3;
 
-if expression == 0
-  print expression;
-end
+print expression;
 
-if expression == 37 + 1
-  print expression;
-end
+int expression = expression + 3;
 
-if (expression == 37+1)
-  print expression;
-end
+print expression;
 
-if(expression)
-  print expression;
-end
+str name = "victor g  antoniazz
+ i";
+
+print name;
+
+str age = "20";
+int age = age + 10;
+print age;
 
 if(expression == expression)
   print expression;
 end
 
-spawn x = 10;
+spawn int x = 10;
 spawn print x;
 
-readline to x;
+readLine to int x;
 print x;
-print x;
-print x;
-print x;
-

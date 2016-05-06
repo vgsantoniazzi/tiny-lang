@@ -2,8 +2,11 @@
 #define _ASSIGN_STATEMENT_
 
 #include "Statement.h"
+#include <iostream>
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
+
+using namespace std;
 
 class AssignStatement : public Statement
 {
@@ -12,7 +15,7 @@ class AssignStatement : public Statement
     void Read(Tokenizer & program);
   private:
     Token variable;
-    int returnValue;
+    string returnValue;
 };
 
 #endif

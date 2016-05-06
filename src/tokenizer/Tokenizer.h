@@ -13,6 +13,8 @@ class Tokenizer
     Token Look();
     bool Remaining();
     void Match(TOKEN_TYPE t);
+    void MatchStrongType();
+    void MatchCast();
     void MatchIf(TOKEN_TYPE t);
   private:
     ifstream file;
@@ -25,6 +27,7 @@ class Tokenizer
     int line;
     int column;
     int previousColumn;
+    bool stringInto;
     bool MatchTokenWithNext(string lexeme, char nextChar);
     string GetInteger();
     string GetWord();

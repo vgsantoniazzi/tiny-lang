@@ -10,6 +10,7 @@ enum TOKEN_TYPE {
   UNKNOWN,
   INTEGER,
   IDENTIFIER,
+  STRING,
   ASSIGN,
   ADD,
   SUB,
@@ -24,7 +25,10 @@ enum TOKEN_TYPE {
   IF,
   END,
   SPAWN,
-  READ_LINE
+  READ_LINE,
+  INTEGER_TYPE,
+  STRING_TYPE,
+  INTEGER_PARSER
 };
 
 class Token
@@ -41,6 +45,8 @@ class Token
     void SetColumn(int c);
     void SetType(TOKEN_TYPE t);
     bool Match(TOKEN_TYPE t) const;
+    bool MatchStrongType() const;
+    bool MatchCast() const;
     TOKEN_TYPE GetType() const;
   private:
     string value;

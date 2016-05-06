@@ -10,11 +10,12 @@ class Variables
 {
   public:
     Variables();
-    void Update(string varName, int varValue);
-    int Find(string varName);
+    void Update(string varName, string varValue);
+    string FindStr(string varName);
+    int FindInt(string varName);
     static Variables* All();
   private:
-    map<string, int> vars;
+    map<string, string> vars;
     static Variables *single;
 };
 
