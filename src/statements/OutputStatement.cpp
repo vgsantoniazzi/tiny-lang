@@ -7,7 +7,7 @@
 
 void OutputStatement::Execute() const
 {
-  cout << Variables::All()->Find(variable.GetValue()) << endl;
+  cout << Variables::All()->FindStr(variable.GetValue()) << endl;
 }
 
 void OutputStatement::Read(Tokenizer & program)

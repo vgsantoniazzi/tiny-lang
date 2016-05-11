@@ -15,6 +15,7 @@ Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
   line = 1;
   column = -1;
   remaining = 3;
+  stringInto = false;
   NextChar();
   NextToken(token);
   NextToken(nextToken);
@@ -25,7 +26,7 @@ Token Tokenizer::GetToken()
   Token retToken = token;
   token = nextToken;
   NextToken(nextToken);
-  if(token.Match(SPACE) || token.Match(NEW_LINE))
+  if(!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
     GetToken();
   return retToken;
 }
@@ -42,7 +43,21 @@ bool Tokenizer::Remaining()
 
 void Tokenizer::Match(TOKEN_TYPE t)
 {
+  if (t == STRING)
+    stringInto = !stringInto;
   if(!GetToken().Match(t))
+    MalformedExpressionError::Raise(token);
+}
+
+void Tokenizer::MatchStrongType()
+{
+  if(!GetToken().MatchStrongType())
+    MalformedExpressionError::Raise(token);
+}
+
+void Tokenizer::MatchCast()
+{
+  if(!GetToken().MatchCast())
     MalformedExpressionError::Raise(token);
 }
 
@@ -147,13 +162,13 @@ char Tokenizer::NextChar()
   {
     if(currentChar == '\n')
     {
-      if(previousChar == currentChar)
+      if(!stringInto && previousChar == currentChar)
         NextChar();
       previousColumn = column;
       column = 0;
       line++;
     }
-    if((int)currentChar - 48 == -16 && currentChar == previousChar)
+    if(!stringInto && (int)currentChar - 48 == -16 && currentChar == previousChar)
       NextChar();
   } else {
     remaining--;
@@ -193,10 +208,18 @@ TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
     return END;
   if(lexeme == "spawn")
     return SPAWN;
-  if(lexeme == "readline")
+  if(lexeme == "readLine")
     return READ_LINE;
   if(lexeme == "to")
     return ASSIGN;
+  if(lexeme == "int")
+    return INTEGER_TYPE;
+  if(lexeme == "str")
+    return STRING_TYPE;
+  if(lexeme == "toInt")
+    return INTEGER_PARSER;
+  if(lexeme == "\"")
+    return STRING;
   return UNKNOWN;
 }
 

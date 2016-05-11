@@ -1,4 +1,5 @@
 ﻿#include <cstdlib>
+#include <iostream>
 #include "Evaluate.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
@@ -65,7 +66,7 @@ int Evaluate::Factor(Tokenizer & program)
   }
   else if(program.Look().GetType() == IDENTIFIER)
   {
-    val = Variables::All()->Find(program.GetToken().GetValue());
+    val = Variables::All()->FindInt(program.GetToken().GetValue());
   }
   else
   {

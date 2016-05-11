@@ -1,4 +1,5 @@
 ﻿#include <string>
+#include <iostream>
 #include <map>
 #include "Variables.h"
 
@@ -15,17 +16,25 @@ Variables *Variables::All()
 
 Variables::Variables(){}
 
-void Variables::Update(string varName, int varValue)
+void Variables::Update(string varName, string varValue)
 {
   vars[varName] = varValue;
 }
 
 
-int Variables::Find(string varName)
+string Variables::FindStr(string varName)
 {
-  if (vars.find(varName) == vars.end()) {
-    vars[varName] = 0;
+  if (vars.find(varName) != vars.end()) {
+    return vars[varName];
   }
-  return vars[varName];
+  return "";
 }
 
+int Variables::FindInt(string varName)
+{
+  if (vars.find(varName) != vars.end()) {
+    string var = vars[varName];
+    return std::stoi(var);
+  }
+  return 0;
+}
