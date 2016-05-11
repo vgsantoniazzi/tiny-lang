@@ -26,13 +26,7 @@ Execute the tests
 bin/test
 ```
 
-Compiling manually:
-
-```
-g++  src/**/*.cpp src/*.cpp  -o tiny
-cp tiny /usr/local/bin/
-tiny examples/full.tl
-```
+To compiling manually, open bin/run
 
 ## Contributing
 
@@ -41,6 +35,8 @@ I :heart: Open source!
 [Follow github guides for forking a project](https://guides.github.com/activities/forking/)
 
 [Follow github guides for contributing open source](https://guides.github.com/activities/contributing-to-open-source/#contributing)
+
+[Squash pull request into a single commit](http://eli.thegreenplace.net/2014/02/19/squashing-github-pull-requests-into-a-single-commit/)
 
 ## Code status
 
