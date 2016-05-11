@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <cstdlib>
 #include "Tokenizer.h"
+#include "../logs/logging.h"
 #include "../token/Token.h"
 #include "../errors/MalformedExpressionError.h"
 
@@ -28,6 +29,8 @@ Token Tokenizer::GetToken()
   NextToken(nextToken);
   if(!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
     GetToken();
+
+  LOG(DEBUG) << "Processing token: " << retToken.GetValue();
   return retToken;
 }
 

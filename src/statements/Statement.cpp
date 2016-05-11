@@ -1,9 +1,10 @@
-﻿
+﻿#include <typeinfo>
 #include "AssignStatement.h"
 #include "OutputStatement.h"
 #include "IfStatement.h"
 #include "SpawnStatement.h"
 #include "ReadLineStatement.h"
+#include "../logs/logging.h"
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 #include "../errors/MalformedExpressionError.h"
@@ -25,9 +26,10 @@ Statement * Statement::GetNext(Tokenizer & program)
     statement = new SpawnStatement();
   else if(token.Match(READ_LINE))
     statement = new ReadLineStatement();
-  else
-    MalformedExpressionError::Raise(token);
+
   statement->Read(program);
+
+  LOG(INFO) << "Statement load: " << (string)typeid(*statement).name();
   return statement;
 }
 
