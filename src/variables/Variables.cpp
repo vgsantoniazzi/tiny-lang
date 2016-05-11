@@ -1,6 +1,7 @@
 ﻿#include <string>
 #include <iostream>
 #include <map>
+#include "../logs/logging.h"
 #include "Variables.h"
 
 Variables *Variables::single = NULL;
@@ -18,6 +19,7 @@ Variables::Variables(){}
 
 void Variables::Update(string varName, string varValue)
 {
+  LOG(DEBUG) << "Variable update " << varName << " to " << varValue;
   vars[varName] = varValue;
 }
 

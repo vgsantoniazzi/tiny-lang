@@ -1,8 +1,9 @@
 ﻿#!/bin/sh
 CURRENT_PATH=$PWD
 FILE_PATH=$(dirname $0)
+if [ $1 ]; then LEVEL=$1; else LEVEL=WARNING; fi
 cd $FILE_PATH
-g++ -std=c++11 -pthread ../src/**/*.cpp ../src/Interpreter.cpp  -o interpreter
+g++ -std=c++11 -DLOGLEVEL=$LEVEL -pthread ../src/**/*.cpp ../src/Interpreter.cpp  -o interpreter
 ./interpreter ../examples/full.tl
 rm interpreter
 cd $CURRENT_PATH
