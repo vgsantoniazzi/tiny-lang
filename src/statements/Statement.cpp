@@ -13,7 +13,7 @@ Statement * Statement::GetNext(Tokenizer & program)
 {
   Token token = program.Look();
   if(token.GetType() == UNKNOWN)
-    MalformedExpressionError::Raise(token);
+    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 
   Statement * statement;
   if (token.MatchStrongType())

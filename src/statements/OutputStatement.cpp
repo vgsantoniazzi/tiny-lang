@@ -18,6 +18,6 @@ void OutputStatement::Read(Tokenizer & program)
   if(output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
     program.Match(SEMICOLON);
   else
-    MalformedExpressionError::Raise(variable);
+    MalformedExpressionError::Raise(variable, __FILE__, __LINE__);
 }
 
