@@ -49,19 +49,19 @@ void Tokenizer::Match(TOKEN_TYPE t)
   if (t == STRING)
     stringInto = !stringInto;
   if(!GetToken().Match(t))
-    MalformedExpressionError::Raise(token);
+    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
 void Tokenizer::MatchStrongType()
 {
   if(!GetToken().MatchStrongType())
-    MalformedExpressionError::Raise(token);
+    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
 void Tokenizer::MatchCast()
 {
   if(!GetToken().MatchCast())
-    MalformedExpressionError::Raise(token);
+    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
 void Tokenizer::MatchIf(TOKEN_TYPE t)

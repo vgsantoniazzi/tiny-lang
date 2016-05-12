@@ -4,7 +4,7 @@
 class MalformedExpressionError
 {
   public:
-    static void Raise(Token & token);
+    static void Raise(Token & token, string file, int line);
 };
 
 #endif

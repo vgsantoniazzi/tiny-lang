@@ -75,7 +75,7 @@ int Evaluate::Factor(Tokenizer & program)
     if (atoi(value.c_str())>0 || isdigit(value.c_str()[0]))
       val = atoi(value.c_str());
     else
-      MalformedExpressionError::Raise(token);
+      MalformedExpressionError::Raise(token, __FILE__, __LINE__);
   }
   return val;
 }

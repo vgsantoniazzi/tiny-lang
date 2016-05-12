@@ -37,5 +37,5 @@ void AssignStatement::Read(Tokenizer & program)
     }
   }
   else
-    MalformedExpressionError::Raise(operation);
+    MalformedExpressionError::Raise(operation, __FILE__, __LINE__);
 }
