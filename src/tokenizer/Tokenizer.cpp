@@ -163,17 +163,26 @@ char Tokenizer::NextChar()
   previousChar = currentChar;
   if (file.get(currentChar))
   {
+    if((int)currentChar - 48 == -16 &&currentChar == previousChar)
+    {
+      if(!stringInto)
+        NextChar();
+      else
+        LOG(WARNING) << "Strings with \\n (new line)";
+    }
     if(currentChar == '\n')
     {
       if(!stringInto && previousChar == currentChar)
+      {
         NextChar();
+      }
       previousColumn = column;
       column = 0;
       line++;
     }
-    if(!stringInto && (int)currentChar - 48 == -16 && currentChar == previousChar)
-      NextChar();
-  } else {
+  }
+  else
+  {
     remaining--;
   }
   return currentChar;
