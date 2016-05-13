@@ -11,7 +11,7 @@ void ReadLineStatement::Execute() const
 {
   string enter;
   cin >> enter;
-  Variables::All()->Update(variable.GetValue(), enter);
+  Variables::All()->Update(strongType.GetType(), variable.GetValue(), enter);
 
 }
 
@@ -19,7 +19,7 @@ void ReadLineStatement::Read(Tokenizer & program)
 {
   program.Match(READ_LINE);
   program.Match(ASSIGN);
-  program.MatchStrongType();
+  strongType = program.GetStrongType();
   variable = program.GetToken();
   program.Match(SEMICOLON);
 }

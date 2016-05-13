@@ -2,6 +2,8 @@
 #include <iostream>
 #include <map>
 #include "../logs/logging.h"
+#include "../token/Token.h"
+#include "../errors/UndefinedVariableNameError.h"
 #include "Variables.h"
 
 Variables *Variables::single = NULL;
@@ -17,26 +19,35 @@ Variables *Variables::All()
 
 Variables::Variables(){}
 
-void Variables::Update(string varName, string varValue)
+void Variables::Update(TOKEN_TYPE type, string name, string value)
 {
-  LOG(DEBUG) << "Variable update " << varName << " to " << varValue;
-  vars[varName] = varValue;
+  LOG(DEBUG) << "Variable update " << type << " " << name << " to " << value;
+  vars[name] = make_pair(type, value);
 }
 
 
-string Variables::FindStr(string varName)
+string Variables::FindStr(string name)
 {
-  if (vars.find(varName) != vars.end()) {
-    return vars[varName];
+  VarTable::iterator variableIterator = vars.find(name);
+  if (variableIterator != vars.end())
+  {
+    pair<TOKEN_TYPE, string> variable = vars[name];
+    if (variable.first != STRING_TYPE)
+      LOG(WARNING) << "Trying parse '" << name << "' to string that is not the declared type";
+    return variable.second;
   }
-  return "";
+  UndefinedVariableNameError::Raise(name);
 }
 
-int Variables::FindInt(string varName)
+int Variables::FindInt(string name)
 {
-  if (vars.find(varName) != vars.end()) {
-    string var = vars[varName];
-    return std::stoi(var);
+  VarTable::iterator variableIterator = vars.find(name);
+  if (variableIterator != vars.end())
+  {
+    pair<TOKEN_TYPE, string> variable = vars[name];
+    if (variable.first != INTEGER_TYPE)
+      LOG(WARNING) << "Trying parse '" << name << "' to integer that is not the declared type";
+    return std::stoi(variable.second);
   }
-  return 0;
+  UndefinedVariableNameError::Raise(name);
 }

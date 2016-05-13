@@ -52,16 +52,11 @@ void Tokenizer::Match(TOKEN_TYPE t)
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
-void Tokenizer::MatchStrongType()
+Token Tokenizer::GetStrongType()
 {
-  if(!GetToken().MatchStrongType())
+  if(!Look().MatchStrongType())
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
-}
-
-void Tokenizer::MatchCast()
-{
-  if(!GetToken().MatchCast())
-    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
+  return GetToken();
 }
 
 void Tokenizer::MatchIf(TOKEN_TYPE t)

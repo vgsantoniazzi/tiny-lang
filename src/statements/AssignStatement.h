@@ -15,6 +15,7 @@ class AssignStatement : public Statement
     void Read(Tokenizer & program);
   private:
     Token variable;
+    Token strongType;
     string returnValue;
 };
 

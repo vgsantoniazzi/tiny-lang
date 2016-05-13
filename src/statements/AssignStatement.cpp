@@ -8,12 +8,12 @@
 
 void AssignStatement::Execute() const
 {
-  Variables::All()->Update(variable.GetValue(), returnValue);
+  Variables::All()->Update(strongType.GetType(), variable.GetValue(), returnValue);
 }
 
 void AssignStatement::Read(Tokenizer & program)
 {
-  program.MatchStrongType();
+  strongType = program.GetStrongType();
   variable = program.GetToken();
   Token operation = program.GetToken();
 
