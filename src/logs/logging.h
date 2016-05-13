@@ -52,32 +52,38 @@
 
 class Log {
 public:
-    bool operator&(std::ostream& stream) {
-        stream << std::endl;
-        return true;
-    }
+  bool operator&(std::ostream& stream) {
+    stream << std::endl;
+    return true;
+  }
 };
 
 inline std::string log_level_to_str(const int log_level) {
-    switch(log_level) {
-        case DEBUG:
-            return "[DEBUG]";
-            break;
-        case INFO:
-            return "[INFO]";
-            break;
-        case WARNING:
-            return "[WARNING]";
-            break;
-        case CRITICAL:
-            return "[CRITICAL]";
-            break;
-        case ERROR:
-            return "[ERROR]";
-            break;
-        default:
-            break;
-    }
+  char buf[12];
+  std::string str = "";
+
+  switch(log_level) {
+      case DEBUG:
+          str = "[DEBUG]";
+          break;
+      case INFO:
+          str = "[INFO]";
+          break;
+      case WARNING:
+          str = "[WARNING]";
+          break;
+      case ERROR:
+          str = "[ERROR]";
+          break;
+      case CRITICAL:
+          str = "[CRITICAL]";
+          break;
+      default:
+          break;
+  }
+
+  sprintf(buf, "%-9s ", str.c_str());
+  return buf;
 }
 
 /* If the minimum log level requirement is satisfied then prints the log

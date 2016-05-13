@@ -21,7 +21,7 @@ Variables::Variables(){}
 
 void Variables::Update(TOKEN_TYPE type, string name, string value)
 {
-  LOG(DEBUG) << "Variable update " << type << " " << name << " to " << value;
+  LOG(DEBUG) << "Variable update " << Token::GetTypeText(type) << " " << name << ": " << value;
   vars[name] = make_pair(type, value);
 }
 

@@ -1,5 +1,10 @@
 ﻿#include "Token.h"
 
+string Token::GetTypeText(TOKEN_TYPE t)
+{
+  return TOKEN_TYPE_TEXT[t];
+}
+
 Token::Token(string v, TOKEN_TYPE t)
 {
   value = v;
@@ -49,6 +54,11 @@ void Token::SetColumn(int c)
 TOKEN_TYPE Token::GetType() const
 {
   return type;
+}
+
+string Token::GetTypeText() const
+{
+  return Token::GetTypeText(GetType());
 }
 
 void Token::SetType(TOKEN_TYPE t)

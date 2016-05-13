@@ -29,7 +29,7 @@ Statement * Statement::GetNext(Tokenizer & program)
 
   statement->Read(program);
 
-  LOG(INFO) << "Statement load: " << (string)typeid(*statement).name();
+  LOG(INFO) << (string)typeid(*statement).name() << " load";
   return statement;
 }
 

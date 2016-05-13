@@ -3,15 +3,13 @@
 #include "Tokenizer.h"
 #include "../logs/logging.h"
 #include "../token/Token.h"
+#include "../errors/FileNotFoundError.h"
 #include "../errors/MalformedExpressionError.h"
 
 Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
 {
   if (!file)
-  {
-    cout << "File not found: " << filename << endl;
-    exit(1);
-  }
+    FileNotFoundError::Raise(filename);
   this->filename = filename;
   line = 1;
   column = -1;
@@ -29,8 +27,7 @@ Token Tokenizer::GetToken()
   NextToken(nextToken);
   if(!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
     GetToken();
-
-  LOG(DEBUG) << "Processing token: " << retToken.GetValue();
+  LOG(DEBUG) << "Token: " << retToken.GetTypeText();
   return retToken;
 }
 
