@@ -11,10 +11,9 @@ class Tokenizer
     Tokenizer(const string & filename);
     Token GetToken();
     Token Look();
+    Token GetStrongType();
     bool Remaining();
     void Match(TOKEN_TYPE t);
-    void MatchStrongType();
-    void MatchCast();
     void MatchIf(TOKEN_TYPE t);
   private:
     ifstream file;
