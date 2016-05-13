@@ -85,8 +85,8 @@ void Tokenizer::NextToken(Token & token)
   {
     lexeme += GetWord();
     token.SetType(GetTokenType(lexeme));
-      if(token.Match(UNKNOWN))
-    token.SetType(IDENTIFIER);
+    if(token.Match(UNKNOWN))
+      token.SetType(IDENTIFIER);
   }
     else
   {
