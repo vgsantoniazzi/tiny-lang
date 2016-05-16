@@ -6,15 +6,25 @@
 #include "../errors/MalformedExpressionError.h"
 
 void OutputStatement::Execute() const {
-  cout << Variables::All()->Find(variable.GetValue()) << endl;
+  if (variable.Match(IDENTIFIER))
+    cout << Variables::All()->Find(variable.GetValue()) << endl;
+  else
+    cout << stringValue;
 }
 
 void OutputStatement::Read(Tokenizer &program) {
-  Token output = program.GetToken();
-  variable = program.GetToken();
+  program.Match(OUTPUT);
+  variable = program.Look();
 
-  if (output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
+  if (variable.Match(IDENTIFIER)) {
+    program.Match(IDENTIFIER);
     program.Match(SEMICOLON);
-  else
+  } else if (variable.Match(STRING)) {
+    program.Match(STRING);
+    while (!program.Look().Match(STRING))
+      stringValue = stringValue + program.GetToken().GetValue();
+    program.Match(STRING);
+    program.Match(SEMICOLON);
+  } else
     MalformedExpressionError::Raise(variable, __FILE__, __LINE__);
 }

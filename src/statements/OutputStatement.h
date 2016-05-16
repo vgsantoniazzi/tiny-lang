@@ -12,6 +12,7 @@ public:
 
 private:
   Token variable;
+  string stringValue;
 };
 
 #endif
