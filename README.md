@@ -32,6 +32,12 @@ To compiling manually, open bin/run
 
 I :heart: Open source!
 
+Before sending a pull request: Please, format the source code
+
+```
+bin/format
+```
+
 [Follow github guides for forking a project](https://guides.github.com/activities/forking/)
 
 [Follow github guides for contributing open source](https://guides.github.com/activities/contributing-to-open-source/#contributing)

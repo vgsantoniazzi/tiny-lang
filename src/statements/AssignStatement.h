@@ -8,15 +8,15 @@
 
 using namespace std;
 
-class AssignStatement : public Statement
-{
-  public:
-    void Execute() const;
-    void Read(Tokenizer & program);
-  private:
-    Token variable;
-    Token strongType;
-    string returnValue;
+class AssignStatement : public Statement {
+public:
+  void Execute() const;
+  void Read(Tokenizer &program);
+
+private:
+  Token variable;
+  Token strongType;
+  string returnValue;
 };
 
 #endif

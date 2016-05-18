@@ -6,22 +6,19 @@
 
 using namespace std;
 
+class Variables {
+public:
+  Variables();
+  void Update(TOKEN_TYPE type, string varName, string varValue);
+  string FindStr(string varName);
+  string Find(string varName);
+  int FindInt(string varName);
+  static Variables *All();
 
-class Variables
-{
-  public:
-    Variables();
-    void Update(TOKEN_TYPE type, string varName, string varValue);
-    string FindStr(string varName);
-    int FindInt(string varName);
-    static Variables* All();
-  private:
-    typedef map<string, pair<TOKEN_TYPE, string>> VarTable;
-    VarTable vars;
-    static Variables *single;
+private:
+  typedef map<string, pair<TOKEN_TYPE, string> > VarTable;
+  VarTable vars;
+  static Variables *single;
 };
 
-
-
 #endif
-

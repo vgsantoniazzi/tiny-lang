@@ -1,83 +1,32 @@
 ﻿#include "Token.h"
 
-string Token::GetTypeText(TOKEN_TYPE t)
-{
-  return TOKEN_TYPE_TEXT[t];
-}
-
-Token::Token(string v, TOKEN_TYPE t)
-{
+Token::Token(string v, TOKEN_TYPE t) {
   value = v;
   type = t;
 }
 
-string Token::GetValue() const
-{
-  return value;
-}
+string Token::GetTypeText(TOKEN_TYPE t) { return TOKEN_TYPE_TEXT[t]; }
 
-void Token::SetValue(string v)
-{
-  value = v;
-}
+string Token::GetValue() const { return value; }
 
-string Token::GetFilename() const
-{
-  return filename;
-}
+void Token::SetValue(string v) { value = v; }
 
-void Token::SetFilename(string f)
-{
-  filename = f;
-}
+string Token::GetFilename() const { return filename; }
 
-int Token::GetLine() const
-{
-  return line;
-}
+void Token::SetFilename(string f) { filename = f; }
 
-void Token::SetLine(int l)
-{
-  line = l;
-}
+int Token::GetLine() const { return line; }
 
-int Token::GetColumn() const
-{
-  return column;
-}
+void Token::SetLine(int l) { line = l; }
 
-void Token::SetColumn(int c)
-{
-  column = c;
-}
+int Token::GetColumn() const { return column; }
 
-TOKEN_TYPE Token::GetType() const
-{
-  return type;
-}
+void Token::SetColumn(int c) { column = c; }
 
-string Token::GetTypeText() const
-{
-  return Token::GetTypeText(GetType());
-}
+TOKEN_TYPE Token::GetType() const { return type; }
 
-void Token::SetType(TOKEN_TYPE t)
-{
-  type = t;
-}
+string Token::GetTypeText() const { return Token::GetTypeText(GetType()); }
 
-bool Token::Match(TOKEN_TYPE t) const
-{
-  return GetType() == t;
-}
+void Token::SetType(TOKEN_TYPE t) { type = t; }
 
-bool Token::MatchStrongType() const
-{
-  return GetType() == STRING_TYPE ||
-    GetType() == INTEGER_TYPE;
-}
-
-bool Token::MatchCast() const
-{
-  return GetType() == INTEGER_PARSER;
-}
+bool Token::Match(TOKEN_TYPE t) const { return GetType() == t; }
