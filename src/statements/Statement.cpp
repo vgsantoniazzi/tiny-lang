@@ -1,13 +1,13 @@
-﻿#include <typeinfo>
-#include "AssignStatement.h"
-#include "OutputStatement.h"
-#include "IfStatement.h"
-#include "SpawnStatement.h"
-#include "ReadLineStatement.h"
-#include "../logs/logging.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
-#include "../errors/MalformedExpressionError.h"
+#include <typeinfo>
+#include "AssignStatement.hpp"
+#include "OutputStatement.hpp"
+#include "IfStatement.hpp"
+#include "SpawnStatement.hpp"
+#include "ReadLineStatement.hpp"
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 Statement *Statement::GetNext(Tokenizer &program) {
   Token token = program.Look();

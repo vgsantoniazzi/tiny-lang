@@ -1,10 +1,10 @@
-﻿#include <cstdlib>
+#include <cstdlib>
 #include <iostream>
-#include "Evaluate.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
-#include "../variables/Variables.h"
-#include "../errors/MalformedExpressionError.h"
+#include "Evaluate.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
+#include "../variables/Variables.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 int Evaluate::Calculate(Tokenizer &program) {
   Evaluate ev;

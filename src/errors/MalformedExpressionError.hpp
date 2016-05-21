@@ -1,4 +1,4 @@
-﻿#ifndef _MALFORMED_EXPRESSION_
+#ifndef _MALFORMED_EXPRESSION_
 #define _MALFORMED_EXPRESSION_
 
 class MalformedExpressionError {

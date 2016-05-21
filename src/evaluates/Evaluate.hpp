@@ -1,7 +1,7 @@
-﻿#ifndef _EVALUATE_
+#ifndef _EVALUATE_
 #define _EVALUATE_
 
-#include "../tokenizer/Tokenizer.h"
+#include "../tokenizer/Tokenizer.hpp"
 
 class Evaluate {
 public:

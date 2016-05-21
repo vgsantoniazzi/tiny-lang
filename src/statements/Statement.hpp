@@ -1,7 +1,7 @@
-﻿#ifndef _STATEMENT_
+#ifndef _STATEMENT_
 #define _STATEMENT_
 
-#include "../tokenizer/Tokenizer.h"
+#include "../tokenizer/Tokenizer.hpp"
 
 class Statement {
 public:

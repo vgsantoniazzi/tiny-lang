@@ -1,4 +1,4 @@
-﻿#include "Token.h"
+#include "Token.hpp"
 
 Token::Token(string v, TOKEN_TYPE t) {
   value = v;

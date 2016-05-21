@@ -1,10 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdlib>
-#include "Tokenizer.h"
-#include "../logs/logging.h"
-#include "../token/Token.h"
-#include "../errors/FileNotFoundError.h"
-#include "../errors/MalformedExpressionError.h"
+#include "Tokenizer.hpp"
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "../errors/FileNotFoundError.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 Tokenizer::Tokenizer(const string &filename) : file(filename.c_str()) {
   if (!file)

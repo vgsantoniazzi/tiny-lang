@@ -1,7 +1,7 @@
-﻿#include "IfStatement.h"
-#include "../evaluates/Evaluate.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "IfStatement.hpp"
+#include "../evaluates/Evaluate.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 void IfStatement::Execute() const {
   if ((!condition && testValue != 0) ||

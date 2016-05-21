@@ -1,8 +1,8 @@
-﻿#include <cstdlib>
+#include <cstdlib>
 #include <iostream>
-#include "../logs/logging.h"
-#include "../token/Token.h"
-#include "MalformedExpressionError.h"
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "MalformedExpressionError.hpp"
 
 void MalformedExpressionError::Raise(Token &token, string file, int line) {
   LOG(ERROR) << "Malformed expression near: '" << token.GetValue()

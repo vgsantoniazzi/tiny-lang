@@ -1,9 +1,9 @@
-﻿#ifndef _OUTPUT_STATEMENT_
+#ifndef _OUTPUT_STATEMENT_
 #define _OUTPUT_STATEMENT_
 
-#include "Statement.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "Statement.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 class OutputStatement : public Statement {
 public:

@@ -1,4 +1,4 @@
-﻿#ifndef _UNDEFINED_VARIABLE_NAME_
+#ifndef _UNDEFINED_VARIABLE_NAME_
 #define _UNDEFINED_VARIABLE_NAME_
 
 class UndefinedVariableNameError {
