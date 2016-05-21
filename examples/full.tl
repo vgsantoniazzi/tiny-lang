@@ -23,5 +23,7 @@ end
 spawn int x = 10;
 spawn print x;
 
+print "Add value to x: ";
+
 readLine to int x;
 print x;
