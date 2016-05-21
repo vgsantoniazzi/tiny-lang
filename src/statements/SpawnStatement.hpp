@@ -1,9 +1,9 @@
-﻿#ifndef _SPAWN_STATEMENT_
+#ifndef _SPAWN_STATEMENT_
 #define _SPAWN_STATEMENT_
 
-#include "Statement.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "Statement.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 class SpawnStatement : public Statement {
 public:

@@ -1,10 +1,10 @@
-﻿#include <string>
+#include <string>
 #include <iostream>
 #include <map>
-#include "../logs/logging.h"
-#include "../token/Token.h"
-#include "../errors/UndefinedVariableNameError.h"
-#include "Variables.h"
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "../errors/UndefinedVariableNameError.hpp"
+#include "Variables.hpp"
 
 Variables *Variables::single = NULL;
 

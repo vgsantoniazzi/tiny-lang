@@ -1,10 +1,10 @@
-﻿#include "AssignStatement.h"
+#include "AssignStatement.hpp"
 #include <iostream>
-#include "../variables/Variables.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
-#include "../evaluates/Evaluate.h"
-#include "../errors/MalformedExpressionError.h"
+#include "../variables/Variables.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
+#include "../evaluates/Evaluate.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 void AssignStatement::Execute() const {
   Variables::All()->Update(strongType.GetType(), variable.GetValue(),

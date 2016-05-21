@@ -1,9 +1,9 @@
-﻿#ifndef _TOKENIZER_
+#ifndef _TOKENIZER_
 #define _TOKENIZER_
 
 #include <fstream>
 #include <string>
-#include "../token/Token.h"
+#include "../token/Token.hpp"
 
 class Tokenizer {
 public:

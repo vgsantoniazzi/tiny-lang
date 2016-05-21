@@ -1,10 +1,10 @@
-﻿#ifndef _ASSIGN_STATEMENT_
+#ifndef _ASSIGN_STATEMENT_
 #define _ASSIGN_STATEMENT_
 
-#include "Statement.h"
+#include "Statement.hpp"
 #include <iostream>
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 using namespace std;
 

@@ -1,8 +1,8 @@
-﻿#include <cstdlib>
+#include <cstdlib>
 #include <iostream>
-#include "../logs/logging.h"
-#include "../token/Token.h"
-#include "UndefinedVariableNameError.h"
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "UndefinedVariableNameError.hpp"
 
 void UndefinedVariableNameError::Raise(string name) {
   LOG(ERROR) << "Undefined variable name '" << name << "'.";

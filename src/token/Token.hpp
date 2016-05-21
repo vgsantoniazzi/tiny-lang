@@ -1,4 +1,4 @@
-﻿#ifndef _TOKEN_
+#ifndef _TOKEN_
 #define _TOKEN_
 
 #include <string>

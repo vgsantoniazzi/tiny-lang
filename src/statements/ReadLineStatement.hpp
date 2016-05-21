@@ -1,9 +1,9 @@
-﻿#ifndef _READLINE_STATEMENT_
+#ifndef _READLINE_STATEMENT_
 #define _READLINE_STATEMENT_
 
-#include "Statement.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "Statement.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 class ReadLineStatement : public Statement {
 public:

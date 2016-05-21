@@ -1,11 +1,11 @@
-﻿#ifndef _IF_STATEMENT_
+#ifndef _IF_STATEMENT_
 #define _IF_STATEMENT_
 
 #include <vector>
-#include "Statement.h"
-#include "../evaluates/Evaluate.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
+#include "Statement.hpp"
+#include "../evaluates/Evaluate.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
 
 class IfStatement : public Statement {
 public:

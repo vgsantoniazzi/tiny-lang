@@ -1,4 +1,4 @@
-﻿#ifndef _VARTABLE_H
+#ifndef _VARTABLE_H
 #define _VARTABLE_H
 
 #include <string>

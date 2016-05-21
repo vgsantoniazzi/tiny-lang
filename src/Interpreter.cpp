@@ -1,5 +1,5 @@
-﻿#include "tokenizer/Tokenizer.h"
-#include "statements/Statement.h"
+#include "tokenizer/Tokenizer.hpp"
+#include "statements/Statement.hpp"
 
 int main(int argc, char *argv[]) {
   Tokenizer program(argv[1]);

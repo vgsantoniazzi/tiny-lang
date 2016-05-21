@@ -1,9 +1,9 @@
-﻿#include <iostream>
-#include "OutputStatement.h"
-#include "../variables/Variables.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
-#include "../errors/MalformedExpressionError.h"
+#include <iostream>
+#include "OutputStatement.hpp"
+#include "../variables/Variables.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 void OutputStatement::Execute() const {
   if (variable.Match(IDENTIFIER))

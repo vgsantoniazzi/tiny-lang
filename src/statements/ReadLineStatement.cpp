@@ -1,11 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 #include <thread>
-#include "ReadLineStatement.h"
-#include "Statement.h"
-#include "../variables/Variables.h"
-#include "../token/Token.h"
-#include "../tokenizer/Tokenizer.h"
-#include "../errors/MalformedExpressionError.h"
+#include "ReadLineStatement.hpp"
+#include "Statement.hpp"
+#include "../variables/Variables.hpp"
+#include "../token/Token.hpp"
+#include "../tokenizer/Tokenizer.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 
 void ReadLineStatement::Execute() const {
   string enter;
