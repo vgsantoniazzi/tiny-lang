@@ -26,7 +26,6 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 /*
  * Logging -- Allows logging using the insertion (`<<`) operator.
  * Author: Shanika Kuruppu
@@ -52,7 +51,7 @@
 
 class Log {
 public:
-  bool operator&(std::ostream& stream) {
+  bool operator&(std::ostream &stream) {
     stream << std::endl;
     return true;
   }
@@ -62,24 +61,24 @@ inline std::string log_level_to_str(const int log_level) {
   char buf[12];
   std::string str = "";
 
-  switch(log_level) {
-      case DEBUG:
-          str = "[DEBUG]";
-          break;
-      case INFO:
-          str = "[INFO]";
-          break;
-      case WARNING:
-          str = "[WARNING]";
-          break;
-      case ERROR:
-          str = "[ERROR]";
-          break;
-      case CRITICAL:
-          str = "[CRITICAL]";
-          break;
-      default:
-          break;
+  switch (log_level) {
+  case DEBUG:
+    str = "[DEBUG]";
+    break;
+  case INFO:
+    str = "[INFO]";
+    break;
+  case WARNING:
+    str = "[WARNING]";
+    break;
+  case ERROR:
+    str = "[ERROR]";
+    break;
+  case CRITICAL:
+    str = "[CRITICAL]";
+    break;
+  default:
+    break;
   }
 
   sprintf(buf, "%-9s ", str.c_str());
@@ -90,8 +89,8 @@ inline std::string log_level_to_str(const int log_level) {
 message. This works because the & operator has lower precedence than the
 << operator, therefore the stream output is evaluated before the Log
 class is initialised. */
-#define LOG(log_level) log_level >= LOGLEVEL && \
-                            Log() & std::cerr << \
-                            log_level_to_str(log_level) <<  ": "
+#define LOG(log_level)                                                         \
+  log_level >= LOGLEVEL &&Log() & std::cerr << log_level_to_str(log_level)     \
+                                            << ": "
 
 #endif

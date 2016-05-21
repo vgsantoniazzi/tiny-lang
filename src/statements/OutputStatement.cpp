@@ -5,19 +5,16 @@
 #include "../tokenizer/Tokenizer.h"
 #include "../errors/MalformedExpressionError.h"
 
-void OutputStatement::Execute() const
-{
-  cout << Variables::All()->FindStr(variable.GetValue()) << endl;
+void OutputStatement::Execute() const {
+  cout << Variables::All()->Find(variable.GetValue()) << endl;
 }
 
-void OutputStatement::Read(Tokenizer & program)
-{
+void OutputStatement::Read(Tokenizer &program) {
   Token output = program.GetToken();
   variable = program.GetToken();
 
-  if(output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
+  if (output.GetType() == OUTPUT && variable.GetType() == IDENTIFIER)
     program.Match(SEMICOLON);
   else
     MalformedExpressionError::Raise(variable, __FILE__, __LINE__);
 }
-

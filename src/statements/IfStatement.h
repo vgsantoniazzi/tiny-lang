@@ -7,16 +7,16 @@
 #include "../token/Token.h"
 #include "../tokenizer/Tokenizer.h"
 
-class IfStatement : public Statement
-{
-  public:
-    void Execute() const;
-    void Read(Tokenizer & program);
-  private:
-    vector<Statement*> statements;
-    bool condition;
-    int testValue;
-    int equalToValue;
+class IfStatement : public Statement {
+public:
+  void Execute() const;
+  void Read(Tokenizer &program);
+
+private:
+  vector<Statement *> statements;
+  bool condition;
+  int testValue;
+  int equalToValue;
 };
 
 #endif

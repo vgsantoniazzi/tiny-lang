@@ -6,8 +6,7 @@
 #include "../errors/FileNotFoundError.h"
 #include "../errors/MalformedExpressionError.h"
 
-Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
-{
+Tokenizer::Tokenizer(const string &filename) : file(filename.c_str()) {
   if (!file)
     FileNotFoundError::Raise(filename);
   this->filename = filename;
@@ -20,68 +19,52 @@ Tokenizer::Tokenizer(const string & filename) : file(filename.c_str())
   NextToken(nextToken);
 }
 
-Token Tokenizer::GetToken()
-{
+Token Tokenizer::GetToken() {
   Token retToken = token;
   token = nextToken;
   NextToken(nextToken);
-  if(!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
+  if (!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
     GetToken();
   LOG(DEBUG) << "Token: " << retToken.GetTypeText();
   return retToken;
 }
 
-Token Tokenizer::Look()
-{
-  return token;
-}
+Token Tokenizer::Look() { return token; }
 
-bool Tokenizer::Remaining()
-{
-  return remaining != 0;
-}
+bool Tokenizer::Remaining() { return remaining != 0; }
 
-void Tokenizer::Match(TOKEN_TYPE t)
-{
+void Tokenizer::Match(TOKEN_TYPE t) {
   if (t == STRING)
     stringInto = !stringInto;
-  if(!GetToken().Match(t))
+  if (!GetToken().Match(t))
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
-Token Tokenizer::GetStrongType()
-{
-  if(!Look().MatchStrongType())
-    MalformedExpressionError::Raise(token, __FILE__, __LINE__);
-  return GetToken();
+Token Tokenizer::MatchStrongType() {
+  if (Look().Match(INTEGER_TYPE) || Look().Match(STRING_TYPE))
+    return GetToken();
+  MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
-void Tokenizer::MatchIf(TOKEN_TYPE t)
-{
-  if(token.Match(t))
+void Tokenizer::MatchIf(TOKEN_TYPE t) {
+  if (token.Match(t))
     Match(t);
 }
 
-void Tokenizer::NextToken(Token & token)
-{
+void Tokenizer::NextToken(Token &token) {
   string lexeme;
   token.SetValue(lexeme);
   token.SetType(UNKNOWN);
 
-  if(isdigit(currentChar))
-  {
+  if (isdigit(currentChar)) {
     lexeme += GetInteger();
     token.SetType(INTEGER);
-  }
-    else if(isalpha(currentChar))
-  {
+  } else if (isalpha(currentChar)) {
     lexeme += GetWord();
     token.SetType(GetTokenType(lexeme));
-    if(token.Match(UNKNOWN))
+    if (token.Match(UNKNOWN))
       token.SetType(IDENTIFIER);
-  }
-    else
-  {
+  } else {
     lexeme += GetSpecial();
     token.SetType(GetTokenType(lexeme));
   }
@@ -91,139 +74,119 @@ void Tokenizer::NextToken(Token & token)
   token.SetFilename(filename);
 }
 
-string Tokenizer::GetSpecial()
-{
+string Tokenizer::GetSpecial() {
   string special;
   char nextChar;
-  while(!isdigit(currentChar) && !isalpha(currentChar) && Remaining())
-  {
+  while (!isdigit(currentChar) && !isalpha(currentChar) && Remaining()) {
     special += currentChar;
     nextChar = NextChar();
-    if(!MatchTokenWithNext(special, nextChar))
+    if (!MatchTokenWithNext(special, nextChar))
       return special;
   }
   return special;
 }
 
-string Tokenizer::GetInteger()
-{
+string Tokenizer::GetInteger() {
   string integer;
-  while(isdigit(currentChar))
-  {
+  while (isdigit(currentChar)) {
     integer += currentChar;
     NextChar();
   }
   return integer;
 }
 
-string Tokenizer::GetWord()
-{
+string Tokenizer::GetWord() {
   string word;
-  while(isalpha(currentChar))
-  {
+  while (isalpha(currentChar)) {
     word += currentChar;
     NextChar();
   }
   return word;
 }
 
-int Tokenizer::GetLine()
-{
-  if(column == 0 && line > 1)
+int Tokenizer::GetLine() {
+  if (column == 0 && line > 1)
     return line - 1;
   return line;
 }
 
-int Tokenizer::GetColumn()
-{
-  if(column == 0 && line > 1)
+int Tokenizer::GetColumn() {
+  if (column == 0 && line > 1)
     return previousColumn - 1;
   return column;
 }
 
-bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar)
-{
- string match = lexeme + nextChar;
-  if(GetTokenType(match) == UNKNOWN)
+bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar) {
+  string match = lexeme + nextChar;
+  if (GetTokenType(match) == UNKNOWN)
     return false;
   return true;
 }
 
-char Tokenizer::NextChar()
-{
+char Tokenizer::NextChar() {
   column++;
   previousChar = currentChar;
-  if (file.get(currentChar))
-  {
-    if((int)currentChar - 48 == -16 &&currentChar == previousChar)
-    {
-      if(!stringInto)
+  if (file.get(currentChar)) {
+    if ((int)currentChar - 48 == -16 && currentChar == previousChar) {
+      if (!stringInto)
         NextChar();
       else
         LOG(WARNING) << "Strings with \\n (new line)";
     }
-    if(currentChar == '\n')
-    {
-      if(!stringInto && previousChar == currentChar)
-      {
+    if (currentChar == '\n') {
+      if (!stringInto && previousChar == currentChar) {
         NextChar();
       }
       previousColumn = column;
       column = 0;
       line++;
     }
-  }
-  else
-  {
+  } else {
     remaining--;
   }
   return currentChar;
 }
 
-TOKEN_TYPE Tokenizer::GetTokenType(string lexeme)
-{
-  if(lexeme == "+")
+TOKEN_TYPE Tokenizer::GetTokenType(string l) {
+  if (l == "+")
     return ADD;
-  if(lexeme == "-")
+  if (l == "-")
     return SUB;
-  if(lexeme == "*")
+  if (l == "*")
     return MULT;
-  if(lexeme == "/")
+  if (l == "/")
     return DIVIDE;
-  if(lexeme == "=")
+  if (l == "=")
     return ASSIGN;
-  if(lexeme == ";")
+  if (l == ";")
     return SEMICOLON;
-  if(lexeme == "(")
+  if (l == "(")
     return OPEN_PARENTHESYS;
-  if(lexeme == ")")
+  if (l == ")")
     return CLOSE_PARENTHESYS;
-  if(lexeme == "==")
+  if (l == "==")
     return EQUAL_TO;
-  if(lexeme == "print")
+  if (l == "print")
     return OUTPUT;
-  if(lexeme == " ")
+  if (l == " ")
     return SPACE;
-  if(lexeme == "\n")
+  if (l == "\n")
     return NEW_LINE;
-  if(lexeme == "if")
+  if (l == "if")
     return IF;
-  if(lexeme == "end")
+  if (l == "end")
     return END;
-  if(lexeme == "spawn")
+  if (l == "spawn")
     return SPAWN;
-  if(lexeme == "readLine")
+  if (l == "readLine")
     return READ_LINE;
-  if(lexeme == "to")
+  if (l == "to")
     return ASSIGN;
-  if(lexeme == "int")
+  if (l == "int")
     return INTEGER_TYPE;
-  if(lexeme == "str")
+  if (l == "str")
     return STRING_TYPE;
-  if(lexeme == "toInt")
-    return INTEGER_PARSER;
-  if(lexeme == "\"")
+  if (l == "\"")
     return STRING;
   return UNKNOWN;
 }
-
