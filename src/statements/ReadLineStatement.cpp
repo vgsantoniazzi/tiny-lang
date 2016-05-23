@@ -14,9 +14,9 @@ void ReadLineStatement::Execute() const {
 }
 
 void ReadLineStatement::Read(Tokenizer &program) {
-  program.Match(READ_LINE);
-  program.Match(ASSIGN);
+  program.Match("READ_LINE");
+  program.Match("ASSIGN");
   strongType = program.MatchStrongType();
   variable = program.GetToken();
-  program.Match(SEMICOLON);
+  program.Match("SEMICOLON");
 }

@@ -1,5 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
+#include <regex>
 #include "Tokenizer.hpp"
 #include "../logs/logging.hpp"
 #include "../token/Token.hpp"
@@ -10,6 +12,7 @@ Tokenizer::Tokenizer(const string &filename) : file(filename.c_str()) {
   if (!file)
     FileNotFoundError::Raise(filename);
   this->filename = filename;
+  LoadTokens();
   line = 1;
   column = -1;
   remaining = 3;
@@ -19,13 +22,34 @@ Tokenizer::Tokenizer(const string &filename) : file(filename.c_str()) {
   NextToken(nextToken);
 }
 
+void Tokenizer::LoadTokens() {
+  string filename = "tokens.yml";
+  int line = 0;
+  string lineText;
+  ifstream tokensFile(filename);
+  if (tokensFile.is_open()) {
+    LOG(DEBUG) << "Tokens file opened successfully!";
+    while (getline(tokensFile, lineText)) {
+      if(lineText.at(0) == '#')
+        continue;
+      string regex = lineText.substr(0, lineText.find(": "));
+      string varName =
+          lineText.substr(lineText.find(": ") + 2, lineText.length() - 1);
+      tokenTable[regex] = varName;
+      line++;
+    }
+  } else {
+    FileNotFoundError::Raise(filename);
+  }
+}
+
 Token Tokenizer::GetToken() {
   Token retToken = token;
   token = nextToken;
   NextToken(nextToken);
-  if (!stringInto && (token.Match(SPACE) || token.Match(NEW_LINE)))
+  if (!stringInto && (token.Match("SPACE") || token.Match("NEW_LINE")))
     GetToken();
-  LOG(DEBUG) << "Token: " << retToken.GetTypeText();
+  LOG(DEBUG) << "Token: " << retToken.GetType() << ": " << retToken.GetValue();
   return retToken;
 }
 
@@ -33,20 +57,20 @@ Token Tokenizer::Look() { return token; }
 
 bool Tokenizer::Remaining() { return remaining != 0; }
 
-void Tokenizer::Match(TOKEN_TYPE t) {
-  if (t == STRING)
+void Tokenizer::Match(string t) {
+  if (t == "STRING")
     stringInto = !stringInto;
   if (!GetToken().Match(t))
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
 Token Tokenizer::MatchStrongType() {
-  if (Look().Match(INTEGER_TYPE) || Look().Match(STRING_TYPE))
+  if (Look().Match("INTEGER_TYPE") || Look().Match("STRING_TYPE"))
     return GetToken();
   MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
-void Tokenizer::MatchIf(TOKEN_TYPE t) {
+void Tokenizer::MatchIf(string t) {
   if (token.Match(t))
     Match(t);
 }
@@ -54,16 +78,12 @@ void Tokenizer::MatchIf(TOKEN_TYPE t) {
 void Tokenizer::NextToken(Token &token) {
   string lexeme;
   token.SetValue(lexeme);
-  token.SetType(UNKNOWN);
-
-  if (isdigit(currentChar)) {
-    lexeme += GetInteger();
-    token.SetType(INTEGER);
-  } else if (isalpha(currentChar)) {
+  token.SetType("UNKNOWN");
+  if (isdigit(currentChar) || isalpha(currentChar)) {
     lexeme += GetWord();
     token.SetType(GetTokenType(lexeme));
-    if (token.Match(UNKNOWN))
-      token.SetType(IDENTIFIER);
+    if (token.Match("UNKNOWN"))
+      token.SetType("IDENTIFIER");
   } else {
     lexeme += GetSpecial();
     token.SetType(GetTokenType(lexeme));
@@ -86,18 +106,9 @@ string Tokenizer::GetSpecial() {
   return special;
 }
 
-string Tokenizer::GetInteger() {
-  string integer;
-  while (isdigit(currentChar)) {
-    integer += currentChar;
-    NextChar();
-  }
-  return integer;
-}
-
 string Tokenizer::GetWord() {
   string word;
-  while (isalpha(currentChar)) {
+  while (isdigit(currentChar) || isalpha(currentChar)) {
     word += currentChar;
     NextChar();
   }
@@ -118,7 +129,7 @@ int Tokenizer::GetColumn() {
 
 bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar) {
   string match = lexeme + nextChar;
-  if (GetTokenType(match) == UNKNOWN)
+  if (GetTokenType(match) == "UNKNOWN")
     return false;
   return true;
 }
@@ -147,46 +158,11 @@ char Tokenizer::NextChar() {
   return currentChar;
 }
 
-TOKEN_TYPE Tokenizer::GetTokenType(string l) {
-  if (l == "+")
-    return ADD;
-  if (l == "-")
-    return SUB;
-  if (l == "*")
-    return MULT;
-  if (l == "/")
-    return DIVIDE;
-  if (l == "=")
-    return ASSIGN;
-  if (l == ";")
-    return SEMICOLON;
-  if (l == "(")
-    return OPEN_PARENTHESYS;
-  if (l == ")")
-    return CLOSE_PARENTHESYS;
-  if (l == "==")
-    return EQUAL_TO;
-  if (l == "print")
-    return OUTPUT;
-  if (l == " ")
-    return SPACE;
-  if (l == "\n")
-    return NEW_LINE;
-  if (l == "if")
-    return IF;
-  if (l == "end")
-    return END;
-  if (l == "spawn")
-    return SPAWN;
-  if (l == "readLine")
-    return READ_LINE;
-  if (l == "to")
-    return ASSIGN;
-  if (l == "int")
-    return INTEGER_TYPE;
-  if (l == "str")
-    return STRING_TYPE;
-  if (l == "\"")
-    return STRING;
-  return UNKNOWN;
+string Tokenizer::GetTokenType(string l) {
+  for (auto const &token : tokenTable) {
+    if (regex_match(l, regex(token.first))) {
+      return token.second;
+    }
+  }
+  return "UNKNOWN";
 }

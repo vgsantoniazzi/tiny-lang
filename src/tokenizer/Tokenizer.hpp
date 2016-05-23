@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <map>
 #include "../token/Token.hpp"
 
 class Tokenizer {
@@ -12,8 +13,8 @@ public:
   Token Look();
   Token MatchStrongType();
   bool Remaining();
-  void Match(TOKEN_TYPE t);
-  void MatchIf(TOKEN_TYPE t);
+  void Match(string t);
+  void MatchIf(string t);
 
 private:
   ifstream file;
@@ -27,6 +28,7 @@ private:
   int column;
   int previousColumn;
   bool stringInto;
+  map <string, string> tokenTable;
   bool MatchTokenWithNext(string lexeme, char nextChar);
   string GetInteger();
   string GetWord();
@@ -35,7 +37,8 @@ private:
   int GetColumn();
   char NextChar();
   void NextToken(Token &token);
-  TOKEN_TYPE GetTokenType(string lexeme);
+  void LoadTokens();
+  string GetTokenType(string lexeme);
 };
 
 #endif
