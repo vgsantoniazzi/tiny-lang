@@ -1,53 +1,49 @@
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
 #include <regex>
 #include "Tokenizer.hpp"
 #include "../logs/logging.hpp"
-#include "../token/Token.hpp"
 #include "../errors/FileNotFoundError.hpp"
 #include "../errors/MalformedExpressionError.hpp"
 
-Tokenizer::Tokenizer(const string &filename) : file(filename.c_str()) {
+Tokenizer::Tokenizer(const std::string &file_name) : file(file_name.c_str()) {
   if (!file)
-    FileNotFoundError::Raise(filename);
-  this->filename = filename;
+    FileNotFoundError::Raise(file_name);
+  this->file_name = file_name;
   LoadTokens();
   line = 1;
   column = -1;
-  remaining = 3;
-  stringInto = false;
+  remaining_tokens = 3;
+  string_into = false;
   NextChar();
   NextToken(token);
-  NextToken(nextToken);
+  NextToken(next_token);
 }
 
 void Tokenizer::LoadTokens() {
-  string filename = "tokens.yml";
+  std::string file_name = "tokens.yml";
   int line = 0;
-  string lineText;
-  ifstream tokensFile(filename);
+  std::string lineText;
+  std::ifstream tokensFile(file_name);
   if (tokensFile.is_open()) {
     LOG(DEBUG) << "Tokens file opened successfully!";
     while (getline(tokensFile, lineText)) {
-      if(lineText.at(0) == '#')
+      if (lineText.at(0) == '#')
         continue;
-      string regex = lineText.substr(0, lineText.find(": "));
-      string varName =
+      std::string regex = lineText.substr(0, lineText.find(": "));
+      std::string varName =
           lineText.substr(lineText.find(": ") + 2, lineText.length() - 1);
-      tokenTable[regex] = varName;
+      token_table[regex] = varName;
       line++;
     }
   } else {
-    FileNotFoundError::Raise(filename);
+    FileNotFoundError::Raise(file_name);
   }
 }
 
 Token Tokenizer::GetToken() {
   Token retToken = token;
-  token = nextToken;
-  NextToken(nextToken);
-  if (!stringInto && (token.Match("SPACE") || token.Match("NEW_LINE")))
+  token = next_token;
+  NextToken(next_token);
+  if (!string_into && (token.Match("SPACE") || token.Match("NEW_LINE")))
     GetToken();
   LOG(DEBUG) << "Token: " << retToken.GetType() << ": " << retToken.GetValue();
   return retToken;
@@ -55,11 +51,11 @@ Token Tokenizer::GetToken() {
 
 Token Tokenizer::Look() { return token; }
 
-bool Tokenizer::Remaining() { return remaining != 0; }
+bool Tokenizer::Remaining() { return remaining_tokens != 0; }
 
-void Tokenizer::Match(string t) {
+void Tokenizer::Match(std::string t) {
   if (t == "STRING")
-    stringInto = !stringInto;
+    string_into = !string_into;
   if (!GetToken().Match(t))
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
@@ -70,16 +66,16 @@ Token Tokenizer::MatchStrongType() {
   MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 }
 
-void Tokenizer::MatchIf(string t) {
+void Tokenizer::MatchIf(std::string t) {
   if (token.Match(t))
     Match(t);
 }
 
 void Tokenizer::NextToken(Token &token) {
-  string lexeme;
+  std::string lexeme;
   token.SetValue(lexeme);
   token.SetType("UNKNOWN");
-  if (isdigit(currentChar) || isalpha(currentChar)) {
+  if (isdigit(current_char) || isalpha(current_char)) {
     lexeme += GetWord();
     token.SetType(GetTokenType(lexeme));
     if (token.Match("UNKNOWN"))
@@ -91,14 +87,14 @@ void Tokenizer::NextToken(Token &token) {
   token.SetValue(lexeme);
   token.SetLine(GetLine());
   token.SetColumn(GetColumn());
-  token.SetFilename(filename);
+  token.SetFilename(file_name);
 }
 
-string Tokenizer::GetSpecial() {
-  string special;
+std::string Tokenizer::GetSpecial() {
+  std::string special;
   char nextChar;
-  while (!isdigit(currentChar) && !isalpha(currentChar) && Remaining()) {
-    special += currentChar;
+  while (!isdigit(current_char) && !isalpha(current_char) && Remaining()) {
+    special += current_char;
     nextChar = NextChar();
     if (!MatchTokenWithNext(special, nextChar))
       return special;
@@ -106,10 +102,10 @@ string Tokenizer::GetSpecial() {
   return special;
 }
 
-string Tokenizer::GetWord() {
-  string word;
-  while (isdigit(currentChar) || isalpha(currentChar)) {
-    word += currentChar;
+std::string Tokenizer::GetWord() {
+  std::string word;
+  while (isdigit(current_char) || isalpha(current_char)) {
+    word += current_char;
     NextChar();
   }
   return word;
@@ -123,12 +119,12 @@ int Tokenizer::GetLine() {
 
 int Tokenizer::GetColumn() {
   if (column == 0 && line > 1)
-    return previousColumn - 1;
+    return previous_column - 1;
   return column;
 }
 
-bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar) {
-  string match = lexeme + nextChar;
+bool Tokenizer::MatchTokenWithNext(std::string lexeme, char nextChar) {
+  std::string match = lexeme + nextChar;
   if (GetTokenType(match) == "UNKNOWN")
     return false;
   return true;
@@ -136,31 +132,31 @@ bool Tokenizer::MatchTokenWithNext(string lexeme, char nextChar) {
 
 char Tokenizer::NextChar() {
   column++;
-  previousChar = currentChar;
-  if (file.get(currentChar)) {
-    if ((int)currentChar - 48 == -16 && currentChar == previousChar) {
-      if (!stringInto)
+  previous_char = current_char;
+  if (file.get(current_char)) {
+    if ((int)current_char - 48 == -16 && current_char == previous_char) {
+      if (!string_into)
         NextChar();
       else
         LOG(WARNING) << "Strings with \\n (new line)";
     }
-    if (currentChar == '\n') {
-      if (!stringInto && previousChar == currentChar) {
+    if (current_char == '\n') {
+      if (!string_into && previous_char == current_char) {
         NextChar();
       }
-      previousColumn = column;
+      previous_column = column;
       column = 0;
       line++;
     }
   } else {
-    remaining--;
+    remaining_tokens--;
   }
-  return currentChar;
+  return current_char;
 }
 
-string Tokenizer::GetTokenType(string l) {
-  for (auto const &token : tokenTable) {
-    if (regex_match(l, regex(token.first))) {
+std::string Tokenizer::GetTokenType(std::string l) {
+  for (auto const &token : token_table) {
+    if (regex_match(l, std::regex(token.first))) {
       return token.second;
     }
   }

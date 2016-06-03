@@ -3,7 +3,7 @@
 
 class FileNotFoundError {
 public:
-  static void Raise(string filename);
+  static void Raise(std::string file_name);
 };
 
 #endif

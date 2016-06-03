@@ -1,13 +1,12 @@
 #include <typeinfo>
+#include "../logs/logging.hpp"
+#include "../token/Token.hpp"
+#include "../errors/MalformedExpressionError.hpp"
 #include "AssignStatement.hpp"
 #include "OutputStatement.hpp"
 #include "IfStatement.hpp"
 #include "SpawnStatement.hpp"
 #include "ReadLineStatement.hpp"
-#include "../logs/logging.hpp"
-#include "../token/Token.hpp"
-#include "../tokenizer/Tokenizer.hpp"
-#include "../errors/MalformedExpressionError.hpp"
 
 Statement *Statement::GetNext(Tokenizer &program) {
   Token token = program.Look();
@@ -28,6 +27,6 @@ Statement *Statement::GetNext(Tokenizer &program) {
 
   statement->Read(program);
 
-  LOG(INFO) << (string) typeid(*statement).name() << " load";
+  LOG(INFO) << (std::string) typeid(*statement).name() << " load";
   return statement;
 }

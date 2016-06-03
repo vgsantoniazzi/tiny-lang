@@ -2,11 +2,8 @@
 #define _ASSIGN_STATEMENT_
 
 #include "Statement.hpp"
-#include <iostream>
 #include "../token/Token.hpp"
 #include "../tokenizer/Tokenizer.hpp"
-
-using namespace std;
 
 class AssignStatement : public Statement {
 public:
@@ -15,8 +12,8 @@ public:
 
 private:
   Token variable;
-  Token strongType;
-  string returnValue;
+  Token strong_type;
+  std::string return_value;
 };
 
 #endif

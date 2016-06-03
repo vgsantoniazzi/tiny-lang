@@ -1,10 +1,7 @@
-#include <cstdlib>
-#include <iostream>
 #include "../logs/logging.hpp"
-#include "../token/Token.hpp"
 #include "FileNotFoundError.hpp"
 
-void FileNotFoundError::Raise(string filename) {
-  LOG(ERROR) << "File not found: '" << filename;
+void FileNotFoundError::Raise(std::string file_name) {
+  LOG(ERROR) << "File not found: '" << file_name;
   exit(1);
 }

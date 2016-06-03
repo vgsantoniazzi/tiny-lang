@@ -1,14 +1,12 @@
-#include <cstdlib>
-#include <iostream>
 #include "../logs/logging.hpp"
 #include "../token/Token.hpp"
 #include "MalformedExpressionError.hpp"
 
-void MalformedExpressionError::Raise(Token &token, string file, int line) {
+void MalformedExpressionError::Raise(Token &token, std::string file_name, int line) {
   LOG(ERROR) << "Malformed expression near: '" << token.GetValue()
              << "' line: " << token.GetLine()
              << " column: " << token.GetColumn()
-             << " on file:" << token.GetFilename() << " raised from " << file
-             << ":" << line << endl;
+             << " on file:" << token.GetFilename() << " raised from "
+             << file_name << ":" << line;
   exit(1);
 }
