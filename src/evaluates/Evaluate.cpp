@@ -13,16 +13,16 @@ int Evaluate::Calculate(Tokenizer &program) {
 
 int Evaluate::Expression(Tokenizer &program) {
   int val;
-  if (program.Look().Match(ADD) || program.Look().Match(SUB))
+  if (program.Look().Match("ADD") || program.Look().Match("SUB"))
     val = 0;
   else
     val = Term(program);
-  while (program.Look().Match(ADD) || program.Look().Match(SUB)) {
-    if (program.Look().Match(ADD)) {
-      program.Match(ADD);
+  while (program.Look().Match("ADD") || program.Look().Match("SUB")) {
+    if (program.Look().Match("ADD")) {
+      program.Match("ADD");
       val += Term(program);
-    } else if (program.Look().Match(SUB)) {
-      program.Match(SUB);
+    } else if (program.Look().Match("SUB")) {
+      program.Match("SUB");
       val -= Term(program);
     }
   }
@@ -32,12 +32,12 @@ int Evaluate::Expression(Tokenizer &program) {
 int Evaluate::Term(Tokenizer &program) {
   int val = Factor(program);
 
-  while (program.Look().Match(MULT) || program.Look().Match(DIVIDE)) {
-    if (program.Look().Match(MULT)) {
-      program.Match(MULT);
+  while (program.Look().Match("MULT") || program.Look().Match("DIVIDE")) {
+    if (program.Look().Match("MULT")) {
+      program.Match("MULT");
       val *= Term(program);
-    } else if (program.Look().Match(DIVIDE)) {
-      program.Match(DIVIDE);
+    } else if (program.Look().Match("DIVIDE")) {
+      program.Match("DIVIDE");
       val /= Term(program);
     }
   }
@@ -46,11 +46,11 @@ int Evaluate::Term(Tokenizer &program) {
 
 int Evaluate::Factor(Tokenizer &program) {
   int val;
-  if (program.Look().Match(OPEN_PARENTHESYS)) {
-    program.Match(OPEN_PARENTHESYS);
+  if (program.Look().Match("OPEN_PARENTHESYS")) {
+    program.Match("OPEN_PARENTHESYS");
     val = Expression(program);
-    program.Match(CLOSE_PARENTHESYS);
-  } else if (program.Look().Match(IDENTIFIER)) {
+    program.Match("CLOSE_PARENTHESYS");
+  } else if (program.Look().Match("IDENTIFIER")) {
     val = Variables::All()->FindInt(program.GetToken().GetValue());
   } else {
     Token token = program.GetToken();

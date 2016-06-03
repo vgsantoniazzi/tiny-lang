@@ -11,19 +11,19 @@
 
 Statement *Statement::GetNext(Tokenizer &program) {
   Token token = program.Look();
-  if (token.GetType() == UNKNOWN)
+  if (token.GetType() == "UNKNOWN")
     MalformedExpressionError::Raise(token, __FILE__, __LINE__);
 
   Statement *statement;
-  if (token.Match(INTEGER_TYPE) || token.Match(STRING_TYPE))
+  if (token.Match("INTEGER_TYPE") || token.Match("STRING_TYPE"))
     statement = new AssignStatement();
-  else if (token.Match(OUTPUT))
+  else if (token.Match("OUTPUT"))
     statement = new OutputStatement();
-  else if (token.Match(IF))
+  else if (token.Match("IF"))
     statement = new IfStatement();
-  else if (token.Match(SPAWN))
+  else if (token.Match("SPAWN"))
     statement = new SpawnStatement();
-  else if (token.Match(READ_LINE))
+  else if (token.Match("READ_LINE"))
     statement = new ReadLineStatement();
 
   statement->Read(program);

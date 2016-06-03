@@ -1,11 +1,9 @@
 #include "Token.hpp"
 
-Token::Token(string v, TOKEN_TYPE t) {
+Token::Token(string v, string t) {
   value = v;
   type = t;
 }
-
-string Token::GetTypeText(TOKEN_TYPE t) { return TOKEN_TYPE_TEXT[t]; }
 
 string Token::GetValue() const { return value; }
 
@@ -23,10 +21,8 @@ int Token::GetColumn() const { return column; }
 
 void Token::SetColumn(int c) { column = c; }
 
-TOKEN_TYPE Token::GetType() const { return type; }
+string Token::GetType() const { return type; }
 
-string Token::GetTypeText() const { return Token::GetTypeText(GetType()); }
+void Token::SetType(string t) { type = t; }
 
-void Token::SetType(TOKEN_TYPE t) { type = t; }
-
-bool Token::Match(TOKEN_TYPE t) const { return GetType() == t; }
+bool Token::Match(string t) const { return GetType() == t; }

@@ -16,18 +16,18 @@ void AssignStatement::Read(Tokenizer &program) {
   variable = program.GetToken();
   Token operation = program.GetToken();
 
-  if (variable.Match(IDENTIFIER) && operation.Match(ASSIGN)) {
+  if (variable.Match("IDENTIFIER") && operation.Match("ASSIGN")) {
     Token define = program.Look();
-    if (define.Match(STRING)) {
-      program.Match(STRING);
-      while (!program.Look().Match(STRING)) {
+    if (define.Match("STRING")) {
+      program.Match("STRING");
+      while (!program.Look().Match("STRING")) {
         returnValue = returnValue + program.GetToken().GetValue();
       }
-      program.Match(STRING);
-      program.Match(SEMICOLON);
+      program.Match("STRING");
+      program.Match("SEMICOLON");
     } else {
       returnValue = std::to_string(Evaluate::Calculate(program));
-      program.Match(SEMICOLON);
+      program.Match("SEMICOLON");
     }
   } else
     MalformedExpressionError::Raise(operation, __FILE__, __LINE__);

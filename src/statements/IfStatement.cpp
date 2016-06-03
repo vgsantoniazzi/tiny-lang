@@ -13,16 +13,16 @@ void IfStatement::Execute() const {
 
 void IfStatement::Read(Tokenizer &program) {
   condition = false;
-  program.Match(IF);
-  program.MatchIf(OPEN_PARENTHESYS);
+  program.Match("IF");
+  program.MatchIf("OPEN_PARENTHESYS");
   testValue = Evaluate::Calculate(program);
-  if (program.Look().Match(EQUAL_TO)) {
+  if (program.Look().Match("EQUAL_TO")) {
     condition = true;
-    program.Match(EQUAL_TO);
+    program.Match("EQUAL_TO");
     equalToValue = Evaluate::Calculate(program);
   }
-  program.MatchIf(CLOSE_PARENTHESYS);
-  while (!program.Look().Match(END))
+  program.MatchIf("CLOSE_PARENTHESYS");
+  while (!program.Look().Match("END"))
     statements.push_back(GetNext(program));
-  program.Match(END);
+  program.Match("END");
 }
