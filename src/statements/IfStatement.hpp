@@ -3,8 +3,6 @@
 
 #include <vector>
 #include "Statement.hpp"
-#include "../evaluates/Evaluate.hpp"
-#include "../token/Token.hpp"
 #include "../tokenizer/Tokenizer.hpp"
 
 class IfStatement : public Statement {
@@ -13,10 +11,10 @@ public:
   void Read(Tokenizer &program);
 
 private:
-  vector<Statement *> statements;
+  std::vector<Statement *> statements;
   bool condition;
-  int testValue;
-  int equalToValue;
+  int test_value;
+  int equal_to_value;
 };
 
 #endif

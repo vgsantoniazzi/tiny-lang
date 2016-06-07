@@ -3,28 +3,26 @@
 
 #include <string>
 
-using namespace std;
-
 class Token {
 public:
-  Token(string v = "", string t = "UNKNOWN");
-  string GetValue() const;
-  void SetValue(string v);
-  string GetFilename() const;
-  void SetFilename(string f);
+  Token(std::string value = "", std::string type = "UNKNOWN");
+  std::string GetValue() const;
+  void SetValue(std::string value);
+  std::string GetFilename() const;
+  void SetFilename(std::string file_name);
   int GetLine() const;
-  void SetLine(int l);
+  void SetLine(int line);
   int GetColumn() const;
-  void SetColumn(int c);
-  string GetType() const;
-  void SetType(string t);
-  bool Match(string t) const;
+  void SetColumn(int column);
+  std::string GetType() const;
+  void SetType(std::string type);
+  bool Match(std::string type) const;
 
 private:
-  string value;
-  string filename;
+  std::string value;
+  std::string type;
+  std::string file_name;
   int line;
   int column;
-  string type;
 };
 #endif

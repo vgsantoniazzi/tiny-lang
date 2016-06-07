@@ -12,7 +12,7 @@ public:
 
 private:
   Token variable;
-  Token strongType;
+  Token strong_type;
 };
 
 #endif

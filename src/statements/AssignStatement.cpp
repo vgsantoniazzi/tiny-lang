@@ -1,18 +1,15 @@
-#include "AssignStatement.hpp"
-#include <iostream>
 #include "../variables/Variables.hpp"
-#include "../token/Token.hpp"
-#include "../tokenizer/Tokenizer.hpp"
 #include "../evaluates/Evaluate.hpp"
 #include "../errors/MalformedExpressionError.hpp"
+#include "AssignStatement.hpp"
 
 void AssignStatement::Execute() const {
-  Variables::All()->Update(strongType.GetType(), variable.GetValue(),
-                           returnValue);
+  Variables::All()->Update(strong_type.GetType(), variable.GetValue(),
+                           return_value);
 }
 
 void AssignStatement::Read(Tokenizer &program) {
-  strongType = program.MatchStrongType();
+  strong_type = program.MatchStrongType();
   variable = program.GetToken();
   Token operation = program.GetToken();
 
@@ -21,12 +18,12 @@ void AssignStatement::Read(Tokenizer &program) {
     if (define.Match("STRING")) {
       program.Match("STRING");
       while (!program.Look().Match("STRING")) {
-        returnValue = returnValue + program.GetToken().GetValue();
+        return_value = return_value + program.GetToken().GetValue();
       }
       program.Match("STRING");
       program.Match("SEMICOLON");
     } else {
-      returnValue = std::to_string(Evaluate::Calculate(program));
+      return_value = std::to_string(Evaluate::Calculate(program));
       program.Match("SEMICOLON");
     }
   } else

@@ -3,7 +3,7 @@
 
 class UndefinedVariableNameError {
 public:
-  static void Raise(string name);
+  static void Raise(std::string variable_name);
 };
 
 #endif

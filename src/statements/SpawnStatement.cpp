@@ -1,11 +1,8 @@
 #include <iostream>
 #include <thread>
+#include "../variables/Variables.hpp"
 #include "SpawnStatement.hpp"
 #include "Statement.hpp"
-#include "../variables/Variables.hpp"
-#include "../token/Token.hpp"
-#include "../tokenizer/Tokenizer.hpp"
-#include "../errors/MalformedExpressionError.hpp"
 
 void ExecuteStatement(Statement *statement) { statement->Execute(); }
 
