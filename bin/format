@@ -1,7 +1,7 @@
 ﻿#!/bin/bash
 
-for DIRECTORY in src test
+for DIRECTORY in src
 do
     echo "Formatting code under $DIRECTORY/"
-    find "$DIRECTORY" \( -name '*.h' -or -name '*.cpp' \) -print0 | xargs -0 clang-format -i
+    find "$DIRECTORY" \( -name '*.hpp' -or -name '*.cpp' \) -print0 | xargs -0 clang-format -i -style=llvm
 done

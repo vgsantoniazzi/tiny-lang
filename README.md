@@ -14,17 +14,36 @@ git clone git@github.com:vgsantoniazzi/tiny-lang.git
 
 ## Usage
 
-Run first time:
+##### Compile
 
 ```
-bin/run
+make
 ```
 
-Execute the tests
+##### Run
 
 ```
-bin/test
+make run
 ```
+
+##### Format code
+
+```
+make format
+```
+
+##### Install
+
+```
+make install
+```
+
+##### Clean
+
+```
+make clean
+```
+
 
 To compiling manually, open bin/run
 
