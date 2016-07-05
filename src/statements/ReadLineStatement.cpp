@@ -1,22 +1,18 @@
 #include <iostream>
 #include <thread>
-#include "ReadLineStatement.hpp"
-#include "Statement.hpp"
 #include "../variables/Variables.hpp"
-#include "../token/Token.hpp"
-#include "../tokenizer/Tokenizer.hpp"
-#include "../errors/MalformedExpressionError.hpp"
+#include "ReadLineStatement.hpp"
 
 void ReadLineStatement::Execute() const {
-  string enter;
-  cin >> enter;
-  Variables::All()->Update(strongType.GetType(), variable.GetValue(), enter);
+  std::string enter;
+  std::cin >> enter;
+  Variables::All()->Update(strong_type.GetType(), variable.GetValue(), enter);
 }
 
 void ReadLineStatement::Read(Tokenizer &program) {
   program.Match("READ_LINE");
   program.Match("ASSIGN");
-  strongType = program.MatchStrongType();
+  strong_type = program.MatchStrongType();
   variable = program.GetToken();
   program.Match("SEMICOLON");
 }

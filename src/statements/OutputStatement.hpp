@@ -12,7 +12,7 @@ public:
 
 private:
   Token variable;
-  string stringValue;
+  std::string string_value;
 };
 
 #endif

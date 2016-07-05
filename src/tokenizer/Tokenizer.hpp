@@ -2,43 +2,42 @@
 #define _TOKENIZER_
 
 #include <fstream>
-#include <string>
 #include <map>
 #include "../token/Token.hpp"
 
 class Tokenizer {
 public:
-  Tokenizer(const string &filename);
+  Tokenizer(const std::string &file_name);
   Token GetToken();
   Token Look();
   Token MatchStrongType();
   bool Remaining();
-  void Match(string t);
-  void MatchIf(string t);
+  void Match(std::string type);
+  void MatchIf(std::string type);
 
 private:
-  ifstream file;
-  char previousChar;
-  char currentChar;
-  int remaining;
+  std::ifstream file;
+  char previous_char;
+  char current_char;
+  int remaining_tokens;
   Token token;
-  Token nextToken;
-  string filename;
+  Token next_token;
+  std::string file_name;
   int line;
   int column;
-  int previousColumn;
-  bool stringInto;
-  map <string, string> tokenTable;
-  bool MatchTokenWithNext(string lexeme, char nextChar);
-  string GetInteger();
-  string GetWord();
-  string GetSpecial();
+  int previous_column;
+  bool string_into;
+  std::map <std::string, std::string> token_table;
+  bool MatchTokenWithNext(std::string lexeme, char next_char);
+  std::string GetInteger();
+  std::string GetWord();
+  std::string GetSpecial();
   int GetLine();
   int GetColumn();
   char NextChar();
   void NextToken(Token &token);
   void LoadTokens();
-  string GetTokenType(string lexeme);
+  std::string GetTokenType(std::string lexeme);
 };
 
 #endif

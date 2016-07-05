@@ -1,28 +1,28 @@
 #include "Token.hpp"
 
-Token::Token(string v, string t) {
-  value = v;
-  type = t;
+Token::Token(std::string value, std::string type) {
+  this->value = value;
+  this->type = type;
 }
 
-string Token::GetValue() const { return value; }
+std::string Token::GetValue() const { return value; }
 
-void Token::SetValue(string v) { value = v; }
+void Token::SetValue(std::string value) { this->value = value; }
 
-string Token::GetFilename() const { return filename; }
+std::string Token::GetFilename() const { return file_name; }
 
-void Token::SetFilename(string f) { filename = f; }
+void Token::SetFilename(std::string file_name) { this->file_name = file_name; }
 
 int Token::GetLine() const { return line; }
 
-void Token::SetLine(int l) { line = l; }
+void Token::SetLine(int line) { this->line = line; }
 
 int Token::GetColumn() const { return column; }
 
-void Token::SetColumn(int c) { column = c; }
+void Token::SetColumn(int column) { this->column = column; }
 
-string Token::GetType() const { return type; }
+std::string Token::GetType() const { return type; }
 
-void Token::SetType(string t) { type = t; }
+void Token::SetType(std::string type) { this->type = type; }
 
-bool Token::Match(string t) const { return GetType() == t; }
+bool Token::Match(std::string t) const { return GetType() == t; }

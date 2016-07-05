@@ -1,15 +1,13 @@
 #include <iostream>
 #include "OutputStatement.hpp"
 #include "../variables/Variables.hpp"
-#include "../token/Token.hpp"
-#include "../tokenizer/Tokenizer.hpp"
 #include "../errors/MalformedExpressionError.hpp"
 
 void OutputStatement::Execute() const {
   if (variable.Match("IDENTIFIER"))
-    cout << Variables::All()->Find(variable.GetValue()) << endl;
+    std::cout << Variables::All()->Find(variable.GetValue()) << std::endl;
   else
-    cout << stringValue;
+    std::cout << string_value;
 }
 
 void OutputStatement::Read(Tokenizer &program) {
@@ -22,7 +20,7 @@ void OutputStatement::Read(Tokenizer &program) {
   } else if (variable.Match("STRING")) {
     program.Match("STRING");
     while (!program.Look().Match("STRING"))
-      stringValue = stringValue + program.GetToken().GetValue();
+      string_value = string_value + program.GetToken().GetValue();
     program.Match("STRING");
     program.Match("SEMICOLON");
   } else
