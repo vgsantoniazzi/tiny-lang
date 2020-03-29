@@ -7,7 +7,7 @@
 
 class Tokenizer {
 public:
-  Tokenizer(const std::string &file_name);
+  Tokenizer(const std::string &file_name, const std::string &tokens_file);
   Token GetToken();
   Token Look();
   Token MatchStrongType();
@@ -36,7 +36,7 @@ private:
   int GetColumn();
   char NextChar();
   void NextToken(Token &token);
-  void LoadTokens();
+  void LoadTokens(const std::string &file_name);
   std::string GetTokenType(std::string lexeme);
 };
 

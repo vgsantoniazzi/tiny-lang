@@ -4,11 +4,11 @@
 #include "../errors/FileNotFoundError.hpp"
 #include "../errors/MalformedExpressionError.hpp"
 
-Tokenizer::Tokenizer(const std::string &file_name) : file(file_name.c_str()) {
+Tokenizer::Tokenizer(const std::string &file_name, const std::string &tokens_file) : file(file_name.c_str()) {
   if (!file)
     FileNotFoundError::Raise(file_name);
   this->file_name = file_name;
-  LoadTokens();
+  LoadTokens(tokens_file);
   line = 1;
   column = -1;
   remaining_tokens = 3;
@@ -18,8 +18,7 @@ Tokenizer::Tokenizer(const std::string &file_name) : file(file_name.c_str()) {
   NextToken(next_token);
 }
 
-void Tokenizer::LoadTokens() {
-  std::string file_name = "tokens.yml";
+void Tokenizer::LoadTokens(const std::string &file_name) {
   int line = 0;
   std::string lineText;
   std::ifstream tokensFile(file_name);

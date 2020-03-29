@@ -1,0 +1,27 @@
+################
+# OS VALORES SÃO NECESSÁRIOS PARA A LINGUAGEM FUNCIONAR
+# ALGUNS DOS MESMOS SÃO OPERAÇÕES MATEMÁTICAS, VOCÊ PODE
+# ALTERÁ-LOS PARA VERIFICAR NOVOS COMPORTAMENTOS
+# USAR C++ match_regex PARA ALTERAR OS MESMOS
+################
+^[0-9]+$: INTEGER
+^\+$: ADD
+^-$: SUB
+^\*$: MULT
+^/$: DIVIDE
+^;$: SEMICOLON
+^\($: OPEN_PARENTHESYS
+^\)$: CLOSE_PARENTHESYS
+^==$: EQUAL_TO
+^imprimir$: OUTPUT
+^ $: SPACE
+^\n$: NEW_LINE
+^caso$: IF
+^fim$: END
+^assincrono$: SPAWN
+^lerLinha$: READ_LINE
+^associar$: ASSIGN
+^numero$: INTEGER_TYPE
+^texto$: STRING_TYPE
+^\"$: STRING
+^\=$: ASSIGN

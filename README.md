@@ -26,6 +26,14 @@ make
 make run
 ```
 
+### Run in other language
+
+Create tokens file (based on `tokens/` dir files and run your examples based on `examples/` dir)
+
+```
+make run FILE=examples/portugues.tl TOKENS=tokens/portugues.yml
+```
+
 ##### Format code
 
 ```
@@ -44,8 +52,7 @@ make install
 make clean
 ```
 
-
-To compiling manually, open bin/run
+To run manually, open bin/run
 
 ## Contributing
 
