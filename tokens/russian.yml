@@ -1,0 +1,25 @@
+################
+# A token might be a variable or function name (AKA an identifier), an operator or a number.
+# USE C++ match_regex SYNTAX TO WRITE NEW TOKENS
+################
+^[0-9]+$: INTEGER
+^\+$: ADD
+^-$: SUB
+^\*$: MULT
+^/$: DIVIDE
+^;$: SEMICOLON
+^\($: OPEN_PARENTHESYS
+^\)$: CLOSE_PARENTHESYS
+^==$: EQUAL_TO
+^print$: OUTPUT
+^ $: SPACE
+^\n$: NEW_LINE
+^if$: IF
+^end$: END
+^spawn$: SPAWN
+^readLine$: READ_LINE
+^to$: ASSIGN
+^int$: INTEGER_TYPE
+^str$: STRING_TYPE
+^\"$: STRING
+^\=$: ASSIGN
