@@ -11,15 +11,15 @@
 ^\($: OPEN_PARENTHESYS
 ^\)$: CLOSE_PARENTHESYS
 ^==$: EQUAL_TO
-^print$: OUTPUT
+^напечатать$: OUTPUT
 ^ $: SPACE
-^\n$: NEW_LINE
-^if$: IF
-^end$: END
-^spawn$: SPAWN
-^readLine$: READ_LINE
-^to$: ASSIGN
-^int$: INTEGER_TYPE
-^str$: STRING_TYPE
+^\н$: NEW_LINE
+^если$: IF
+^конец$: END
+^ассинхрон$: SPAWN
+^читатьСтроку$: READ_LINE
+^к$: ASSIGN
+^число$: INTEGER_TYPE
+^строка$: STRING_TYPE
 ^\"$: STRING
 ^\=$: ASSIGN
