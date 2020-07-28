@@ -16,7 +16,7 @@
 ^\н$: NEW_LINE
 ^если$: IF
 ^конец$: END
-^ассинхрон$: SPAWN
+^асинхронн$: SPAWN
 ^читатьСтроку$: READ_LINE
 ^к$: ASSIGN
 ^число$: INTEGER_TYPE
