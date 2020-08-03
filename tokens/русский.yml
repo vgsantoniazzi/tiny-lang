@@ -1,6 +1,8 @@
 ################
-# A token might be a variable or function name (AKA an identifier), an operator or a number.
+# Токкены являются ключевым разделителем для функционирования токенизатора.
+# Токен может представлать переменные, математические операторы или функции.
 # USE C++ match_regex SYNTAX TO WRITE NEW TOKENS
+# Исполъзуйте C++ match_regex синтаксис для составления новых токенов.
 ################
 ^[0-9]+$: INTEGER
 ^\+$: ADD
