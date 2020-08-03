@@ -74,7 +74,7 @@ void Tokenizer::NextToken(Token &token) {
   std::string lexeme;
   token.SetValue(lexeme);
   token.SetType("UNKNOWN");
-  if (isdigit(current_char) || isalpha(current_char)) {
+  if (IsWord(current_char)) {
     lexeme += GetWord();
     token.SetType(GetTokenType(lexeme));
     if (token.Match("UNKNOWN"))
@@ -89,10 +89,14 @@ void Tokenizer::NextToken(Token &token) {
   token.SetFilename(file_name);
 }
 
+bool Tokenizer::IsWord(char c) {
+  return isdigit(c) || isalpha(c) || (int)c < 0;
+}
+
 std::string Tokenizer::GetSpecial() {
   std::string special;
   char nextChar;
-  while (!isdigit(current_char) && !isalpha(current_char) && Remaining()) {
+  while (!IsWord(current_char) && Remaining()) {
     special += current_char;
     nextChar = NextChar();
     if (!MatchTokenWithNext(special, nextChar))
@@ -103,7 +107,7 @@ std::string Tokenizer::GetSpecial() {
 
 std::string Tokenizer::GetWord() {
   std::string word;
-  while (isdigit(current_char) || isalpha(current_char)) {
+  while (IsWord(current_char)) {
     word += current_char;
     NextChar();
   }
