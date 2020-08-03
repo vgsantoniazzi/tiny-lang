@@ -29,6 +29,7 @@ private:
   bool string_into;
   std::map <std::string, std::string> token_table;
   bool MatchTokenWithNext(std::string lexeme, char next_char);
+  bool IsWord(char c);
   std::string GetInteger();
   std::string GetWord();
   std::string GetSpecial();
