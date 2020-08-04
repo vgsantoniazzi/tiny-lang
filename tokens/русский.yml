@@ -15,7 +15,7 @@
 ^==$: EQUAL_TO
 ^напечатать$: OUTPUT
 ^ $: SPACE
-^\н$: NEW_LINE
+^\n$: NEW_LINE
 ^если$: IF
 ^конец$: END
 ^асинхронн$: SPAWN
