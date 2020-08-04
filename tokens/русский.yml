@@ -1,0 +1,27 @@
+################
+# Токкены являются ключевым разделителем для функционирования токенизатора.
+# Токен может представлать переменные, математические операторы или функции.
+# USE C++ match_regex SYNTAX TO WRITE NEW TOKENS
+# Исполъзуйте C++ match_regex синтаксис для составления новых токенов.
+################
+^[0-9]+$: INTEGER
+^\+$: ADD
+^-$: SUB
+^\*$: MULT
+^/$: DIVIDE
+^;$: SEMICOLON
+^\($: OPEN_PARENTHESYS
+^\)$: CLOSE_PARENTHESYS
+^==$: EQUAL_TO
+^напечатать$: OUTPUT
+^ $: SPACE
+^\n$: NEW_LINE
+^если$: IF
+^конец$: END
+^асинхронн$: SPAWN
+^читатьСтроку$: READ_LINE
+^к$: ASSIGN
+^число$: INTEGER_TYPE
+^строка$: STRING_TYPE
+^\"$: STRING
+^\=$: ASSIGN
