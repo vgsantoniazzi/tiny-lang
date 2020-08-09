@@ -1,3 +1,11 @@
+/**
+ * @file src/statements/SpawnStatement.hpp
+ * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
+ * @brief Header file for the Spawn Statement
+ *
+ * @details Spawn statement will run inside a thread. It will load only the
+ * next statement.
+ */
 #ifndef _SPAWN_STATEMENT_
 #define _SPAWN_STATEMENT_
 
@@ -7,10 +15,26 @@
 
 class SpawnStatement : public Statement {
 public:
-  void Execute() const;
+  /**
+  * @brief Read a Spawn Statement.
+  *
+  * @code
+  * > spawn < int x = 10;
+  * @endcode
+  *
+  * @param program The tokenizer to understand next steps and eat some tokens.
+  */
   void Read(Tokenizer &program);
 
+  /**
+  * @brief execute spawn statement.
+  */
+  void Execute() const;
+
 private:
+  /**
+  * @brief the statement to be executed in a new thread.
+  */
   Statement *statement;
 };
 

@@ -1,3 +1,8 @@
+/**
+ * @file src/errors/FileNotFoundError.cpp
+ * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
+ * @brief Implementation of FileNotFoundError
+ */
 #include "../logs/logging.hpp"
 #include "FileNotFoundError.hpp"
 

@@ -1,3 +1,8 @@
+/**
+ * @file src/statements/Statement.cpp
+ * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
+ * @brief Implements the default interface for the statements.
+ */
 #include <typeinfo>
 #include "../logs/logging.hpp"
 #include "../token/Token.hpp"
@@ -8,6 +13,13 @@
 #include "SpawnStatement.hpp"
 #include "ReadLineStatement.hpp"
 
+/**
+* @brief Look the token and addresses to the correct statement.
+*
+* It also Read the program with the correct statement, but it not executes it.
+*
+* @param program The tokenizer to understand next steps and eat some tokens.
+*/
 Statement *Statement::GetNext(Tokenizer &program) {
   Token token = program.Look();
   if (token.GetType() == "UNKNOWN")

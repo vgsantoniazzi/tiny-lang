@@ -1,4 +1,5 @@
 CC=g++
+DOXYGEN=doxygen
 CFLAGS=-std=c++11 -DLOGLEVEL=WARNING -pthread
 LDFLAGS=
 SOURCE_PATH=src
@@ -16,6 +17,14 @@ all: clean
 
 run:
 	$(EXECUTABLE) $(FILE) $(TOKENS)
+
+docs: docs.delete docs.generate
+
+docs.delete:
+	@rm -Rf docs
+
+docs.generate:
+	@$(DOXYGEN)
 
 format:
 	$(FORMAT_EXECUTABLE)
