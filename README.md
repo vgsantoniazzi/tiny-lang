@@ -26,6 +26,14 @@ make
 make run
 ```
 
+##### Docs
+
+Generate doxygen docs
+
+```
+make docs
+```
+
 ### Run in other language
 
 Create tokens file (based on `tokens/` dir files and run your examples based on `examples/` dir)

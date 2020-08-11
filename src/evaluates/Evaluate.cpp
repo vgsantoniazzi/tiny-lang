@@ -1,13 +1,36 @@
+/**
+ * @file src/evaluates/Evaluate.cpp
+ * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
+ * @brief Implements Evaluate
+ */
 #include "Evaluate.hpp"
 #include "../token/Token.hpp"
 #include "../variables/Variables.hpp"
 #include "../errors/MalformedExpressionError.hpp"
 
+/**
+* @brief Initialize the evaluate, and search for a expression.
+*
+* @param program The tokenizer to understand next steps and eat some tokens.
+*/
 int Evaluate::Calculate(Tokenizer &program) {
   Evaluate evaluate;
   return evaluate.Expression(program);
 }
 
+/**
+* @brief Execute a Expression.
+*
+* In case of real Expression (+, -) found, initialize a value with zero.
+* If a program did not match with a Expression search for Term, and get the value of
+* the execution.
+*
+* The order of execution is Expression < Term < Factor.
+*
+* @note variables are get in the Factor function.
+*
+* @param program The tokenizer to understand next steps and eat some tokens.
+*/
 int Evaluate::Expression(Tokenizer &program) {
   int value_integer;
   if (program.Look().Match("ADD") || program.Look().Match("SUB"))
@@ -26,6 +49,16 @@ int Evaluate::Expression(Tokenizer &program) {
   return value_integer;
 }
 
+/**
+* @brief Execute a Term.
+*
+* Executes a Term, but first look for a factor, because the priority order.
+* Terms are, by definition, math Multiplication or Division in math.
+*
+* @note variables are get in the Factor function.
+*
+* @param program The tokenizer to understand next steps and eat some tokens.
+*/
 int Evaluate::Term(Tokenizer &program) {
   int value_integer = Factor(program);
   while (program.Look().Match("MULT") || program.Look().Match("DIVIDE")) {
@@ -40,6 +73,17 @@ int Evaluate::Term(Tokenizer &program) {
   return value_integer;
 }
 
+/**
+* @brief Execute a Factor.
+*
+* The order of execution is:
+* 1. Look for parenthesys. If found, Go to @see Expression and evaluate
+*    inside the parenthesis.
+* 2. If the token is a identifier, return the value.
+* 3. Otherwise, return the number.
+*
+* @param program The tokenizer to understand next steps and eat some tokens.
+*/
 int Evaluate::Factor(Tokenizer &program) {
   int value_integer;
   if (program.Look().Match("OPEN_PARENTHESYS")) {
