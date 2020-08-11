@@ -71,33 +71,38 @@ $(function() {
 <div class="title">IfStatement.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _IF_STATEMENT_</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _IF_STATEMENT_</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Statement_8hpp.html">Statement.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../tokenizer/Tokenizer.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classIfStatement.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIfStatement.html">IfStatement</a> : <span class="keyword">public</span> <a class="code" href="classStatement.html">Statement</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  std::vector&lt;Statement *&gt; statements;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">bool</span> condition;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">int</span> test_value;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">int</span> equal_to_value;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="IfStatement_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _IF_STATEMENT_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _IF_STATEMENT_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Statement_8hpp.html">Statement.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../tokenizer/Tokenizer.hpp&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classIfStatement.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIfStatement.html">IfStatement</a> : <span class="keyword">public</span> <a class="code" href="classStatement.html">Statement</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::vector&lt;Statement *&gt; statements;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">bool</span> condition;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">int</span> test_value;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> equal_to_value;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassTokenizer_html"><div class="ttname"><a href="classTokenizer.html">Tokenizer</a></div><div class="ttdef"><b>Definition:</b> <a href="Tokenizer_8hpp_source.html#l00008">Tokenizer.hpp:8</a></div></div>
 <div class="ttc" id="aclassStatement_html"><div class="ttname"><a href="classStatement.html">Statement</a></div><div class="ttdef"><b>Definition:</b> <a href="Statement_8hpp_source.html#l00014">Statement.hpp:14</a></div></div>
-<div class="ttc" id="aStatement_8hpp_html"><div class="ttname"><a href="Statement_8hpp.html">Statement.hpp</a></div><div class="ttdoc">Header file for the default interface for the statements.</div></div>
-<div class="ttc" id="aclassIfStatement_html_a0972181bc3a643083116eae8aa1f35fd"><div class="ttname"><a href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">IfStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Interface to read a program execution.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00013">IfStatement.cpp:13</a></div></div>
-<div class="ttc" id="aclassIfStatement_html"><div class="ttname"><a href="classIfStatement.html">IfStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8hpp_source.html#l00008">IfStatement.hpp:8</a></div></div>
-<div class="ttc" id="aclassIfStatement_html_aea0dc26602a4b510d5d62380c87998d5"><div class="ttname"><a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">Interface to execute a loaded Statement.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00005">IfStatement.cpp:5</a></div></div>
+<div class="ttc" id="aStatement_8hpp_html"><div class="ttname"><a href="Statement_8hpp.html">Statement.hpp</a></div><div class="ttdoc">Interface for the Statements.</div></div>
+<div class="ttc" id="aclassIfStatement_html_a0972181bc3a643083116eae8aa1f35fd"><div class="ttname"><a href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">IfStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Read a IfStatement.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00030">IfStatement.cpp:30</a></div></div>
+<div class="ttc" id="aclassIfStatement_html"><div class="ttname"><a href="classIfStatement.html">IfStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8hpp_source.html#l00015">IfStatement.hpp:15</a></div></div>
+<div class="ttc" id="aclassIfStatement_html_aea0dc26602a4b510d5d62380c87998d5"><div class="ttname"><a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">execute IfStatement.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00015">IfStatement.cpp:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

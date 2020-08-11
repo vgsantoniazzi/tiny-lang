@@ -1,7 +1,7 @@
 /**
  * @file src/errors/UndefinedVariableNameError.cpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Implementation of UndefinedVariableNameError
+ * @brief Implements UndefinedVariableNameError
  */
 #include "../logs/logging.hpp"
 #include "../token/Token.hpp"

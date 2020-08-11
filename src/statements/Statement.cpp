@@ -1,7 +1,7 @@
 /**
  * @file src/statements/Statement.cpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Implements the default interface for the statements.
+ * @brief Implements the default interface for the Statement.
  */
 #include <typeinfo>
 #include "../logs/logging.hpp"
@@ -16,7 +16,7 @@
 /**
 * @brief Look the token and addresses to the correct statement.
 *
-* It also Read the program with the correct statement, but it not executes it.
+* It also read the program with the correct statement, but it not executes it.
 *
 * @param program The tokenizer to understand next steps and eat some tokens.
 */

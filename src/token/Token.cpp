@@ -1,3 +1,8 @@
+/**
+ * @file src/token/Token.cpp
+ * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
+ * @brief Implements Token
+ */
 #include "Token.hpp"
 
 Token::Token(std::string value, std::string type) {

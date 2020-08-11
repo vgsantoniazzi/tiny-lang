@@ -85,9 +85,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a71f7828c8e9d1c367452b1a06061600a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpawnStatement.html#a71f7828c8e9d1c367452b1a06061600a">Read</a> (<a class="el" href="classTokenizer.html">Tokenizer</a> &amp;program)</td></tr>
 <tr class="memdesc:a71f7828c8e9d1c367452b1a06061600a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a Spawn <a class="el" href="classStatement.html">Statement</a>.  <a href="classSpawnStatement.html#a71f7828c8e9d1c367452b1a06061600a">More...</a><br /></td></tr>
 <tr class="separator:a71f7828c8e9d1c367452b1a06061600a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24540a28edaa740dfec814957967fddf"><td class="memItemLeft" align="right" valign="top"><a id="a24540a28edaa740dfec814957967fddf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpawnStatement.html#a24540a28edaa740dfec814957967fddf">Execute</a> () const</td></tr>
-<tr class="memdesc:a24540a28edaa740dfec814957967fddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute spawn statement. <br /></td></tr>
+<tr class="memitem:a24540a28edaa740dfec814957967fddf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpawnStatement.html#a24540a28edaa740dfec814957967fddf">Execute</a> () const</td></tr>
+<tr class="memdesc:a24540a28edaa740dfec814957967fddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute spawn statement.  <a href="classSpawnStatement.html#a24540a28edaa740dfec814957967fddf">More...</a><br /></td></tr>
 <tr class="separator:a24540a28edaa740dfec814957967fddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -101,6 +100,42 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="SpawnStatement_8hpp_source.html#l00016">16</a> of file <a class="el" href="SpawnStatement_8hpp_source.html">SpawnStatement.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a24540a28edaa740dfec814957967fddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24540a28edaa740dfec814957967fddf">&#9670;&nbsp;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpawnStatement::Execute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>execute spawn statement. </p>
+<p>C++ Thread to execute the function. </p>
+
+<p>Implements <a class="el" href="classStatement.html#a7f59cb2df2e3e932e5fd8ecc69165b6d">Statement</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SpawnStatement_8cpp_source.html#l00022">22</a> of file <a class="el" href="SpawnStatement_8cpp_source.html">SpawnStatement.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                   {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::thread t(<a class="code" href="SpawnStatement_8cpp.html#acf493d61120144a5a8bdcc886a277b17">ExecuteStatement</a>, statement);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  t.join();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a71f7828c8e9d1c367452b1a06061600a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71f7828c8e9d1c367452b1a06061600a">&#9670;&nbsp;</a></span>Read()</h2>
 
@@ -126,9 +161,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Read a Spawn <a class="el" href="classStatement.html">Statement</a>. </p>
+<p>Loads the statements and assign to <a class="el" href="classToken.html">Token</a> and <a class="el" href="classStatement.html">Statement</a>.</p>
 <div class="fragment"><div class="line">&gt; spawn &lt; <span class="keywordtype">int</span> x = 10;</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">program</td><td>The tokenizer to understand next steps and eat some tokens.</td></tr>
     <tr><td class="paramname">program</td><td>The tokenizer to understand next steps and eat some tokens. </td></tr>
   </table>
   </dd>
@@ -136,11 +173,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classStatement.html#aadfa1db2e5c94b8ff1079992693f9a4c">Statement</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SpawnStatement_8cpp_source.html#l00014">14</a> of file <a class="el" href="SpawnStatement_8cpp_source.html">SpawnStatement.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                            {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classToken.html">Token</a> spawn = program.GetToken();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  statement = <a class="code" href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">Statement::GetNext</a>(program);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="SpawnStatement_8cpp_source.html#l00032">32</a> of file <a class="el" href="SpawnStatement_8cpp_source.html">SpawnStatement.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                            {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classToken.html">Token</a> spawn = program.GetToken();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  statement = <a class="code" href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">Statement::GetNext</a>(program);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -149,7 +186,8 @@ Additional Inherited Members</h2></td></tr>
 <li>src/statements/<a class="el" href="SpawnStatement_8cpp_source.html">SpawnStatement.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00006">Token.hpp:6</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00013">Token.hpp:13</a></div></div>
+<div class="ttc" id="aSpawnStatement_8cpp_html_acf493d61120144a5a8bdcc886a277b17"><div class="ttname"><a href="SpawnStatement_8cpp.html#acf493d61120144a5a8bdcc886a277b17">ExecuteStatement</a></div><div class="ttdeci">void ExecuteStatement(Statement *statement)</div><div class="ttdoc">The statement to run inside a thread.</div><div class="ttdef"><b>Definition:</b> <a href="SpawnStatement_8cpp_source.html#l00017">SpawnStatement.cpp:17</a></div></div>
 <div class="ttc" id="aclassStatement_html_a56f78571cbd8bcf15103a51a5d82641f"><div class="ttname"><a href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">Statement::GetNext</a></div><div class="ttdeci">static Statement * GetNext(Tokenizer &amp;program)</div><div class="ttdoc">Identifies the next statement to be executed.</div><div class="ttdef"><b>Definition:</b> <a href="Statement_8cpp_source.html#l00023">Statement.cpp:23</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

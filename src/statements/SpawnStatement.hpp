@@ -1,7 +1,7 @@
 /**
  * @file src/statements/SpawnStatement.hpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Header file for the Spawn Statement
+ * @brief Implements threads.
  *
  * @details Spawn statement will run inside a thread. It will load only the
  * next statement.

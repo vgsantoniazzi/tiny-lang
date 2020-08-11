@@ -1,7 +1,7 @@
 /**
  * @file src/statements/Statement.hpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Header file for the default interface for the statements.
+ * @brief Interface for the Statements.
  *
  * @details This is a interpreter. So it will not compile the code before.
  * The correct order is read a statement and execute if after.

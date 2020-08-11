@@ -71,35 +71,49 @@ $(function() {
 <div class="title">Token.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;Token.hpp&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Token::Token(std::string value, std::string type) {</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;  this-&gt;value = value;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;  this-&gt;type = type;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<a href="Token_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Token_8hpp.html">Token.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;std::string Token::GetValue()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> value; }</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> Token::SetValue(std::string value) { this-&gt;value = value; }</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;std::string Token::GetFilename()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> file_name; }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> Token::SetFilename(std::string file_name) { this-&gt;file_name = file_name; }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> Token::GetLine()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> line; }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> Token::SetLine(<span class="keywordtype">int</span> line) { this-&gt;line = line; }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> Token::GetColumn()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> column; }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> Token::SetColumn(<span class="keywordtype">int</span> column) { this-&gt;column = column; }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;std::string Token::GetType()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> type; }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> Token::SetType(std::string type) { this-&gt;type = type; }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> Token::Match(std::string t)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> GetType() == t; }</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classToken.html#a5e3295993ef9c710a939ea95b588cd2f">    8</a></span>&#160;<a class="code" href="classToken.html#a5e3295993ef9c710a939ea95b588cd2f">Token::Token</a>(std::string value, std::string type) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  this-&gt;value = value;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  this-&gt;type = type;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classToken.html#a48007491c865d1ebf2561a592c3969bd">   13</a></span>&#160;std::string <a class="code" href="classToken.html#a48007491c865d1ebf2561a592c3969bd">Token::GetValue</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> value; }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classToken.html#ad339254f74356e04860f7c1f659e55b6">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classToken.html#ad339254f74356e04860f7c1f659e55b6">Token::SetValue</a>(std::string value) { this-&gt;value = value; }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classToken.html#acc5fe937e0fd47d2dff799eb57288263">   17</a></span>&#160;std::string <a class="code" href="classToken.html#acc5fe937e0fd47d2dff799eb57288263">Token::GetFilename</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> file_name; }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classToken.html#ac8112f28e8ab5e1b5238c5f4cd75e779">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classToken.html#ac8112f28e8ab5e1b5238c5f4cd75e779">Token::SetFilename</a>(std::string file_name) { this-&gt;file_name = file_name; }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classToken.html#ac123e9e8036887e17071104489de5a78">   21</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classToken.html#ac123e9e8036887e17071104489de5a78">Token::GetLine</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> line; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classToken.html#a848ef1ad0010849b21f1713f828c993a">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classToken.html#a848ef1ad0010849b21f1713f828c993a">Token::SetLine</a>(<span class="keywordtype">int</span> line) { this-&gt;line = line; }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classToken.html#aa15040ff55e5d212b3c550ece9c44f8a">   25</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classToken.html#aa15040ff55e5d212b3c550ece9c44f8a">Token::GetColumn</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> column; }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classToken.html#a26495524d849b9c78cd489c50369ae9c">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classToken.html#a26495524d849b9c78cd489c50369ae9c">Token::SetColumn</a>(<span class="keywordtype">int</span> column) { this-&gt;column = column; }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">   29</a></span>&#160;std::string <a class="code" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">Token::GetType</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> type; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">Token::SetType</a>(std::string type) { this-&gt;type = type; }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">   33</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Token::Match</a>(std::string t)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">GetType</a>() == t; }</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassToken_html_ad339254f74356e04860f7c1f659e55b6"><div class="ttname"><a href="classToken.html#ad339254f74356e04860f7c1f659e55b6">Token::SetValue</a></div><div class="ttdeci">void SetValue(std::string value)</div><div class="ttdoc">Setter for Value.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00015">Token.cpp:15</a></div></div>
+<div class="ttc" id="aclassToken_html_acc5fe937e0fd47d2dff799eb57288263"><div class="ttname"><a href="classToken.html#acc5fe937e0fd47d2dff799eb57288263">Token::GetFilename</a></div><div class="ttdeci">std::string GetFilename() const</div><div class="ttdoc">Getter for Filename.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00017">Token.cpp:17</a></div></div>
+<div class="ttc" id="aclassToken_html_a26495524d849b9c78cd489c50369ae9c"><div class="ttname"><a href="classToken.html#a26495524d849b9c78cd489c50369ae9c">Token::SetColumn</a></div><div class="ttdeci">void SetColumn(int column)</div><div class="ttdoc">Setter for Column.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00027">Token.cpp:27</a></div></div>
+<div class="ttc" id="aclassToken_html_aa15040ff55e5d212b3c550ece9c44f8a"><div class="ttname"><a href="classToken.html#aa15040ff55e5d212b3c550ece9c44f8a">Token::GetColumn</a></div><div class="ttdeci">int GetColumn() const</div><div class="ttdoc">Getter for Column.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00025">Token.cpp:25</a></div></div>
+<div class="ttc" id="aclassToken_html_a54a872a4e5c30bea92efd44c9b08a6e3"><div class="ttname"><a href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">Token::SetType</a></div><div class="ttdeci">void SetType(std::string type)</div><div class="ttdoc">Setter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00031">Token.cpp:31</a></div></div>
+<div class="ttc" id="aclassToken_html_a848ef1ad0010849b21f1713f828c993a"><div class="ttname"><a href="classToken.html#a848ef1ad0010849b21f1713f828c993a">Token::SetLine</a></div><div class="ttdeci">void SetLine(int line)</div><div class="ttdoc">Setter for Line.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00023">Token.cpp:23</a></div></div>
+<div class="ttc" id="aclassToken_html_a48007491c865d1ebf2561a592c3969bd"><div class="ttname"><a href="classToken.html#a48007491c865d1ebf2561a592c3969bd">Token::GetValue</a></div><div class="ttdeci">std::string GetValue() const</div><div class="ttdoc">Getter for Value.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00013">Token.cpp:13</a></div></div>
+<div class="ttc" id="aclassToken_html_a7779d11eb6bf1e02d02c96d4a4a88511"><div class="ttname"><a href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">Token::GetType</a></div><div class="ttdeci">std::string GetType() const</div><div class="ttdoc">Getter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00029">Token.cpp:29</a></div></div>
+<div class="ttc" id="aclassToken_html_ac123e9e8036887e17071104489de5a78"><div class="ttname"><a href="classToken.html#ac123e9e8036887e17071104489de5a78">Token::GetLine</a></div><div class="ttdeci">int GetLine() const</div><div class="ttdoc">Getter for Line.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00021">Token.cpp:21</a></div></div>
+<div class="ttc" id="aclassToken_html_ac8112f28e8ab5e1b5238c5f4cd75e779"><div class="ttname"><a href="classToken.html#ac8112f28e8ab5e1b5238c5f4cd75e779">Token::SetFilename</a></div><div class="ttdeci">void SetFilename(std::string file_name)</div><div class="ttdoc">Setter for Filename.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00019">Token.cpp:19</a></div></div>
+<div class="ttc" id="aToken_8hpp_html"><div class="ttname"><a href="Token_8hpp.html">Token.hpp</a></div><div class="ttdoc">Implements token management.</div></div>
+<div class="ttc" id="aclassToken_html_a87fbb374463232a0f37cd76969a971e7"><div class="ttname"><a href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Token::Match</a></div><div class="ttdeci">bool Match(std::string type) const</div><div class="ttdoc">Check if Token match with found.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00033">Token.cpp:33</a></div></div>
+<div class="ttc" id="aclassToken_html_a5e3295993ef9c710a939ea95b588cd2f"><div class="ttname"><a href="classToken.html#a5e3295993ef9c710a939ea95b588cd2f">Token::Token</a></div><div class="ttdeci">Token(std::string value=&quot;&quot;, std::string type=&quot;UNKNOWN&quot;)</div><div class="ttdoc">Contructor of Token.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00008">Token.cpp:8</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

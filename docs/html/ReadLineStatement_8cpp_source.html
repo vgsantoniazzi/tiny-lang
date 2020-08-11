@@ -71,29 +71,34 @@ $(function() {
 <div class="title">ReadLineStatement.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../variables/Variables.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ReadLineStatement_8hpp.html">ReadLineStatement.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">    6</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement::Execute</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  std::string enter;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  std::cin &gt;&gt; enter;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  Variables::All()-&gt;Update(strong_type.GetType(), variable.GetValue(), enter);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement::Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  program.Match(<span class="stringliteral">&quot;READ_LINE&quot;</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  program.Match(<span class="stringliteral">&quot;ASSIGN&quot;</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  strong_type = program.MatchStrongType();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  variable = program.GetToken();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  program.Match(<span class="stringliteral">&quot;SEMICOLON&quot;</span>);</div>
+<a href="ReadLineStatement_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../variables/Variables.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ReadLineStatement_8hpp.html">ReadLineStatement.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement::Execute</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  std::string enter;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::cin &gt;&gt; enter;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classVariables.html#a1ee5bfeeb06b6b8e29edab6279afce1c">Variables::All</a>()-&gt;<a class="code" href="classVariables.html#a88775395e353d960e19b450ead45ac06">Update</a>(strong_type.<a class="code" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">GetType</a>(), variable.<a class="code" href="classToken.html#a48007491c865d1ebf2561a592c3969bd">GetValue</a>(), enter);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement::Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  program.Match(<span class="stringliteral">&quot;READ_LINE&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  program.Match(<span class="stringliteral">&quot;ASSIGN&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  strong_type = program.MatchStrongType();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  variable = program.GetToken();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  program.Match(<span class="stringliteral">&quot;SEMICOLON&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassReadLineStatement_html_ab218674c3852b67791d02a4218d06689"><div class="ttname"><a href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Read a ReadLine Statement.</div><div class="ttdef"><b>Definition:</b> <a href="ReadLineStatement_8cpp_source.html#l00012">ReadLineStatement.cpp:12</a></div></div>
+<div class="ttc" id="aclassReadLineStatement_html_ab218674c3852b67791d02a4218d06689"><div class="ttname"><a href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Read a ReadLine Statement.</div><div class="ttdef"><b>Definition:</b> <a href="ReadLineStatement_8cpp_source.html#l00025">ReadLineStatement.cpp:25</a></div></div>
 <div class="ttc" id="aclassTokenizer_html"><div class="ttname"><a href="classTokenizer.html">Tokenizer</a></div><div class="ttdef"><b>Definition:</b> <a href="Tokenizer_8hpp_source.html#l00008">Tokenizer.hpp:8</a></div></div>
-<div class="ttc" id="aReadLineStatement_8hpp_html"><div class="ttname"><a href="ReadLineStatement_8hpp.html">ReadLineStatement.hpp</a></div><div class="ttdoc">Header file for ReadLineStatement.</div></div>
-<div class="ttc" id="aclassReadLineStatement_html_a09f0cbd00fe13637c96ff32c622eaadf"><div class="ttname"><a href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">execute ReadLine Statement</div><div class="ttdef"><b>Definition:</b> <a href="ReadLineStatement_8cpp_source.html#l00006">ReadLineStatement.cpp:6</a></div></div>
+<div class="ttc" id="aReadLineStatement_8hpp_html"><div class="ttname"><a href="ReadLineStatement_8hpp.html">ReadLineStatement.hpp</a></div><div class="ttdoc">Implements user input value to program.</div></div>
+<div class="ttc" id="aclassVariables_html_a1ee5bfeeb06b6b8e29edab6279afce1c"><div class="ttname"><a href="classVariables.html#a1ee5bfeeb06b6b8e29edab6279afce1c">Variables::All</a></div><div class="ttdeci">static Variables * All()</div><div class="ttdoc">Singleton pattern to store variables.</div><div class="ttdef"><b>Definition:</b> <a href="Variables_8cpp_source.html#l00019">Variables.cpp:19</a></div></div>
+<div class="ttc" id="aclassVariables_html_a88775395e353d960e19b450ead45ac06"><div class="ttname"><a href="classVariables.html#a88775395e353d960e19b450ead45ac06">Variables::Update</a></div><div class="ttdeci">void Update(std::string type, std::string variable_name, std::string variable_value)</div><div class="ttdoc">Updates a variable.</div><div class="ttdef"><b>Definition:</b> <a href="Variables_8cpp_source.html#l00035">Variables.cpp:35</a></div></div>
+<div class="ttc" id="aclassToken_html_a48007491c865d1ebf2561a592c3969bd"><div class="ttname"><a href="classToken.html#a48007491c865d1ebf2561a592c3969bd">Token::GetValue</a></div><div class="ttdeci">std::string GetValue() const</div><div class="ttdoc">Getter for Value.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00013">Token.cpp:13</a></div></div>
+<div class="ttc" id="aclassToken_html_a7779d11eb6bf1e02d02c96d4a4a88511"><div class="ttname"><a href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">Token::GetType</a></div><div class="ttdeci">std::string GetType() const</div><div class="ttdoc">Getter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00029">Token.cpp:29</a></div></div>
+<div class="ttc" id="aclassReadLineStatement_html_a09f0cbd00fe13637c96ff32c622eaadf"><div class="ttname"><a href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">execute ReadLine Statement</div><div class="ttdef"><b>Definition:</b> <a href="ReadLineStatement_8cpp_source.html#l00014">ReadLineStatement.cpp:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

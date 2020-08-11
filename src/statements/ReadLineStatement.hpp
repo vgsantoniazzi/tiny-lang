@@ -1,7 +1,7 @@
 /**
  * @file src/statements/ReadLineStatement.hpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Header file for ReadLineStatement
+ * @brief Implements user input value to program.
  *
  * @details Wait for user input, and stores in a variable.
  */

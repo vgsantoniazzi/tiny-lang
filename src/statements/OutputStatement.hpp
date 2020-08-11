@@ -1,7 +1,7 @@
 /**
  * @file src/statements/OutputStatement.hpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Header file for OutputStatement
+ * @brief Implements stdout output
  *
  * @details Send anything to stdout.
  */
@@ -15,7 +15,7 @@
 class OutputStatement : public Statement {
 public:
   /**
-  * @brief Read a Output Statement.
+  * @brief Read a OutputStatement.
   *
   * @code
   * > print < x;
@@ -27,7 +27,7 @@ public:
   void Read(Tokenizer &program);
 
   /**
-  * @brief execute Output Statement.
+  * @brief execute OutputStatement.
   *
   * Forces the output.
   */

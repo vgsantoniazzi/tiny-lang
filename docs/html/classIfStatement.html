@@ -82,12 +82,12 @@ Inheritance diagram for IfStatement:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aea0dc26602a4b510d5d62380c87998d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a> () const</td></tr>
-<tr class="memdesc:aea0dc26602a4b510d5d62380c87998d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to execute a loaded <a class="el" href="classStatement.html">Statement</a>.  <a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">More...</a><br /></td></tr>
-<tr class="separator:aea0dc26602a4b510d5d62380c87998d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0972181bc3a643083116eae8aa1f35fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">Read</a> (<a class="el" href="classTokenizer.html">Tokenizer</a> &amp;program)</td></tr>
-<tr class="memdesc:a0972181bc3a643083116eae8aa1f35fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to read a program execution.  <a href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">More...</a><br /></td></tr>
+<tr class="memdesc:a0972181bc3a643083116eae8aa1f35fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a <a class="el" href="classIfStatement.html">IfStatement</a>.  <a href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">More...</a><br /></td></tr>
 <tr class="separator:a0972181bc3a643083116eae8aa1f35fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0dc26602a4b510d5d62380c87998d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a> () const</td></tr>
+<tr class="memdesc:aea0dc26602a4b510d5d62380c87998d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute <a class="el" href="classIfStatement.html">IfStatement</a>.  <a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">More...</a><br /></td></tr>
+<tr class="separator:aea0dc26602a4b510d5d62380c87998d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -98,7 +98,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IfStatement_8hpp_source.html#l00008">8</a> of file <a class="el" href="IfStatement_8hpp_source.html">IfStatement.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="IfStatement_8hpp_source.html#l00015">15</a> of file <a class="el" href="IfStatement_8hpp_source.html">IfStatement.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aea0dc26602a4b510d5d62380c87998d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea0dc26602a4b510d5d62380c87998d5">&#9670;&nbsp;</a></span>Execute()</h2>
@@ -123,19 +123,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Interface to execute a loaded <a class="el" href="classStatement.html">Statement</a>. </p>
-<p>All statements must implement this funtion in order to execute. </p>
+<p>execute <a class="el" href="classIfStatement.html">IfStatement</a>. </p>
+<p>Test the values and execute if true.</p>
+<p>If reads all the statements until the end and executes in the correct order. </p>
 
 <p>Implements <a class="el" href="classStatement.html#a7f59cb2df2e3e932e5fd8ecc69165b6d">Statement</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="IfStatement_8cpp_source.html#l00005">5</a> of file <a class="el" href="IfStatement_8cpp_source.html">IfStatement.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <span class="keywordflow">if</span> ((!condition &amp;&amp; test_value != 0) ||</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      (condition &amp;&amp; test_value == equal_to_value)) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; statements.size(); i++)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;      statements[i]-&gt;<a class="code" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  }</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="IfStatement_8cpp_source.html#l00015">15</a> of file <a class="el" href="IfStatement_8cpp_source.html">IfStatement.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordflow">if</span> ((!condition &amp;&amp; test_value != 0) ||</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      (condition &amp;&amp; test_value == equal_to_value)) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; statements.size(); i++)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      statements[i]-&gt;<a class="code" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">Execute</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -163,8 +164,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Interface to read a program execution. </p>
-<p>All statements must implement this funtion in order to load it properly.</p>
+<p>Read a <a class="el" href="classIfStatement.html">IfStatement</a>. </p>
+<p>Read the <a class="el" href="classStatement.html">Statement</a>, <a class="el" href="classEvaluate.html">Evaluate</a> and Wait to execute.</p>
+<div class="fragment"><div class="line">&gt; <span class="keywordflow">if</span>(x == 10) &lt;</div>
+</div><!-- fragment --><p> It will read the condition and take decision based on it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">program</td><td>The tokenizer to understand next steps and eat some tokens.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Add to statements vector, the statements to be run.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">program</td><td>The tokenizer to understand next steps and eat some tokens. </td></tr>
@@ -174,22 +184,22 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classStatement.html#aadfa1db2e5c94b8ff1079992693f9a4c">Statement</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="IfStatement_8cpp_source.html#l00013">13</a> of file <a class="el" href="IfStatement_8cpp_source.html">IfStatement.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                         {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  condition = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  program.Match(<span class="stringliteral">&quot;IF&quot;</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  program.MatchIf(<span class="stringliteral">&quot;OPEN_PARENTHESYS&quot;</span>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  test_value = <a class="code" href="classEvaluate.html#a487e1dfc63030ae2d3b7e10e9c3ff449">Evaluate::Calculate</a>(program);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordflow">if</span> (program.Look().Match(<span class="stringliteral">&quot;EQUAL_TO&quot;</span>)) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    condition = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    program.Match(<span class="stringliteral">&quot;EQUAL_TO&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    equal_to_value = <a class="code" href="classEvaluate.html#a487e1dfc63030ae2d3b7e10e9c3ff449">Evaluate::Calculate</a>(program);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  program.MatchIf(<span class="stringliteral">&quot;CLOSE_PARENTHESYS&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">while</span> (!program.Look().Match(<span class="stringliteral">&quot;END&quot;</span>))</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    statements.push_back(<a class="code" href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">GetNext</a>(program));</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  program.Match(<span class="stringliteral">&quot;END&quot;</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="IfStatement_8cpp_source.html#l00030">30</a> of file <a class="el" href="IfStatement_8cpp_source.html">IfStatement.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                         {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  condition = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  program.Match(<span class="stringliteral">&quot;IF&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  program.MatchIf(<span class="stringliteral">&quot;OPEN_PARENTHESYS&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  test_value = <a class="code" href="classEvaluate.html#a487e1dfc63030ae2d3b7e10e9c3ff449">Evaluate::Calculate</a>(program);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">if</span> (program.Look().<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;EQUAL_TO&quot;</span>)) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    condition = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    program.Match(<span class="stringliteral">&quot;EQUAL_TO&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    equal_to_value = <a class="code" href="classEvaluate.html#a487e1dfc63030ae2d3b7e10e9c3ff449">Evaluate::Calculate</a>(program);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  program.MatchIf(<span class="stringliteral">&quot;CLOSE_PARENTHESYS&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">while</span> (!program.Look().<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;END&quot;</span>))</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    statements.push_back(<a class="code" href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">GetNext</a>(program));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  program.Match(<span class="stringliteral">&quot;END&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,8 +209,9 @@ Additional Inherited Members</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="aclassEvaluate_html_a487e1dfc63030ae2d3b7e10e9c3ff449"><div class="ttname"><a href="classEvaluate.html#a487e1dfc63030ae2d3b7e10e9c3ff449">Evaluate::Calculate</a></div><div class="ttdeci">static int Calculate(Tokenizer &amp;program)</div><div class="ttdoc">Calculates and return the value of a eval execution.</div><div class="ttdef"><b>Definition:</b> <a href="Evaluate_8cpp_source.html#l00016">Evaluate.cpp:16</a></div></div>
+<div class="ttc" id="aclassToken_html_a87fbb374463232a0f37cd76969a971e7"><div class="ttname"><a href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Token::Match</a></div><div class="ttdeci">bool Match(std::string type) const</div><div class="ttdoc">Check if Token match with found.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00033">Token.cpp:33</a></div></div>
 <div class="ttc" id="aclassStatement_html_a56f78571cbd8bcf15103a51a5d82641f"><div class="ttname"><a href="classStatement.html#a56f78571cbd8bcf15103a51a5d82641f">Statement::GetNext</a></div><div class="ttdeci">static Statement * GetNext(Tokenizer &amp;program)</div><div class="ttdoc">Identifies the next statement to be executed.</div><div class="ttdef"><b>Definition:</b> <a href="Statement_8cpp_source.html#l00023">Statement.cpp:23</a></div></div>
-<div class="ttc" id="aclassIfStatement_html_aea0dc26602a4b510d5d62380c87998d5"><div class="ttname"><a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">Interface to execute a loaded Statement.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00005">IfStatement.cpp:5</a></div></div>
+<div class="ttc" id="aclassIfStatement_html_aea0dc26602a4b510d5d62380c87998d5"><div class="ttname"><a href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">execute IfStatement.</div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8cpp_source.html#l00015">IfStatement.cpp:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

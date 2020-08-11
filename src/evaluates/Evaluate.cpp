@@ -1,7 +1,7 @@
 /**
  * @file src/evaluates/Evaluate.cpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Implementation of Evaluate
+ * @brief Implements Evaluate
  */
 #include "Evaluate.hpp"
 #include "../token/Token.hpp"

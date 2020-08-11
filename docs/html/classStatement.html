@@ -130,7 +130,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Interface to execute a loaded <a class="el" href="classStatement.html">Statement</a>. </p>
 <p>All statements must implement this funtion in order to execute. </p>
 
-<p>Implemented in <a class="el" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement</a>, <a class="el" href="classOutputStatement.html#a4a0a0b0c73e2b2aff9c2c13a6104518b">OutputStatement</a>, <a class="el" href="classSpawnStatement.html#a24540a28edaa740dfec814957967fddf">SpawnStatement</a>, <a class="el" href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">AssignStatement</a>, and <a class="el" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement</a>.</p>
+<p>Implemented in <a class="el" href="classReadLineStatement.html#a09f0cbd00fe13637c96ff32c622eaadf">ReadLineStatement</a>, <a class="el" href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">AssignStatement</a>, <a class="el" href="classOutputStatement.html#a4a0a0b0c73e2b2aff9c2c13a6104518b">OutputStatement</a>, <a class="el" href="classIfStatement.html#aea0dc26602a4b510d5d62380c87998d5">IfStatement</a>, and <a class="el" href="classSpawnStatement.html#a24540a28edaa740dfec814957967fddf">SpawnStatement</a>.</p>
 
 </div>
 </div>
@@ -167,7 +167,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>It also Read the program with the correct statement, but it not executes it.</p>
+<p>It also read the program with the correct statement, but it not executes it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">program</td><td>The tokenizer to understand next steps and eat some tokens. </td></tr>
@@ -178,19 +178,19 @@ Static Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="Statement_8cpp_source.html#l00023">23</a> of file <a class="el" href="Statement_8cpp_source.html">Statement.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="classToken.html">Token</a> token = program.Look();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> (token.GetType() == <span class="stringliteral">&quot;UNKNOWN&quot;</span>)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">GetType</a>() == <span class="stringliteral">&quot;UNKNOWN&quot;</span>)</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classMalformedExpressionError.html#ab6319847060f59c82601abeec2bd6957">MalformedExpressionError::Raise</a>(token, __FILE__, __LINE__);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classStatement.html">Statement</a> *statement;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;INTEGER_TYPE&quot;</span>) || token.Match(<span class="stringliteral">&quot;STRING_TYPE&quot;</span>))</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;INTEGER_TYPE&quot;</span>) || token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;STRING_TYPE&quot;</span>))</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    statement = <span class="keyword">new</span> <a class="code" href="classAssignStatement.html">AssignStatement</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;OUTPUT&quot;</span>))</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;OUTPUT&quot;</span>))</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    statement = <span class="keyword">new</span> <a class="code" href="classOutputStatement.html">OutputStatement</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;IF&quot;</span>))</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;IF&quot;</span>))</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    statement = <span class="keyword">new</span> <a class="code" href="classIfStatement.html">IfStatement</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;SPAWN&quot;</span>))</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;SPAWN&quot;</span>))</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    statement = <span class="keyword">new</span> <a class="code" href="classSpawnStatement.html">SpawnStatement</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;READ_LINE&quot;</span>))</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;READ_LINE&quot;</span>))</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    statement = <span class="keyword">new</span> <a class="code" href="classReadLineStatement.html">ReadLineStatement</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  statement-&gt;<a class="code" href="classStatement.html#aadfa1db2e5c94b8ff1079992693f9a4c">Read</a>(program);</div>
@@ -234,7 +234,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement</a>, <a class="el" href="classOutputStatement.html#afe928dc7441dbbef07d454cf887c263c">OutputStatement</a>, <a class="el" href="classSpawnStatement.html#a71f7828c8e9d1c367452b1a06061600a">SpawnStatement</a>, <a class="el" href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">AssignStatement</a>, and <a class="el" href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">IfStatement</a>.</p>
+<p>Implemented in <a class="el" href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">AssignStatement</a>, <a class="el" href="classReadLineStatement.html#ab218674c3852b67791d02a4218d06689">ReadLineStatement</a>, <a class="el" href="classIfStatement.html#a0972181bc3a643083116eae8aa1f35fd">IfStatement</a>, <a class="el" href="classOutputStatement.html#afe928dc7441dbbef07d454cf887c263c">OutputStatement</a>, and <a class="el" href="classSpawnStatement.html#a71f7828c8e9d1c367452b1a06061600a">SpawnStatement</a>.</p>
 
 </div>
 </div>
@@ -243,15 +243,17 @@ Static Public Member Functions</h2></td></tr>
 <li>src/statements/<a class="el" href="Statement_8cpp_source.html">Statement.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassAssignStatement_html"><div class="ttname"><a href="classAssignStatement.html">AssignStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8hpp_source.html#l00008">AssignStatement.hpp:8</a></div></div>
+<div class="ttc" id="aclassAssignStatement_html"><div class="ttname"><a href="classAssignStatement.html">AssignStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8hpp_source.html#l00015">AssignStatement.hpp:15</a></div></div>
 <div class="ttc" id="aclassStatement_html"><div class="ttname"><a href="classStatement.html">Statement</a></div><div class="ttdef"><b>Definition:</b> <a href="Statement_8hpp_source.html#l00014">Statement.hpp:14</a></div></div>
 <div class="ttc" id="aclassSpawnStatement_html"><div class="ttname"><a href="classSpawnStatement.html">SpawnStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="SpawnStatement_8hpp_source.html#l00016">SpawnStatement.hpp:16</a></div></div>
-<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00006">Token.hpp:6</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00013">Token.hpp:13</a></div></div>
 <div class="ttc" id="aclassReadLineStatement_html"><div class="ttname"><a href="classReadLineStatement.html">ReadLineStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="ReadLineStatement_8hpp_source.html#l00015">ReadLineStatement.hpp:15</a></div></div>
 <div class="ttc" id="aclassOutputStatement_html"><div class="ttname"><a href="classOutputStatement.html">OutputStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="OutputStatement_8hpp_source.html#l00015">OutputStatement.hpp:15</a></div></div>
 <div class="ttc" id="aclassStatement_html_aadfa1db2e5c94b8ff1079992693f9a4c"><div class="ttname"><a href="classStatement.html#aadfa1db2e5c94b8ff1079992693f9a4c">Statement::Read</a></div><div class="ttdeci">virtual void Read(Tokenizer &amp;program)=0</div><div class="ttdoc">Interface to read a program execution.</div></div>
-<div class="ttc" id="aclassIfStatement_html"><div class="ttname"><a href="classIfStatement.html">IfStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8hpp_source.html#l00008">IfStatement.hpp:8</a></div></div>
+<div class="ttc" id="aclassToken_html_a7779d11eb6bf1e02d02c96d4a4a88511"><div class="ttname"><a href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">Token::GetType</a></div><div class="ttdeci">std::string GetType() const</div><div class="ttdoc">Getter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00029">Token.cpp:29</a></div></div>
+<div class="ttc" id="aclassIfStatement_html"><div class="ttname"><a href="classIfStatement.html">IfStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="IfStatement_8hpp_source.html#l00015">IfStatement.hpp:15</a></div></div>
 <div class="ttc" id="aclassMalformedExpressionError_html_ab6319847060f59c82601abeec2bd6957"><div class="ttname"><a href="classMalformedExpressionError.html#ab6319847060f59c82601abeec2bd6957">MalformedExpressionError::Raise</a></div><div class="ttdeci">static void Raise(Token &amp;token, std::string file_name, int line)</div><div class="ttdoc">Log the error using LOG library as ERROR level and stops the execution.</div><div class="ttdef"><b>Definition:</b> <a href="MalformedExpressionError_8cpp_source.html#l00010">MalformedExpressionError.cpp:10</a></div></div>
+<div class="ttc" id="aclassToken_html_a87fbb374463232a0f37cd76969a971e7"><div class="ttname"><a href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Token::Match</a></div><div class="ttdeci">bool Match(std::string type) const</div><div class="ttdoc">Check if Token match with found.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00033">Token.cpp:33</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

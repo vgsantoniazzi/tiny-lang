@@ -1,7 +1,7 @@
 /**
  * @file src/errors/MalformedExpressionError.cpp
  * @author Victor Antoniazzi <vgsantoniazzi@gmail.com>
- * @brief Implementation of MalformedExpressionError
+ * @brief Implements MalformedExpressionError
  */
 #include "../logs/logging.hpp"
 #include "../token/Token.hpp"

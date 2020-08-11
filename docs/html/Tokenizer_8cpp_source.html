@@ -115,9 +115,9 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classToken.html">Token</a> retToken = token;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  token = next_token;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  NextToken(next_token);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (!string_into &amp;&amp; (token.Match(<span class="stringliteral">&quot;SPACE&quot;</span>) || token.Match(<span class="stringliteral">&quot;NEW_LINE&quot;</span>)))</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (!string_into &amp;&amp; (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;SPACE&quot;</span>) || token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;NEW_LINE&quot;</span>)))</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    GetToken();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  LOG(DEBUG) &lt;&lt; <span class="stringliteral">&quot;Token: &quot;</span> &lt;&lt; retToken.GetType() &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; retToken.GetValue();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  LOG(DEBUG) &lt;&lt; <span class="stringliteral">&quot;Token: &quot;</span> &lt;&lt; retToken.<a class="code" href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">GetType</a>() &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; retToken.<a class="code" href="classToken.html#a48007491c865d1ebf2561a592c3969bd">GetValue</a>();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> retToken;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
@@ -139,27 +139,27 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> Tokenizer::MatchIf(std::string t) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">if</span> (token.Match(t))</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(t))</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    Match(t);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> Tokenizer::NextToken(<a class="code" href="classToken.html">Token</a> &amp;token) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::string lexeme;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  token.SetValue(lexeme);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  token.SetType(<span class="stringliteral">&quot;UNKNOWN&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  token.<a class="code" href="classToken.html#ad339254f74356e04860f7c1f659e55b6">SetValue</a>(lexeme);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  token.<a class="code" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">SetType</a>(<span class="stringliteral">&quot;UNKNOWN&quot;</span>);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (IsWord(current_char)) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    lexeme += GetWord();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    token.SetType(GetTokenType(lexeme));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (token.Match(<span class="stringliteral">&quot;UNKNOWN&quot;</span>))</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      token.SetType(<span class="stringliteral">&quot;IDENTIFIER&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    token.<a class="code" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">SetType</a>(GetTokenType(lexeme));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (token.<a class="code" href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Match</a>(<span class="stringliteral">&quot;UNKNOWN&quot;</span>))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      token.<a class="code" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">SetType</a>(<span class="stringliteral">&quot;IDENTIFIER&quot;</span>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    lexeme += GetSpecial();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    token.SetType(GetTokenType(lexeme));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    token.<a class="code" href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">SetType</a>(GetTokenType(lexeme));</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  token.SetValue(lexeme);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  token.SetLine(GetLine());</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  token.SetColumn(GetColumn());</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  token.SetFilename(file_name);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  token.<a class="code" href="classToken.html#ad339254f74356e04860f7c1f659e55b6">SetValue</a>(lexeme);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  token.<a class="code" href="classToken.html#a848ef1ad0010849b21f1713f828c993a">SetLine</a>(GetLine());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  token.<a class="code" href="classToken.html#a26495524d849b9c78cd489c50369ae9c">SetColumn</a>(GetColumn());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  token.<a class="code" href="classToken.html#ac8112f28e8ab5e1b5238c5f4cd75e779">SetFilename</a>(file_name);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">bool</span> Tokenizer::IsWord(<span class="keywordtype">char</span> c) {</div>
@@ -240,8 +240,16 @@ $(function() {
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassFileNotFoundError_html_a71f3b9e1087fca3affb73657fae6956f"><div class="ttname"><a href="classFileNotFoundError.html#a71f3b9e1087fca3affb73657fae6956f">FileNotFoundError::Raise</a></div><div class="ttdeci">static void Raise(std::string file_name)</div><div class="ttdoc">Log the error using LOG library as ERROR level and stops the execution.</div><div class="ttdef"><b>Definition:</b> <a href="FileNotFoundError_8cpp_source.html#l00009">FileNotFoundError.cpp:9</a></div></div>
-<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00006">Token.hpp:6</a></div></div>
+<div class="ttc" id="aclassToken_html_ad339254f74356e04860f7c1f659e55b6"><div class="ttname"><a href="classToken.html#ad339254f74356e04860f7c1f659e55b6">Token::SetValue</a></div><div class="ttdeci">void SetValue(std::string value)</div><div class="ttdoc">Setter for Value.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00015">Token.cpp:15</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00013">Token.hpp:13</a></div></div>
+<div class="ttc" id="aclassToken_html_a26495524d849b9c78cd489c50369ae9c"><div class="ttname"><a href="classToken.html#a26495524d849b9c78cd489c50369ae9c">Token::SetColumn</a></div><div class="ttdeci">void SetColumn(int column)</div><div class="ttdoc">Setter for Column.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00027">Token.cpp:27</a></div></div>
+<div class="ttc" id="aclassToken_html_a54a872a4e5c30bea92efd44c9b08a6e3"><div class="ttname"><a href="classToken.html#a54a872a4e5c30bea92efd44c9b08a6e3">Token::SetType</a></div><div class="ttdeci">void SetType(std::string type)</div><div class="ttdoc">Setter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00031">Token.cpp:31</a></div></div>
+<div class="ttc" id="aclassToken_html_a848ef1ad0010849b21f1713f828c993a"><div class="ttname"><a href="classToken.html#a848ef1ad0010849b21f1713f828c993a">Token::SetLine</a></div><div class="ttdeci">void SetLine(int line)</div><div class="ttdoc">Setter for Line.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00023">Token.cpp:23</a></div></div>
+<div class="ttc" id="aclassToken_html_a48007491c865d1ebf2561a592c3969bd"><div class="ttname"><a href="classToken.html#a48007491c865d1ebf2561a592c3969bd">Token::GetValue</a></div><div class="ttdeci">std::string GetValue() const</div><div class="ttdoc">Getter for Value.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00013">Token.cpp:13</a></div></div>
+<div class="ttc" id="aclassToken_html_a7779d11eb6bf1e02d02c96d4a4a88511"><div class="ttname"><a href="classToken.html#a7779d11eb6bf1e02d02c96d4a4a88511">Token::GetType</a></div><div class="ttdeci">std::string GetType() const</div><div class="ttdoc">Getter for Type.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00029">Token.cpp:29</a></div></div>
 <div class="ttc" id="aclassMalformedExpressionError_html_ab6319847060f59c82601abeec2bd6957"><div class="ttname"><a href="classMalformedExpressionError.html#ab6319847060f59c82601abeec2bd6957">MalformedExpressionError::Raise</a></div><div class="ttdeci">static void Raise(Token &amp;token, std::string file_name, int line)</div><div class="ttdoc">Log the error using LOG library as ERROR level and stops the execution.</div><div class="ttdef"><b>Definition:</b> <a href="MalformedExpressionError_8cpp_source.html#l00010">MalformedExpressionError.cpp:10</a></div></div>
+<div class="ttc" id="aclassToken_html_ac8112f28e8ab5e1b5238c5f4cd75e779"><div class="ttname"><a href="classToken.html#ac8112f28e8ab5e1b5238c5f4cd75e779">Token::SetFilename</a></div><div class="ttdeci">void SetFilename(std::string file_name)</div><div class="ttdoc">Setter for Filename.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00019">Token.cpp:19</a></div></div>
+<div class="ttc" id="aclassToken_html_a87fbb374463232a0f37cd76969a971e7"><div class="ttname"><a href="classToken.html#a87fbb374463232a0f37cd76969a971e7">Token::Match</a></div><div class="ttdeci">bool Match(std::string type) const</div><div class="ttdoc">Check if Token match with found.</div><div class="ttdef"><b>Definition:</b> <a href="Token_8cpp_source.html#l00033">Token.cpp:33</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

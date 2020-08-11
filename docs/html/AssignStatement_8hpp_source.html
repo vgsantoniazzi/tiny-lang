@@ -71,33 +71,38 @@ $(function() {
 <div class="title">AssignStatement.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _ASSIGN_STATEMENT_</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _ASSIGN_STATEMENT_</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Statement_8hpp.html">Statement.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../token/Token.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../tokenizer/Tokenizer.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classAssignStatement.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssignStatement.html">AssignStatement</a> : <span class="keyword">public</span> <a class="code" href="classStatement.html">Statement</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">Execute</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classToken.html">Token</a> variable;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classToken.html">Token</a> strong_type;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::string return_value;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="AssignStatement_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _ASSIGN_STATEMENT_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _ASSIGN_STATEMENT_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Statement_8hpp.html">Statement.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../token/Token.hpp&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../tokenizer/Tokenizer.hpp&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classAssignStatement.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssignStatement.html">AssignStatement</a> : <span class="keyword">public</span> <a class="code" href="classStatement.html">Statement</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">Read</a>(<a class="code" href="classTokenizer.html">Tokenizer</a> &amp;program);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">Execute</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classToken.html">Token</a> variable;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classToken.html">Token</a> strong_type;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::string return_value;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassAssignStatement_html"><div class="ttname"><a href="classAssignStatement.html">AssignStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8hpp_source.html#l00008">AssignStatement.hpp:8</a></div></div>
+<div class="ttc" id="aclassAssignStatement_html"><div class="ttname"><a href="classAssignStatement.html">AssignStatement</a></div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8hpp_source.html#l00015">AssignStatement.hpp:15</a></div></div>
 <div class="ttc" id="aclassTokenizer_html"><div class="ttname"><a href="classTokenizer.html">Tokenizer</a></div><div class="ttdef"><b>Definition:</b> <a href="Tokenizer_8hpp_source.html#l00008">Tokenizer.hpp:8</a></div></div>
 <div class="ttc" id="aclassStatement_html"><div class="ttname"><a href="classStatement.html">Statement</a></div><div class="ttdef"><b>Definition:</b> <a href="Statement_8hpp_source.html#l00014">Statement.hpp:14</a></div></div>
-<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00006">Token.hpp:6</a></div></div>
-<div class="ttc" id="aStatement_8hpp_html"><div class="ttname"><a href="Statement_8hpp.html">Statement.hpp</a></div><div class="ttdoc">Header file for the default interface for the statements.</div></div>
-<div class="ttc" id="aclassAssignStatement_html_a9784b3fdfecfb97670dc18155595e2f1"><div class="ttname"><a href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">AssignStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">Interface to execute a loaded Statement.</div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8cpp_source.html#l00006">AssignStatement.cpp:6</a></div></div>
-<div class="ttc" id="aclassAssignStatement_html_a9dc66ef2323ba5e49520711d8c522e77"><div class="ttname"><a href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">AssignStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Interface to read a program execution.</div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8cpp_source.html#l00011">AssignStatement.cpp:11</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdef"><b>Definition:</b> <a href="Token_8hpp_source.html#l00013">Token.hpp:13</a></div></div>
+<div class="ttc" id="aStatement_8hpp_html"><div class="ttname"><a href="Statement_8hpp.html">Statement.hpp</a></div><div class="ttdoc">Interface for the Statements.</div></div>
+<div class="ttc" id="aclassAssignStatement_html_a9784b3fdfecfb97670dc18155595e2f1"><div class="ttname"><a href="classAssignStatement.html#a9784b3fdfecfb97670dc18155595e2f1">AssignStatement::Execute</a></div><div class="ttdeci">void Execute() const</div><div class="ttdoc">execute AssignStatement.</div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8cpp_source.html#l00016">AssignStatement.cpp:16</a></div></div>
+<div class="ttc" id="aclassAssignStatement_html_a9dc66ef2323ba5e49520711d8c522e77"><div class="ttname"><a href="classAssignStatement.html#a9dc66ef2323ba5e49520711d8c522e77">AssignStatement::Read</a></div><div class="ttdeci">void Read(Tokenizer &amp;program)</div><div class="ttdoc">Read a AssignStatement.</div><div class="ttdef"><b>Definition:</b> <a href="AssignStatement_8cpp_source.html#l00029">AssignStatement.cpp:29</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
